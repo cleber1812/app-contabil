@@ -33,7 +33,7 @@ export function Usuario() {
     }
 
     if (isError) {
-        return <p>Ocorreu um erro ao buscar usuários</p>;
+        return <p>Ocorreu um erro ao buscar usuários.</p>;
       }
 
       return (
