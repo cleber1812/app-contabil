@@ -6,6 +6,7 @@ import {
 
 import { Carrinho } from "./pages/Carrinho";
 import { Usuario } from "./pages/Usuario";
+import { Lancamento } from "./pages/Lancamento";
 
 export function AppRoutes(){
     return (
@@ -13,6 +14,7 @@ export function AppRoutes(){
             <Routes>
                 <Route path="/usuarios" element={<Usuario />} />
                 <Route path="/carrinho" element={<Carrinho />} />                
+                <Route path="/lancamento" element={<Lancamento />} />
             </Routes>
         </Router>
     )

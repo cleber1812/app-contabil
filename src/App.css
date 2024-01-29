@@ -45,3 +45,31 @@ body {
 .read-the-docs {
   color: #e80505;
 }
+
+/* Estilização das tabelas */
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: #11082e;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #444445;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #292453;
+  cursor: pointer;
+}
