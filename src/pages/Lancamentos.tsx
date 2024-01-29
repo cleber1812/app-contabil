@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import api from '../service/api';
 import '../App.css';
 
-export function Lancamento() { 
+export function Lancamentos() { 
     const { data, isLoading, isError } = useQuery('lancamentos', () => {
         return axios
           .get(`${api}/lancamentos`)

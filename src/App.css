@@ -1,7 +1,13 @@
 body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
   background: #2a2626;
   color: #e9e1e1;
 }
+
+/* ESTILIZAÇÃO QUE JÁ VEIO NO PROJETO */
 
 #root {
   max-width: 1280px;
@@ -72,4 +78,51 @@ body {
 .custom-table tbody tr:hover {
   background-color: #292453;
   cursor: pointer;
+}
+
+/* ESTILIZAÇÃO DA PAGINA INSERIR LANCAMENTO */
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+form {
+  background-color: #cfcfd4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+input {  
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
