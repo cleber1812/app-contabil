@@ -1,15 +1,27 @@
-import axios from 'axios';
+//import axios from 'axios';
 import { useQuery } from 'react-query';
 import api from '../service/api';
 import '../App.css';
 
-export function Lancamentos() { 
-    const { data, isLoading, isError } = useQuery('lancamentos', () => {
-        return axios
-          .get(`${api}/lancamentos`)
-          //.get('http://localhost:3000/usuarios')
-          .then((response) => response.data);
-      });
+async function fetchLancamentos() {
+  try {
+    const response = await api.get('/lancamentos');
+    return response.data;
+  } catch (error) {
+    throw new Error('Erro ao buscar lançamentos');
+  }
+}
+
+export function Lancamentos() {
+  const { data: lancamentos, isLoading, isError } = useQuery('lancamentos', fetchLancamentos);
+
+// export function Lancamentos() { 
+//     const { data, isLoading, isError } = useQuery('lancamentos', () => {
+//         return axios
+//           .get(`${api}/lancamentos`)
+//           //.get('http://localhost:3000/usuarios')
+//           .then((response) => response.data);
+//       });
   
       if (isLoading) {
         return <div>Carregando...</div>;
@@ -36,7 +48,8 @@ export function Lancamentos() {
                         </tr>
                     </thead>
                     <tbody>
-                      {data.map((lancamento: any) => (
+                      {/* {data.map((lancamento: any) => ( */}
+                      {lancamentos.map((lancamento: any) => (
                         <tr key={lancamento.id}>
                             <td>{lancamento.id}</td>
                             <td>{lancamento.fk_id_empresa}</td>

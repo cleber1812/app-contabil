@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import axios from 'axios';
-import { useQuery } from 'react-query';
+//import axios from 'axios';
+//import { useQuery } from 'react-query';
 import api from '../service/api';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
@@ -28,7 +28,8 @@ export function InserirLancamento() {
         e.preventDefault();
         try {
           // Fazer a requisição POST para a API
-          await axios.post(`${api}/lancamento`, formData);
+        //   await axios.post(`${api}/lancamento`, formData);
+          await api.post('/lancamento', formData);
 
           // Limpar o formulário após o sucesso    
           setFormData({

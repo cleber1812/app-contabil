@@ -9,8 +9,9 @@ import axios from 'axios'
 
 //const api = axios.create({baseURL: 'https://desolate-wildwood-71856.herokuapp.com/'}) 
 
-const api = 'http://localhost:3000';
+// const api = 'http://localhost:3000';
 
+const api = axios.create({baseURL: 'http://localhost:3000'});
 
 //export default API_BASE_URL;
 
