@@ -2,21 +2,26 @@ import { useState } from 'react';
 //import axios from 'axios';
 //import { useQuery } from 'react-query';
 import api from '../service/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../App.css';
 
 
 export function InserirLancamentoEmpresa() { 
     const navigate = useNavigate();  // Obtenha o objeto de navegação
 
+    const { fk_id_empresa, userID } = useParams<{
+        fk_id_empresa: string;
+        userID: string;
+      }>();
+
     const [formData, setFormData] = useState({
-        fk_id_empresa: '',
+        fk_id_empresa,
         data: '',
         descricao: '',
         fk_id_conta_debito: '',
         fk_id_conta_credito: '',
         valor: '',
-        fk_id_usuario: '',
+        fk_id_usuario: userID,
       });
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,8 +32,7 @@ export function InserirLancamentoEmpresa() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-          // Fazer a requisição POST para a API
-        //   await axios.post(`${api}/lancamento`, formData);
+          // Fazer a requisição POST para a API        
           await api.post('/lancamento', formData);
 
           // Limpar o formulário após o sucesso    
@@ -43,7 +47,8 @@ export function InserirLancamentoEmpresa() {
           });
 
             // Navegar para a página de usuários após o sucesso
-            navigate('/usuarios');
+            //navigate('/usuarios');
+            navigate(`/lancamentosempresa/${fk_id_empresa}/${userID}`);
 
         } catch (error) {
             console.error('Erro ao enviar lançamento:', error);
@@ -56,12 +61,12 @@ export function InserirLancamentoEmpresa() {
             <h1>Inserir Lançamento por Empresa</h1>
             <form onSubmit={handleSubmit}>
                 
-                <label> Empresa: <input
+                {/* <label> Empresa: <input
                     type="number" 
                     name="fk_id_empresa"
                     value={formData.fk_id_empresa}
                     onChange={handleChange}
-                /> </label>
+                /> </label> */}
 
                 <label> Data: <input
                     type="DATE" 
@@ -98,12 +103,12 @@ export function InserirLancamentoEmpresa() {
                     onChange={handleChange}
                 /> </label>
 
-                <label> Usuário: <input
+                {/* <label> Usuário: <input
                     type="number" 
                     name="fk_id_usuario"
                     value={formData.fk_id_usuario}
                     onChange={handleChange}
-                /> </label>
+                /> </label> */}
                 
                 <button type="submit">Enviar</button>
             </form>

@@ -12,8 +12,8 @@ async function fetchEmpresas(id: string) {
 }
 
 export function EmpresasUsuario() {
-  const { id } = useParams<{ id: string }>();
-  const { data: empresas, isLoading, isError } = useQuery('empresas', () => fetchEmpresas(id ?? '2'));
+  const { userID } = useParams<{ userID: string }>();
+  const { data: empresas, isLoading, isError } = useQuery('empresas', () => fetchEmpresas(userID ?? '2'));
 
   if (isLoading) {
     return <div>Carregando...</div>;
@@ -42,8 +42,8 @@ export function EmpresasUsuario() {
               <td>{empresa.nome_empresa}</td>
               <td>{empresa.fk_id_usuario}</td>
               <td>
-                <Link to={`/lancamentosempresa/${empresa.id}`}>
-                  <button>Editar</button>
+                <Link to={`/lancamentosempresa/${empresa.id}/${userID}`}>
+                  <button>Ver lançamentos</button>
                 </Link>
               </td>
             </tr>

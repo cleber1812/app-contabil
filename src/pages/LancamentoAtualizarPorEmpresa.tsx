@@ -3,29 +3,35 @@ import { useNavigate, useParams } from 'react-router-dom';
 import api from '../service/api';
 import '../App.css';
 
-//Posso tirar essa interface lá do useState<FormData> que funciona também
-interface FormData {
-    fk_id_empresa: string;
-    data: string;
-    descricao: string;
-    fk_id_conta_debito: string;
-    fk_id_conta_credito: string;
-    valor: string;
-    fk_id_usuario: string;
-  }
+// //Posso tirar essa interface lá do useState<FormData> que funciona também
+// interface FormData {
+//     fk_id_empresa: string;
+//     data: string;
+//     descricao: string;
+//     fk_id_conta_debito: string;
+//     fk_id_conta_credito: string;
+//     valor: string;
+//     fk_id_usuario: string;
+//   }
   
-export function AtualizarLancamento() { 
+export function AtualizarLancamentoEmpresa() { 
     const navigate = useNavigate();
-    const { id } = useParams();
+    
+    const { id, fk_id_empresa, userID } = useParams<{
+        id: string;
+        fk_id_empresa: string;
+        userID: string;
+      }>();
 
-    const [formData, setFormData] = useState<FormData>({
-        fk_id_empresa: '',
+    // const [formData, setFormData] = useState<FormData>({
+    const [formData, setFormData] = useState({
+        fk_id_empresa,
         data: '',
         descricao: '',
         fk_id_conta_debito: '',
         fk_id_conta_credito: '',
         valor: '',
-        fk_id_usuario: '',
+        fk_id_usuario: userID,
     });
 
     useEffect(() => {
@@ -54,8 +60,8 @@ export function AtualizarLancamento() {
           await api.put(`/lancamento/${id}`, formData);
     
           // Navegar de volta à página de lançamentos após a atualização bem-sucedida
-          navigate('/lancamentos');
-          // navigate(-1);
+        //   navigate('/lancamentos');
+          navigate(-1);
         } catch (error) {
           console.error('Erro ao enviar atualização de lançamento:', error);
         }
@@ -65,12 +71,12 @@ export function AtualizarLancamento() {
        <div className="container">
             <h1>Atualizar Lançamento</h1>
             <form onSubmit={handleSubmit}>                
-                <label> Empresa: <input
+                {/* <label> Empresa: <input
                     type="number" 
                     name="fk_id_empresa"
                     value={formData.fk_id_empresa}
                     onChange={handleChange}
-                /> </label>
+                /> </label> */}
 
                 <label> Data: <input
                     type="DATE" 
@@ -107,12 +113,12 @@ export function AtualizarLancamento() {
                     onChange={handleChange}
                 /> </label>
 
-                <label> Usuário: <input
+                {/* <label> Usuário: <input
                     type="number" 
                     name="fk_id_usuario"
                     value={formData.fk_id_usuario}
                     onChange={handleChange}
-                /> </label>
+                /> </label> */}
                 
                 <button type="submit">Atualizar</button>
             </form>

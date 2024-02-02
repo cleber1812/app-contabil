@@ -12,7 +12,7 @@ async function fetchUsuarios() {
   }
 }
 
-export function Usuario() {
+export function Usuarios() {
   const { data: usuarios, isLoading, isError } = useQuery('usuarios', fetchUsuarios);
 
 // export function Usuario() {
