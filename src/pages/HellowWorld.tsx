@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-function useGetCarrinho() {
+function useGetHellowWorld() {
     return useQuery('carrinho', async () => {
       const response = await fetch('http://localhost:3000'); // Atualize com a rota correta da sua API
       const data = await response.json();
@@ -8,9 +8,9 @@ function useGetCarrinho() {
     });
   }
 
-export function Carrinho() {
+export function HellowWorld() {
     
-    const { data, error, isLoading } = useGetCarrinho();
+    const { data, error, isLoading } = useGetHellowWorld();
     
     if (isLoading) {
         return <p>Loading...</p>;

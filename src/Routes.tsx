@@ -4,23 +4,23 @@ import {
     Route
   } from "react-router-dom";
 
-import { Carrinho } from "./pages/Carrinho";
+import { HellowWorld } from "./pages/HellowWorld";
 import { Usuario } from "./pages/Usuario";
 import { Lancamentos } from "./pages/Lancamentos";
 import { InserirLancamento } from "./pages/LancamentoInserir";
 import { DeletarLancamento } from "./pages/LacamentoDeletar";
 import { AtualizarLancamento } from "./pages/LancamentoAtualizar";
 import { Login } from "./pages/Login";
-import { Home } from "./pages/home";
 import { CadastrarUsuario } from "./pages/UsuarioCadastro";
 import { Dashboard } from "./pages/Dashboard";
+import { Home } from "./pages/Home";
 
 export function AppRoutes(){
     return (
         <Router>
             <Routes>
                 <Route path="/usuarios" element={<Usuario />} />
-                <Route path="/carrinho" element={<Carrinho />} />                
+                <Route path="/hellow" element={<HellowWorld />} />                
                 <Route path="/lancamentos" element={<Lancamentos />} />
                 <Route path="/inserirlancamento" element={<InserirLancamento />} />
                 <Route path="/deletarlancamento" element={<DeletarLancamento />} />
@@ -28,7 +28,7 @@ export function AppRoutes(){
                 <Route path="/login" element={<Login />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/cadastrarusuario" element={<CadastrarUsuario />} />
-                <Route path="/minhasempresas" element={<Dashboard />} />
+                <Route path="/minhasempresas/:id" element={<Dashboard />} />
             </Routes>
         </Router>
     )

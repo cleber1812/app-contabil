@@ -26,10 +26,6 @@ export function DeletarLancamento() {
           console.error('Erro ao excluir lançamento:', error);         
         }
       };
-    
-    const handleGoBack = () => {
-      navigate(-1); // Isso volta uma página na pilha de histórico.
-    };
   
     return (
         <div className="container">
@@ -43,7 +39,7 @@ export function DeletarLancamento() {
                 </button>
             </form>
             {/* Botão para voltar */}
-            <button type="button" onClick={handleGoBack}>
+            <button type="button" onClick= { () => navigate(-1) }>
               Voltar
             </button>
           </div>
