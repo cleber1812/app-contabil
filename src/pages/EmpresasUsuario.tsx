@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import api from '../service/api';
 
 async function fetchEmpresas(id: string) {
@@ -11,7 +11,7 @@ async function fetchEmpresas(id: string) {
   }
 }
 
-export function Dashboard() {
+export function EmpresasUsuario() {
   const { id } = useParams<{ id: string }>();
   const { data: empresas, isLoading, isError } = useQuery('empresas', () => fetchEmpresas(id ?? '2'));
 
@@ -32,6 +32,7 @@ export function Dashboard() {
             <th>ID</th>
             <th>Empresa</th>
             <th>Usuario</th>
+            <th>Entrar</th>
           </tr>
         </thead>
         <tbody>
@@ -40,6 +41,11 @@ export function Dashboard() {
               <td>{empresa.id}</td>
               <td>{empresa.nome_empresa}</td>
               <td>{empresa.fk_id_usuario}</td>
+              <td>
+                <Link to={`/lancamentosempresa/${empresa.id}`}>
+                  <button>Editar</button>
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -17,7 +17,7 @@ export function Home() {
             Login
           </button>
           <button type="button" onClick={() => navigate('/cadastrarusuario')}>
-            Cadastrar usuário
+            Realizar cadastro
           </button>
         
         </div>

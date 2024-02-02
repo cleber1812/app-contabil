@@ -71,7 +71,11 @@ export function Login() {
             </label>
         
             <button type="submit">Fazer login</button>
-          </form>  
+          </form>
+
+          <button type="button" onClick={() => navigate('/cadastrarusuario')}>
+            Realizar cadastro
+          </button>  
           
           <Modal isOpen={errorModalOpen} onClose={() => setErrorModalOpen(false)} />
         </div>
