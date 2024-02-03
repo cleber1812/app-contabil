@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import '../styles/ErrorModal.css'; // Importe os estilos
+import '../styles/ReactModal.css'; // Importe os estilos
 
 interface ErrorModalProps {
     isOpen: boolean;

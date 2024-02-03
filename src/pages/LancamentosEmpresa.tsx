@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import api from '../service/api';
 import '../App.css';
-import '../styles/modal.css'// Importa os estilos do modal
 
 
 async function fetchLancamentosEmpresa(fk_id_empresa: string) {
