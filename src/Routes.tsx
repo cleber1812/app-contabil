@@ -15,6 +15,7 @@ import { InserirLancamentoEmpresa } from "./pages/LancamentoInserirPorEmpresa";
 import { AtualizarLancamentoEmpresa } from "./pages/LancamentoAtualizarPorEmpresa";
 import { CriarEmpresa } from "./pages/EmpresaCriar";
 import { DiarioEmpresa } from "./pages/EmpresaDiario";
+import { RazaoEmpresa } from "./pages/EmpresaRazao";
 
 export function AppRoutes(){
     return (
@@ -35,6 +36,7 @@ export function AppRoutes(){
                 <Route path="/minhasempresas/:userID" element={<EmpresasUsuario />} />
                 <Route path="/lancamentosempresa/:fk_id_empresa/:userID" element={<LancamentosEmpresa />} />
                 <Route path="/diarioempresa/:fk_id_empresa" element={<DiarioEmpresa />} />
+                <Route path="/razaoempresa/:fk_id_empresa" element={<RazaoEmpresa />} />
                 <Route path="/inserirlancamentoempresa/:fk_id_empresa/:userID" element={<InserirLancamentoEmpresa />} />
                 <Route path="/atualizarlancamentoempresa/:id/:fk_id_empresa/:userID" element={<AtualizarLancamentoEmpresa />} />
             </Routes>
