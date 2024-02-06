@@ -128,3 +128,18 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.date-picker-container {
+  display: flex;
+  align-items: center;
+}
+
+.datapickerwrapper {
+  /* background-color: #0056b3; */
+  /* font-size: 16px; */
+  /* max-width: 300px; */
+  /* padding: 20px ; */
+  /* color: #db1212; */  
+  margin-right: 10px; /* Adicione uma margem à direita para criar um espaço entre os dois DatePickers */
+
+}

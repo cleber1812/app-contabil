@@ -73,7 +73,10 @@ export function EmpresasUsuario() {
               <td>{empresa.fk_id_usuario}</td>
               <td>
                 <Link to={`/lancamentosempresa/${empresa.id}/${userID}`}>
-                  <button>Ver lançamentos</button>
+                  <button>Lançamentos</button>
+                </Link>
+                <Link to={`/diarioempresa/${empresa.id}`}>
+                  <button>Diario</button>
                 </Link>
               </td>
             </tr>
