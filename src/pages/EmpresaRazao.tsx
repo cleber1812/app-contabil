@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import api from '../service/api';
 import '../App.css';
+import ListaContas from '../components/ListaContas';
 
 
 async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date, contaConsultada?: string) {
@@ -25,6 +26,8 @@ export function RazaoEmpresa() {
   const [endDate, setEndDate] = useState<Date>(new Date());  
   const [contaConsultada, setContaConsultada] = useState('Caixa'); 
   
+  
+
   const { data: lancamentos, isLoading, isError } = useQuery(
     ['lancamentos', fk_id_empresa, startDate, endDate, contaConsultada], // Adicione startDate e endDate à lista de dependências
     () => fetchLancamentosEmpresa(fk_id_empresa ?? '2', startDate, endDate, contaConsultada)
@@ -40,8 +43,10 @@ export function RazaoEmpresa() {
         return (
           <div className="container">
             <h1>Livro Diário</h1>
-                <label>Intervalo de datas:</label>
-            {/* <div> */}
+              <div>                                  
+                  <ListaContas onSelectConta={setContaConsultada} />                  
+              </div>
+                <label>Intervalo de datas:</label>            
               <div>
                 <DatePicker 
                   selected={startDate}
