@@ -43,22 +43,25 @@ export function RazaoEmpresa() {
         return (
           <div className="container">
             <h1>Livro Diário</h1>
-              <div>                                  
-                  <ListaContas onSelectConta={setContaConsultada} />                  
-              </div>
+              
                 <label>Intervalo de datas:</label>            
               <div>
                 <DatePicker 
                   selected={startDate}
                   onChange={(date) => date && setStartDate(date)} // Verifica se date não é null
+                  dateFormat="dd/MM/yyyy" // Define o formato desejado
                 />
               </div>
               <div>
                 <DatePicker 
                   selected={endDate} 
                   onChange={(date) => date && setEndDate(date)} 
+                  dateFormat="dd/MM/yyyy" // Define o formato desejado
                 />
-              </div>             
+              </div> 
+              <div>                                  
+                  <ListaContas onSelectConta={setContaConsultada} />                  
+              </div>            
                 <table className="custom-table">
                     <thead>
                         <tr>                           

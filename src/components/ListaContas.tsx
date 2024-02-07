@@ -31,7 +31,7 @@ function ListaContas({ onSelectConta }: ListaContasProps) {
   return (
     <div>
       <label>Escolha a conta:</label>
-      <select value={selectedConta} onChange={(e) => setSelectedConta(e.target.value)}>
+      <select className="selectConta" value={selectedConta} onChange={(e) => setSelectedConta(e.target.value)}>
         <option value="">Selecione uma conta</option>
         {contas.map((conta: any) => (
           <option key={conta.id}>

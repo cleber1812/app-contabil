@@ -145,11 +145,11 @@ button:hover {
 }
 
 .selectConta {
-  background-color: #0056b3;
+  /* background-color: #0056b3; */
   font-size: 16px;
-  max-width: 300px;
-  padding: 20px ;
-  color: #db1212;  
-  margin-right: 10px; /* Adicione uma margem à direita para criar um espaço entre os dois DatePickers */
+  max-width: 200px;
+  padding: 5px ;
+  /* color: #db1212;   */
+  /* margin-right: 10px;  */
 
 }
