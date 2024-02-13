@@ -14,8 +14,8 @@ async function fetchLancamentosEmpresa(fk_id_empresa: string) {
   }
 }
 
-export function LancamentosEmpresa() {  
-  
+export function LancamentosEmpresa() { 
+    
 // const { fk_id_empresa } = useParams<{ fk_id_empresa: string }>();
 // const { data: lancamentos, isLoading, isError } = useQuery('lancamentos', fetchLancamentos);  
   const { fk_id_empresa, userID } = useParams<{
@@ -67,6 +67,9 @@ export function LancamentosEmpresa() {
                 <Link to={`/inserirlancamentoempresa/${fk_id_empresa}/${userID}`}>
                   <button>Inserir lançamento na empresa</button>
                 </Link>
+                <Link to={`/minhasempresas/${userID}`}>
+                  <button>Voltar</button>
+                </Link>                
                 <table className="custom-table">
                     <thead>
                         <tr>
@@ -102,6 +105,7 @@ export function LancamentosEmpresa() {
                       ))}            
                     </tbody>
                 </table> 
+                               
                 
               {/* Modal de confirmação de exclusão */}
               {lancamentoIdToDelete && (
