@@ -8,9 +8,11 @@ import api from '../service/api';
 import '../App.css';
 
 
-async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date) {
+// async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date) {
+async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate: Date = new Date(), endDate: Date = new Date()) {
   try {
-    const url = `/diarioempresa/${fk_id_empresa}?startDate=${startDate}&endDate=${endDate}`;
+    // const url = `/diarioempresa/${fk_id_empresa}?startDate=${startDate}&endDate=${endDate}`;
+    const url = `/diarioempresa/${fk_id_empresa}?startDate=${startDate.toISOString().split('T')[0]}&endDate=${endDate.toISOString().split('T')[0]}`;
     const response = await api.get(url);    
     return response.data;
   } catch (error) {
