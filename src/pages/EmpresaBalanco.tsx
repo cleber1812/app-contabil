@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import api from '../service/api';
+import CustomDatePicker from '../components/DatePickerComponent'; // Importe o novo componente
+
 import '../App.css';
 
 // async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date) {
@@ -44,20 +44,10 @@ export function BalancoEmpresa() {
             <h1>Balanço</h1>
                 <label>Intervalo de datas:</label>            
               <div>
-                <DatePicker 
-                  selected={startDate}
-                  onChange={(date) => date && setStartDate(date)} // Verifica se date não é null                  
-                  dateFormat="dd/MM/yyyy" // Define o formato desejado                  
-                //  dateFormat="yyyy/MM/dd" // Define o formato desejado
-                />
+                <CustomDatePicker selectedDate={startDate} onChangeDate={setStartDate} />
               </div>
               <div>
-                <DatePicker 
-                  selected={endDate} 
-                  onChange={(date) => date && setEndDate(date)}                   
-                  dateFormat="dd/MM/yyyy" // Define o formato desejado                  
-                //  dateFormat="yyyy/MM/dd" // Define o formato desejado
-                />
+                <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
               </div>
                 <table className="custom-table">
                     <thead>

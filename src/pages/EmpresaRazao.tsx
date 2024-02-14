@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import api from '../service/api';
-import '../App.css';
+import CustomDatePicker from '../components/DatePickerComponent'; // Importe o novo componente
 import ListaContas from '../components/ListaContas';
-
+import '../App.css';
 
 // async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date, contaConsultada?: string) {
 async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate: Date = new Date(), endDate: Date = new Date(), contaConsultada?: string) {
@@ -49,18 +47,10 @@ export function RazaoEmpresa() {
               
                 <label>Intervalo de datas:</label>            
               <div>
-                <DatePicker 
-                  selected={startDate}
-                  onChange={(date) => date && setStartDate(date)} // Verifica se date não é null
-                  dateFormat="dd/MM/yyyy" // Define o formato desejado
-                />
+                <CustomDatePicker selectedDate={startDate} onChangeDate={setStartDate} />
               </div>
               <div>
-                <DatePicker 
-                  selected={endDate} 
-                  onChange={(date) => date && setEndDate(date)} 
-                  dateFormat="dd/MM/yyyy" // Define o formato desejado
-                />
+                <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
               </div> 
               <div>                                  
                   <ListaContas onSelectConta={setContaConsultada} />                  

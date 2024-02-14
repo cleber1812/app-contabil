@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-// import moment from 'moment'; // Adicione esta linha
+// import DatePicker from 'react-datepicker';
+// import 'react-datepicker/dist/react-datepicker.css';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import api from '../service/api';
+import CustomDatePicker from '../components/DatePickerComponent'; // Importe o novo componente
 import '../App.css';
 
 
@@ -44,36 +44,29 @@ export function DiarioEmpresa() {
         return (
           <div className="container">
             <h1>Livro Diário</h1>
-                <label>Intervalo de datas:</label>
-            {/* <div> */}
+                <label>Intervalo de datas:</label>            
               <div>
-                <DatePicker 
+                {/* <DatePicker 
                   selected={startDate}
-                  onChange={(date) => date && setStartDate(date)} // Verifica se date não é null
-                  // onChange={(date) => date && setStartDate(moment(date).format('YYYY-MM-DD'))}
-                  // onChange={(date) => date && setStartDate(moment(date).format('YYYY-MM-DD') as unknown as Date)}
-                  // onChange={(date) => date && setStartDate(new Date(moment(date).format('YYYY-MM-DD')))}
+                  onChange={(date) => date && setStartDate(date)} // Verifica se date não é null                  
                   // onChange={(date) => date && setStartDate(new Date(date).toISOString().split('T')[0])}
-                  // onChange={(date) => date && setStartDate(new Date(date))}
+                  
                   dateFormat="dd/MM/yyyy" // Define o formato desejado
                   // dateFormat="yyyy/MM/dd" // Define o formato desejado
-                />
+                /> */}
+                <CustomDatePicker selectedDate={startDate} onChangeDate={setStartDate} />
               </div>
               <div>
-                <DatePicker 
+                {/* <DatePicker 
                   selected={endDate} 
-                  onChange={(date) => date && setEndDate(date)} 
-                  // onChange={(date) => date && setEndDate(moment(date).format('YYYY-MM-DD'))}
-                  // onChange={(date) => date && setEndDate(moment(date).format('YYYY-MM-DD') as unknown as Date)}
-                  // onChange={(date) => date && setEndDate(new Date(moment(date).format('YYYY-MM-DD')))}
-                  // onChange={(date) => date && setEndDate(new Date(date).toISOString().split('T')[0])}
-                  // onChange={(date) => date && setEndDate(new Date(date))}
+                  onChange={(date) => date && setEndDate(date)}                   
+                  // onChange={(date) => date && setEndDate(new Date(date).toISOString().split('T')[0])}                  
                   dateFormat="dd/MM/yyyy" // Define o formato desejado
                   // dateFormat="yyyy/MM/dd" // Define o formato desejado
-                />
+                /> */}
+                <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
               </div>
-              {/* <button onClick={() => refetch()}>Atualizar</button> */}
-            {/* </div>                                 */}
+              {/* <button onClick={() => refetch()}>Atualizar</button> */}            
                 <table className="custom-table">
                     <thead>
                         <tr>                           
