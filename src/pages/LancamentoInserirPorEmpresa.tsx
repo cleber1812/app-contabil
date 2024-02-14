@@ -1,10 +1,8 @@
-import { useState } from 'react';
-//import axios from 'axios';
-//import { useQuery } from 'react-query';
+import React, { useState, useEffect } from 'react';
 import api from '../service/api';
 import { useNavigate, useParams } from 'react-router-dom';
+import ListaContas from '../components/ListaContasID'; // Certifique-se de fornecer o caminho correto para o componente ListaContas
 import '../App.css';
-
 
 export function InserirLancamentoEmpresa() { 
     const navigate = useNavigate();  // Obtenha o objeto de navegação
@@ -13,6 +11,9 @@ export function InserirLancamentoEmpresa() {
         fk_id_empresa: string;
         userID: string;
       }>();
+    
+    const [contaDebConsultada, setContaDebConsultada] = useState('');
+    const [contaCredConsultada, setContaCredConsultada] = useState('');
 
     const [formData, setFormData] = useState({
         fk_id_empresa,
@@ -23,6 +24,22 @@ export function InserirLancamentoEmpresa() {
         valor: '',
         fk_id_usuario: userID,
       });
+    
+    const handleContaDebitadaSelect = (id: string) => {
+        setContaDebConsultada(id);        
+    };
+
+    const handleContaCreditadaSelect = (id: string) => {
+        setContaCredConsultada(id);        
+    };
+    
+    useEffect(() => {
+        setFormData((prevData) => ({
+          ...prevData,
+          fk_id_conta_debito: contaDebConsultada,
+          fk_id_conta_credito: contaCredConsultada,
+        }));
+      }, [contaDebConsultada, contaCredConsultada]);
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -46,8 +63,7 @@ export function InserirLancamentoEmpresa() {
             fk_id_usuario: '',
           });
 
-            // Navegar para a página de usuários após o sucesso
-            //navigate('/usuarios');
+            // Navegar para a página de lancamentosempresa após o sucesso            
             navigate(`/lancamentosempresa/${fk_id_empresa}/${userID}`);
 
         } catch (error) {
@@ -68,40 +84,52 @@ export function InserirLancamentoEmpresa() {
                     onChange={handleChange}
                 /> </label> */}
 
-                <label> Data: <input
+                <label> Data: 
+                  <input
                     type="DATE" 
                     name="data"
                     value={formData.data}
                     onChange={handleChange}
-                /> </label>
+                  /> 
+                </label>
 
-                <label> Descrição: <input
+                <label> Descrição: 
+                  <input
                     type="STRING" 
                     name="descricao"
                     value={formData.descricao}
                     onChange={handleChange}
-                /> </label>
+                  /> 
+                </label>
 
-                <label> Conta debitada: <input
+                <label> Conta debitada: 
+                    {/* <input
                     type="number" 
                     name="fk_id_conta_debito"
                     value={formData.fk_id_conta_debito}
                     onChange={handleChange}
-                /> </label>
+                    />  */}
+                    <ListaContas onSelectConta={handleContaDebitadaSelect} />
+                </label>
 
-                <label> Conta creditada: <input
+                <label> Conta creditada: 
+                  {/* <input
                     type="number" 
                     name="fk_id_conta_credito"
                     value={formData.fk_id_conta_credito}
                     onChange={handleChange}
-                /> </label>
+                  /> */}
+                    <ListaContas onSelectConta={handleContaCreditadaSelect} /> 
+                </label>
 
-                <label> Valor: <input
+                <label> Valor: 
+                  <input
                     type="number" 
                     name="valor"
                     value={formData.valor}
                     onChange={handleChange}
-                /> </label>
+                  /> 
+                </label>
 
                 {/* <label> Usuário: <input
                     type="number" 
