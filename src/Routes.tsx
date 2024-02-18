@@ -14,6 +14,7 @@ import { LancamentosEmpresa } from "./pages/LancamentosEmpresa";
 import { InserirLancamentoEmpresa } from "./pages/LancamentoInserirPorEmpresa";
 import { AtualizarLancamentoEmpresa } from "./pages/LancamentoAtualizarPorEmpresa";
 import { CriarEmpresa } from "./pages/EmpresaCriar";
+import { AtualizarEmpresa } from "./pages/EmpresaAtualizarPorUsuario";
 import { DiarioEmpresa } from "./pages/EmpresaDiario";
 import { RazaoEmpresa } from "./pages/EmpresaRazao";
 import { BalancoEmpresa } from "./pages/EmpresaBalanco";
@@ -34,6 +35,7 @@ export function AppRoutes(){
                 <Route path="/atualizarlancamento/:id" element={<AtualizarLancamento />} />
                 
                 <Route path="/criarempresa/:userID" element={<CriarEmpresa />} />
+                <Route path="/atualizarempresa/:id/:userID" element={<AtualizarEmpresa />} />
                 <Route path="/minhasempresas/:userID" element={<EmpresasUsuario />} />
                 <Route path="/lancamentosempresa/:fk_id_empresa/:userID" element={<LancamentosEmpresa />} />
                 <Route path="/diarioempresa/:fk_id_empresa" element={<DiarioEmpresa />} />

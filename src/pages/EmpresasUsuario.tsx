@@ -24,6 +24,9 @@ export function EmpresasUsuario() {
     refetchOnWindowFocus: true,
   });
 
+  // Adiciona estado para armazenar o ID do lançamento a ser excluído
+  const [empresaIdToDelete, setEmpresaIdToDelete] = useState<number | null>(null);
+
   if (isLoading) {
     return <div>Carregando...</div>;
   }
@@ -49,6 +52,29 @@ export function EmpresasUsuario() {
       }
   };
 
+  // Função para configurar o ID do lançamento a ser excluído
+  const confirmDelete = (id: number) => {
+    setEmpresaIdToDelete(id);
+  };
+  
+  // Função para cancelar a exclusão
+  const cancelDelete = () => {
+    setEmpresaIdToDelete(null);
+  };
+
+  // Função para excluir o lançamento
+  const handleDelete = async (empresaId: number) => {
+    try {
+      await api.delete(`/empresa/${empresaId}`);
+      // Refetch dos dados após a exclusão
+      refetch();
+      // Atualiza a lista de empresas após a exclusão
+      setEmpresaIdToDelete(null);
+    } catch (error) {
+      console.error('Erro ao excluir empresa:', error);
+    }
+  };
+
   return (
     <div className="container">
       <h1>Minhas empresas</h1>
@@ -62,7 +88,8 @@ export function EmpresasUsuario() {
             <th>ID</th>
             <th>Empresa</th>
             <th>Usuario</th>
-            <th>Entrar</th>
+            <th>Ações</th>
+            <th>Relatórios</th>
           </tr>
         </thead>
         <tbody>
@@ -71,6 +98,12 @@ export function EmpresasUsuario() {
               <td>{empresa.id}</td>
               <td>{empresa.nome_empresa}</td>
               <td>{empresa.fk_id_usuario}</td>
+              <td>
+                <Link to={`/atualizarempresa/${empresa.id}/${userID}`}>
+                <button>Editar</button>
+                </Link>                              
+                <button onClick={() => confirmDelete(empresa.id)}>Excluir</button>
+              </td>
               <td>
                 <Link to={`/lancamentosempresa/${empresa.id}/${userID}`}>
                   <button>Lançamentos</button>
@@ -95,6 +128,15 @@ export function EmpresasUsuario() {
         onClose={closeModal} 
         onCreate={handleCreateEmpresa} 
       />
+
+      {/* Modal de confirmação de exclusão */}
+      {empresaIdToDelete && (
+                <div className="delete-modal">
+                  <p>Deseja realmente excluir esta empresa?</p>
+                  <button onClick={() => handleDelete(empresaIdToDelete)}>Sim</button>
+                  <button onClick={cancelDelete}>Não</button>
+                </div>
+              )} 
     </div>
   );
 }
