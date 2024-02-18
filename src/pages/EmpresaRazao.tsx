@@ -43,7 +43,7 @@ export function RazaoEmpresa() {
 
         return (
           <div className="container">
-            <h1>Livro Diário</h1>
+            <h1>Livro Razão</h1>
               
                 <label>Intervalo de datas:</label>            
               <div>

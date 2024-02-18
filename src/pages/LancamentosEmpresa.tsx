@@ -91,8 +91,14 @@ export function LancamentosEmpresa() {
                             <td>{lancamento.fk_id_empresa}</td>
                             <td>{lancamento.data}</td>
                             <td>{lancamento.descricao}</td>
-                            <td>{lancamento.fk_id_conta_debito}</td>
-                            <td>{lancamento.fk_id_conta_credito}</td>
+                            <td>
+                              {/* {lancamento.fk_id_conta_debito} */}
+                              {lancamento.contaDebito}                            
+                            </td>
+                            <td>
+                              {/* {lancamento.fk_id_conta_credito} */}
+                              {lancamento.contaCredito}
+                            </td>
                             <td>{lancamento.valor}</td>
                             <td>{lancamento.fk_id_usuario}</td> 
                             <td>

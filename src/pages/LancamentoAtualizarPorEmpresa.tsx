@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../service/api';
+import ListaContasID from '../components/ListaContasID'; // Certifique-se de fornecer o caminho correto para o componente ListaContas
 import '../App.css';
 
 // //Posso tirar essa interface lá do useState<FormData> que funciona também
@@ -21,7 +22,7 @@ export function AtualizarLancamentoEmpresa() {
         id: string;
         fk_id_empresa: string;
         userID: string;
-      }>();
+      }>();   
 
     // const [formData, setFormData] = useState<FormData>({
     const [formData, setFormData] = useState({
@@ -34,6 +35,20 @@ export function AtualizarLancamentoEmpresa() {
         fk_id_usuario: userID,
     });
 
+     //Para ListaContasID
+     const [contaDebConsultada, setContaDebConsultada] = useState('');
+     const [contaCredConsultada, setContaCredConsultada] = useState('');    
+
+    //Para ListaContasID
+    const handleContaDebitadaSelect = (id: string) => {
+      setContaDebConsultada(id);        
+    };
+    
+    const handleContaCreditadaSelect = (id: string) => {
+      setContaCredConsultada(id);        
+    };   
+       
+
     useEffect(() => {
         // Carregar os dados do lançamento a ser atualizado ao carregar a página
         const carregarLancamento = async () => {
@@ -45,9 +60,23 @@ export function AtualizarLancamentoEmpresa() {
             console.error('Erro ao carregar lançamento:', error);
           }
         };
-    
         carregarLancamento();
     }, [id]);
+
+    //Para ListaContasID
+    useEffect(() => {
+      setFormData((prevData) => ({
+        ...prevData,
+        fk_id_conta_debito: String(contaDebConsultada),
+      }));
+    }, [contaDebConsultada]);
+    
+    useEffect(() => {
+      setFormData((prevData) => ({
+        ...prevData,
+        fk_id_conta_credito: String(contaCredConsultada),
+      }));
+    }, [contaCredConsultada]);
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -78,40 +107,52 @@ export function AtualizarLancamentoEmpresa() {
                     onChange={handleChange}
                 /> </label> */}
 
-                <label> Data: <input
+                <label> Data: 
+                  <input
                     type="DATE" 
                     name="data"
                     value={formData.data}
                     onChange={handleChange}
-                /> </label>
+                  /> 
+                </label>
 
-                <label> Descrição: <input
+                <label> Descrição: 
+                  <input
                     type="STRING" 
                     name="descricao"
                     value={formData.descricao}
                     onChange={handleChange}
-                /> </label>
+                  /> 
+                </label>
 
-                <label> Conta debitada: <input
+                <label> Conta debitada: 
+                  {/* <input
                     type="number" 
                     name="fk_id_conta_debito"
                     value={formData.fk_id_conta_debito}
                     onChange={handleChange}
-                /> </label>
+                  />  */}                  
+                  <ListaContasID onSelectConta={handleContaDebitadaSelect} />                      
+                </label>
 
-                <label> Conta creditada: <input
+                <label> Conta creditada: 
+                  {/* <input
                     type="number" 
                     name="fk_id_conta_credito"
                     value={formData.fk_id_conta_credito}
                     onChange={handleChange}
-                /> </label>
+                  />  */}                  
+                  <ListaContasID onSelectConta={handleContaCreditadaSelect} />                  
+                </label>
 
-                <label> Valor: <input
+                <label> Valor: 
+                  <input
                     type="number" 
                     name="valor"
                     value={formData.valor}
                     onChange={handleChange}
-                /> </label>
+                  /> 
+                </label>
 
                 {/* <label> Usuário: <input
                     type="number" 
