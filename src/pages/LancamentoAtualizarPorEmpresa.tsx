@@ -46,7 +46,21 @@ export function AtualizarLancamentoEmpresa() {
     
     const handleContaCreditadaSelect = (id: string) => {
       setContaCredConsultada(id);        
-    };   
+    };
+    
+     //Para mostrar a conta antiga no SPAN
+     const [nomeDaContaDebitoAtual, setNomeDaContaDebitoAtual] = useState<string>('');
+     const [nomeDaContaCreditoAtual, setNomeDaContaCreditoAtual] = useState<string>('');
+
+     const obterNomeDaContaPorId = async (id: string) => {
+      try {
+        const response = await api.get(`/conta/${id}`);
+        return response.data.conta; // Substitua "nomeDaConta" pelo nome real do campo na sua resposta da API
+      } catch (error) {
+        console.error('Erro ao obter nome da conta:', error);
+        return '';
+      }
+    };
        
 
     useEffect(() => {
@@ -56,6 +70,13 @@ export function AtualizarLancamentoEmpresa() {
             const response = await api.get(`/lancamento/${id}`);
             const dadosLancamento = response.data;
             setFormData(dadosLancamento);
+
+            // Definir os nomes das contas atuais
+            // setNomeDaContaDebitoAtual(dadosLancamento.fk_id_conta_debito);
+            // setNomeDaContaCreditoAtual(dadosLancamento.fk_id_conta_credito);            
+            setNomeDaContaDebitoAtual(await obterNomeDaContaPorId(dadosLancamento.fk_id_conta_debito));
+            setNomeDaContaCreditoAtual(await obterNomeDaContaPorId(dadosLancamento.fk_id_conta_credito));
+            
           } catch (error) {
             console.error('Erro ao carregar lançamento:', error);
           }
@@ -125,23 +146,27 @@ export function AtualizarLancamentoEmpresa() {
                   /> 
                 </label>
 
-                <label> Conta debitada: 
+                <label> 
+                  {/* Conta debitada:  */}
                   {/* <input
                     type="number" 
                     name="fk_id_conta_debito"
                     value={formData.fk_id_conta_debito}
                     onChange={handleChange}
-                  />  */}                  
+                  />  */}  
+                  <span>Conta Débito Atual: {nomeDaContaDebitoAtual}</span>                
                   <ListaContasID onSelectConta={handleContaDebitadaSelect} />                      
                 </label>
 
-                <label> Conta creditada: 
+                <label> 
+                  {/* Conta creditada:  */}
                   {/* <input
                     type="number" 
                     name="fk_id_conta_credito"
                     value={formData.fk_id_conta_credito}
                     onChange={handleChange}
-                  />  */}                  
+                  />  */}     
+                  <span>Conta Crédito Atual: {nomeDaContaCreditoAtual}</span>             
                   <ListaContasID onSelectConta={handleContaCreditadaSelect} />                  
                 </label>
 
