@@ -35,9 +35,13 @@ export function AppRoutes(){
                 <Route path="/atualizarlancamento/:id" element={<AtualizarLancamento />} />
                 
                 <Route path="/criarempresa/:userID" element={<CriarEmpresa />} />
-                <Route path="/atualizarempresa/:id/:userID" element={<AtualizarEmpresa />} />
-                <Route path="/minhasempresas/:userID" element={<EmpresasUsuario />} />
-                <Route path="/lancamentosempresa/:fk_id_empresa/:userID" element={<LancamentosEmpresa />} />
+                {/* <Route path="/criarempresa/:userID" element={<CriarEmpresa />} /> */}
+                <Route path="/atualizarempresa/:id" element={<AtualizarEmpresa />} />
+                {/* <Route path="/atualizarempresa/:id/:userID" element={<AtualizarEmpresa />} /> */}
+                <Route path="/minhasempresas/" element={<EmpresasUsuario />} />
+                {/* <Route path="/minhasempresas/:userID" element={<EmpresasUsuario />} /> */}
+                <Route path="/lancamentosempresa/:fk_id_empresa" element={<LancamentosEmpresa />} />
+                {/* <Route path="/lancamentosempresa/:fk_id_empresa/:userID" element={<LancamentosEmpresa />} /> */}
                 <Route path="/diarioempresa/:fk_id_empresa" element={<DiarioEmpresa />} />
                 <Route path="/razaoempresa/:fk_id_empresa" element={<RazaoEmpresa />} />
                 <Route path="/balancoempresa/:fk_id_empresa" element={<BalancoEmpresa />} />

@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import { useQuery } from 'react-query';
-import { useParams, Link } from 'react-router-dom';
+// import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import api from '../service/api';
 import CriarEmpresaModal from '../components/CriarEmpresaModal';
 
-async function fetchEmpresas(userID: string) {
+// async function fetchEmpresas(userID: string) {
+async function fetchEmpresas() {
   try {
-    const response = await api.get(`/dashboard/${userID}`);
-    return response.data;
+    // const response = await api.get(`/dashboard/${userID}`);
+    const response = await api.get('/dashboard')
+    // console.log(response.data);    
+    return response.data;     
   } catch (error) {
     throw new Error('Erro ao buscar as empresas do usuário');
   }
@@ -17,11 +21,13 @@ export function EmpresasUsuario() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
-  const { userID } = useParams<{ userID: string }>();
+  
+  // const { userID } = useParams<{ userID: string }>();
+  
   // const { data: empresas, isLoading, isError } = useQuery('empresas', () => fetchEmpresas(userID ?? '2'));
-  const { data: empresas, isLoading, isError, refetch } = useQuery('empresas', () => fetchEmpresas(userID ?? '2'), {
-    refetchOnWindowFocus: true,
+  // const { data: empresas, isLoading, isError, refetch } = useQuery('empresas', () => fetchEmpresas(userID ?? '2'), {
+  const { data: empresas, isLoading, isError, refetch } = useQuery('empresas', () => fetchEmpresas(), {  
+      refetchOnWindowFocus: true,
   });
 
   // Adiciona estado para armazenar o ID do lançamento a ser excluído
@@ -39,8 +45,8 @@ export function EmpresasUsuario() {
   const handleCreateEmpresa  = async (formData: any) => {    
     try {   
       // Chame a API para criar a empresa usando os dados do formulário   
-      await api.post('/empresa', {
-        fk_id_usuario: userID,
+      await api.post('/empresa2', {
+        // fk_id_usuario: userID,        
         ...formData,
       });
       // Refetch os dados da lista de empresas após a criação
@@ -99,13 +105,15 @@ export function EmpresasUsuario() {
               <td>{empresa.nome_empresa}</td>
               <td>{empresa.fk_id_usuario}</td>
               <td>
-                <Link to={`/atualizarempresa/${empresa.id}/${userID}`}>
+                {/* <Link to={`/atualizarempresa/${empresa.id}/${userID}`}> */}
+                <Link to={`/atualizarempresa/${empresa.id}/`}>
                 <button>Editar</button>
                 </Link>                              
                 <button onClick={() => confirmDelete(empresa.id)}>Excluir</button>
               </td>
               <td>
-                <Link to={`/lancamentosempresa/${empresa.id}/${userID}`}>
+                {/* <Link to={`/lancamentosempresa/${empresa.id}/${userID}`}> */}
+                <Link to={`/lancamentosempresa/${empresa.id}`}>
                   <button>Lançamentos</button>
                 </Link>
                 <Link to={`/diarioempresa/${empresa.id}`}>
