@@ -71,7 +71,7 @@ export function EmpresasUsuario() {
   // Função para excluir o lançamento
   const handleDelete = async (empresaId: number) => {
     try {
-      await api.delete(`/empresa/${empresaId}`);
+      await api.delete(`/empresa2/${empresaId}`);
       // Refetch dos dados após a exclusão
       refetch();
       // Atualiza a lista de empresas após a exclusão

@@ -18,9 +18,10 @@ export function LancamentosEmpresa() {
     
 // const { fk_id_empresa } = useParams<{ fk_id_empresa: string }>();
 // const { data: lancamentos, isLoading, isError } = useQuery('lancamentos', fetchLancamentos);  
-  const { fk_id_empresa, userID } = useParams<{
+  // const { fk_id_empresa, userID } = useParams<{
+    const { fk_id_empresa } = useParams<{
     fk_id_empresa: string;
-    userID: string;
+    // userID: string;
   }>();
   
   // const { data: lancamentos, isLoading, isError } = useQuery('lancamentos', () => fetchLancamentosEmpresa(fk_id_empresa ?? '2'));
@@ -64,10 +65,12 @@ export function LancamentosEmpresa() {
         return (
           <div>
             <h1>Lançamentos</h1>                
-                <Link to={`/inserirlancamentoempresa/${fk_id_empresa}/${userID}`}>
+                {/* <Link to={`/inserirlancamentoempresa/${fk_id_empresa}/${userID}`}> */}
+                <Link to={`/inserirlancamentoempresa/${fk_id_empresa}`}>
                   <button>Inserir lançamento na empresa</button>
                 </Link>
-                <Link to={`/minhasempresas/${userID}`}>
+                {/* <Link to={`/minhasempresas/${userID}`}> */}
+                <Link to={`/minhasempresas`}>
                   <button>Voltar</button>
                 </Link>                
                 <table className="custom-table">
@@ -102,7 +105,8 @@ export function LancamentosEmpresa() {
                             <td>{lancamento.valor}</td>
                             <td>{lancamento.fk_id_usuario}</td> 
                             <td>
-                              <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}/${userID}`}>
+                              {/* <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}/${userID}`}> */}
+                              <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}`}>
                                 <button>Editar</button>
                               </Link>                              
                               <button onClick={() => confirmDelete(lancamento.id)}>Excluir</button>

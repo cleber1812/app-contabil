@@ -7,9 +7,10 @@ import '../App.css';
 export function InserirLancamentoEmpresa() { 
     const navigate = useNavigate();  // Obtenha o objeto de navegação
 
-    const { fk_id_empresa, userID } = useParams<{
+    // const { fk_id_empresa, userID } = useParams<{
+    const { fk_id_empresa } = useParams<{
         fk_id_empresa: string;
-        userID: string;
+        // userID: string;
       }>();
     
     const [contaDebConsultada, setContaDebConsultada] = useState('');
@@ -22,7 +23,7 @@ export function InserirLancamentoEmpresa() {
         fk_id_conta_debito: '',
         fk_id_conta_credito: '',
         valor: '',
-        fk_id_usuario: userID,
+        // fk_id_usuario: userID,
       });
     
     const handleContaDebitadaSelect = (id: string) => {
@@ -50,7 +51,8 @@ export function InserirLancamentoEmpresa() {
         e.preventDefault();
         try {
           // Fazer a requisição POST para a API        
-          await api.post('/lancamento', formData);
+          // await api.post('/lancamento/:id', formData);
+          await api.post(`/lancamento/${fk_id_empresa}`, formData);
 
           // Limpar o formulário após o sucesso    
           setFormData({
@@ -60,11 +62,12 @@ export function InserirLancamentoEmpresa() {
             fk_id_conta_debito: '',
             fk_id_conta_credito: '',
             valor: '',
-            fk_id_usuario: '',
+            // fk_id_usuario: '',
           });
 
             // Navegar para a página de lancamentosempresa após o sucesso            
-            navigate(`/lancamentosempresa/${fk_id_empresa}/${userID}`);
+            // navigate(`/lancamentosempresa/${fk_id_empresa}/${userID}`);
+            navigate(`/lancamentosempresa/${fk_id_empresa}`);
 
         } catch (error) {
             console.error('Erro ao enviar lançamento:', error);

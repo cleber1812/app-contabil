@@ -45,8 +45,10 @@ export function AppRoutes(){
                 <Route path="/diarioempresa/:fk_id_empresa" element={<DiarioEmpresa />} />
                 <Route path="/razaoempresa/:fk_id_empresa" element={<RazaoEmpresa />} />
                 <Route path="/balancoempresa/:fk_id_empresa" element={<BalancoEmpresa />} />
-                <Route path="/inserirlancamentoempresa/:fk_id_empresa/:userID" element={<InserirLancamentoEmpresa />} />
-                <Route path="/atualizarlancamentoempresa/:id/:fk_id_empresa/:userID" element={<AtualizarLancamentoEmpresa />} />
+                <Route path="/inserirlancamentoempresa/:fk_id_empresa" element={<InserirLancamentoEmpresa />} />
+                {/* <Route path="/inserirlancamentoempresa/:fk_id_empresa/:userID" element={<InserirLancamentoEmpresa />} /> */}                
+                <Route path="/atualizarlancamentoempresa/:id/:fk_id_empresa" element={<AtualizarLancamentoEmpresa />} />
+                {/* <Route path="/atualizarlancamentoempresa/:id/:fk_id_empresa/:userID" element={<AtualizarLancamentoEmpresa />} /> */}
             </Routes>
         </Router>
     )

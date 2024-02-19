@@ -18,21 +18,22 @@ import '../App.css';
 export function AtualizarLancamentoEmpresa() { 
     const navigate = useNavigate();
     
-    const { id, fk_id_empresa, userID } = useParams<{
+    // const { id, fk_id_empresa, userID } = useParams<{
+    const { id, fk_id_empresa } = useParams<{
         id: string;
         fk_id_empresa: string;
-        userID: string;
+        // userID: string;
       }>();   
 
     // const [formData, setFormData] = useState<FormData>({
-    const [formData, setFormData] = useState({
-        fk_id_empresa,
+    const [formData, setFormData] = useState({        
+        fk_id_empresa: fk_id_empresa,
         data: '',
         descricao: '',
         fk_id_conta_debito: '',
         fk_id_conta_credito: '',
         valor: '',
-        fk_id_usuario: userID,
+        // fk_id_usuario: userID,
     });
 
      //Para ListaContasID
