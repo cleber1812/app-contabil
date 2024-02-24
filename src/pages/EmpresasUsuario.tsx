@@ -125,6 +125,9 @@ export function EmpresasUsuario() {
                 <Link to={`/balancoempresa/${empresa.id}`}>
                   <button>Balanço</button>
                 </Link>
+                <Link to={`/dreempresa/${empresa.id}`}>
+                  <button>DRE</button>
+                </Link>
               </td>
             </tr>
           ))}

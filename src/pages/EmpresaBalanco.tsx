@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -20,6 +21,38 @@ async function fetchLancamentosEmpresa(
   }
 }
 
+function groupBy(array: any[], key: string) {
+  return array.reduce((result, item) => {
+    (result[item[key]] = result[item[key]] || []).push(item);
+    return result;
+  }, {});
+}
+
+function calcularSomaSaldoGrupo(lancamentos: any, nomeGrupo: any) {
+  const somaSaldoGrupo = lancamentos
+    .filter((lancamento: any) => lancamento.nome_grupo === nomeGrupo)
+    .reduce((soma: any, lancamento: any) => soma + lancamento.valor, 0);
+
+  return somaSaldoGrupo.toFixed(2); // Ajuste conforme necessário
+}
+
+function calcularSomaSaldoAtualGrupo(lancamentos: any, nomeGrupo: any) {
+  const somaSaldoAtualGrupo = lancamentos
+    .filter((lancamento: any) => lancamento.nome_grupo === nomeGrupo)
+    .reduce((soma: any, lancamento: any) => soma + lancamento.saldoAtual, 0);
+
+  return somaSaldoAtualGrupo.toFixed(2); // Ajuste conforme necessário
+}
+
+// function calcularSomaSaldoGrupoPrincipal(lancamentos: any, grupoPrincipal: any) {
+//   const lancamentosGrupoPrincipal = lancamentos.filter((lancamento: any) => lancamento.grupo_principal === grupoPrincipal);
+//   const somaSaldo = lancamentosGrupoPrincipal.reduce((soma: any, lancamento: any) => soma + lancamento.valor, 0);
+//   const somaSaldoAtual = lancamentosGrupoPrincipal.reduce((soma: any, lancamento: any) => soma + lancamento.saldoAtual, 0);
+
+//   return { somaSaldo: somaSaldo.toFixed(2), somaSaldoAtual: somaSaldoAtual.toFixed(2) };
+// }
+
+
 export function BalancoEmpresa() {  
 
   const { fk_id_empresa } = useParams<{ fk_id_empresa: string }>();
@@ -29,7 +62,9 @@ export function BalancoEmpresa() {
   const { data: lancamentos, isLoading, isError } = useQuery(
     ['lancamentos', fk_id_empresa, startDate, endDate], // Adicione startDate e endDate à lista de dependências
     () => fetchLancamentosEmpresa(fk_id_empresa ?? '2', startDate, endDate)
-  );    
+  ); 
+  
+  // const gruposPrincipaisProcessados: string[] = []; 
 
   if (isLoading) {
     return <div>Carregando...</div>;
@@ -38,7 +73,11 @@ export function BalancoEmpresa() {
     return <p>Ocorreu um erro ao buscar lançamentos.</p>;
   }
 
-  if (lancamentos) {
+  if (lancamentos) {      
+
+    const groupedLancamentos = groupBy(lancamentos, 'nome_grupo'); // Agrupa por Nome_Grupo
+    const grupos = Object.keys(groupedLancamentos);
+
         return (
           <div className="container">
             <h1>Balanço</h1>
@@ -52,31 +91,61 @@ export function BalancoEmpresa() {
                 <table className="custom-table">
                     <thead>
                         <tr>
+                            <th>Grupo_Principal</th>
                             <th>Grupo</th>
                             <th>SubGrupo</th>
                             <th>Elemento</th>
                             <th>Nome_Grupo</th>
-                            <th>Conta</th>                                                        
+                            <th>Conta</th> 
+                            <th>Saldo_Anterior</th>                                                       
                             <th>ValorD</th>
                             <th>ValorC</th>
                             <th>Saldo</th>
+                            <th>Saldo_Atual</th>
                         </tr>
                     </thead>
                     <tbody> 
-                      {lancamentos?.map((lancamento: any) => (                      
-                        <tr key={lancamento.id}>                                              
-                            <td>{lancamento.grupo}</td>
-                            <td>{lancamento.subgrupo}</td>
-                            <td>{lancamento.elemento}</td>
-                            <td>{lancamento.nome_grupo}</td>
-                            <td>{lancamento.conta}</td>                            
-                            <td>{lancamento.valorD.toFixed(2)}</td>
-                            <td>{lancamento.valorC.toFixed(2)}</td> 
-                            {/* <td>{parseFloat(lancamento.valorC).toFixed(2)}</td>*/}
-                            <td>{lancamento.valor.toFixed(2)}</td>
-                            {/* <td>{Number(lancamento.valor)}</td> */}
-                        </tr>      
-                      ))}            
+                      {/* {lancamentos?.map((lancamento: any) => ( */}
+                      {grupos.map((nomeGrupo, index) => {
+                        // const grupoPrincipal = lancamentos.find((lancamento: any) => lancamento.nome_grupo === nomeGrupo)?.grupo_principal;
+                        
+                        // if (grupoPrincipal && !gruposPrincipaisProcessados.includes(grupoPrincipal)) {
+                        //   gruposPrincipaisProcessados.push(grupoPrincipal);
+          
+                          return (
+
+                            <React.Fragment key={index}>
+                              {/* <tr key={`header_${grupoPrincipal}`}>
+                                <td colSpan={9}>{`Grupo Principal: ${grupoPrincipal}`}</td>
+                                <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldo}</td>
+                                <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldoAtual}</td>
+                              </tr> */}
+                              <tr key={`header_${nomeGrupo}`}>
+                                <td colSpan={9}>{nomeGrupo}</td>
+                                <td>{calcularSomaSaldoGrupo(lancamentos, nomeGrupo)}</td>
+                                <td>{calcularSomaSaldoAtualGrupo(lancamentos, nomeGrupo)}</td>                            
+                              </tr>
+                              {groupedLancamentos[nomeGrupo].map((lancamento: any) => (
+                                <tr key={lancamento.id}>                                              
+                                    <td>{lancamento.grupo_principal}</td>
+                                    <td>{lancamento.grupo}</td>
+                                    <td>{lancamento.subgrupo}</td>
+                                    <td>{lancamento.elemento}</td>
+                                    <td>{lancamento.nome_grupo}</td>
+                                    <td>{lancamento.conta}</td>     
+                                    <td>{lancamento.saldoAnterior.toFixed(2)}</td>                       
+                                    <td>{lancamento.valorD.toFixed(2)}</td>
+                                    <td>{lancamento.valorC.toFixed(2)}</td> 
+                                    {/* <td>{parseFloat(lancamento.valorC).toFixed(2)}</td>*/}
+                                    <td>{lancamento.valor.toFixed(2)}</td>
+                                    {/* <td>{Number(lancamento.valor)}</td> */}
+                                    <td>{lancamento.saldoAtual.toFixed(2)}</td> 
+                                </tr>      
+                              ))}
+                            </React.Fragment>
+                          );
+                        // }
+                      })}            
                     </tbody>
                 </table> 
           </div>
