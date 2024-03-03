@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from 'react-query';
 // import { useParams, Link } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import api from '../service/api';
 import CriarEmpresaModal from '../components/CriarEmpresaModal';
 
@@ -18,6 +18,7 @@ async function fetchEmpresas() {
 }
 
 export function EmpresasUsuario() {
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -81,6 +82,12 @@ export function EmpresasUsuario() {
     }
   };
 
+  // Função para logOut
+  const logOut = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
   return (
     <div className="container">
       <h1>Minhas empresas</h1>
@@ -88,6 +95,7 @@ export function EmpresasUsuario() {
         {/* <Link to={`/criarempresa/${userID}`}>
           <button>Criar nova empresa</button>
         </Link> */}
+        <button onClick={logOut}>Sair</button>
       <table className="custom-table">
         <thead>
           <tr>

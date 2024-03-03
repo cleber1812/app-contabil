@@ -59,7 +59,8 @@ function calcularSomaSaldoGrupo2(lancamentos: any, nomeGrupo: any) {
 }
 
 function calcularSomaSaldoGrupoPrincipal(lancamentos: any, grupoPrincipal: any) {
-  const lancamentosGrupoPrincipal = lancamentos.filter((lancamento: any) => String(lancamento.grupo_principal) === String(grupoPrincipal));
+  // const lancamentosGrupoPrincipal = lancamentos.filter((lancamento: any) => String(lancamento.grupo_principal) === String(grupoPrincipal));
+  const lancamentosGrupoPrincipal = lancamentos.filter((lancamento: any) => String(lancamento.nome_grupo_principal) === String(grupoPrincipal));
   const somaSaldoAnterior = lancamentosGrupoPrincipal.reduce((soma: any, lancamento: any) => soma + lancamento.saldoAnterior, 0);
   const somaValorD = lancamentosGrupoPrincipal.reduce((soma: any, lancamento: any) => soma + lancamento.valorD, 0);
   const somaValorC = lancamentosGrupoPrincipal.reduce((soma: any, lancamento: any) => soma + lancamento.valorC, 0);
@@ -91,7 +92,8 @@ export function BalancoEmpresa() {
 
   if (lancamentos) {      
 
-    const groupedLancamentosPrincipal = groupBy(lancamentos, 'grupo_principal'); // Agrupa por Grupo_Principal
+    // const groupedLancamentosPrincipal = groupBy(lancamentos, 'grupo_principal'); // Agrupa por Grupo_Principal
+    const groupedLancamentosPrincipal = groupBy(lancamentos, 'nome_grupo_principal'); // Agrupa por Grupo_Principal
     const gruposPrincipal = Object.keys(groupedLancamentosPrincipal);
 
     // const groupedLancamentos = groupBy(lancamentos, 'nome_grupo'); // Agrupa por Nome_Grupo
@@ -137,7 +139,8 @@ export function BalancoEmpresa() {
 
                             <React.Fragment key={index}>
                               <tr key={`header_${grupoPrincipal}`}>
-                                <td colSpan={1}>{`Grupo Principal: ${grupoPrincipal}`}</td>
+                                {/* <td colSpan={1}>{`Grupo Principal: ${grupoPrincipal}`}</td> */}
+                                <td colSpan={1}>{grupoPrincipal}</td>
                                 <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldoAnterior}</td>
                                 {/* <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorD}</td>
                                 <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorC}</td> */}
@@ -152,7 +155,8 @@ export function BalancoEmpresa() {
                                   <React.Fragment key={`nomeGrupo_${nomeGrupoIndex}`}>
 
                                     <tr key={`header_${nomeGrupo}`}>
-                                      <td colSpan={1}>{nomeGrupo}</td>
+                                      {/* <td colSpan={1}>{nomeGrupo}</td> */}
+                                      <td colSpan={1}>{nomeGrupo.toUpperCase()}</td>
                                       {/* <td>{calcularSomaSaldoGrupo(lancamentosNomeGrupo, nomeGrupo)}</td>
                                       <td>{calcularSomaSaldoAtualGrupo(lancamentosNomeGrupo, nomeGrupo)}</td> */}
                                       <td>{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldoAnterior2}</td>

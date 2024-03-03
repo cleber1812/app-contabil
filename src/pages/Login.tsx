@@ -48,7 +48,7 @@ export function Login() {
         if (response.data.token) {
           // Armazena o token no localStorage
           localStorage.setItem('token', response.data.token);
-          console.log(response.data.token);
+          // console.log(response.data.token);
   
           // Navega para a página desejada após o login (use o useHistory para isso)
           // history.push(`/minhasempresas/${response.data.id}`);
