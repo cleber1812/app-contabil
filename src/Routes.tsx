@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProtectedRoute from './components/ProtectedRoute';  // Use {} para importar se ProtectedRoute for exportado diretamente
+// import ProtectedRoute from './components/ProtectedRoute';  // Use {} para importar se ProtectedRoute for exportado diretamente
 
 import { HellowWorld } from "./pages/HellowWorld";
 import { Usuarios } from "./pages/Usuarios";
