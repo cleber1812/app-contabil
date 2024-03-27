@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { HellowWorld } from "./pages/HellowWorld";
 import { Usuarios } from "./pages/Usuarios";
+import { Empresas } from "./pages/Empresas";
 import { Lancamentos } from "./pages/Lancamentos";
 // import { InserirLancamento } from "./pages/LancamentoInserir";
 // import { DeletarLancamento } from "./pages/LacamentoDeletar";
@@ -30,7 +31,8 @@ export function AppRoutes(){
                 <Route path="/login" element={<Login />} />
 
                 <Route path="/hellow" element={<HellowWorld />} />
-                <Route path="/usuarios" element={<Usuarios />} />                
+                <Route path="/usuarios" element={<Usuarios />} />
+                <Route path="/empresas" element={<Empresas />} />
                 {/* <ProtectedRoute path="/lancamentos" element={<Lancamentos />} /> */}
                 <Route path="/lancamentos" element={<Lancamentos />} />
                 

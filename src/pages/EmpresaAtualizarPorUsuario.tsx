@@ -54,7 +54,7 @@ export function AtualizarEmpresa() {
             <h1>Atualizar empresa</h1>
             <form onSubmit={handleSubmit}>                               
 
-                <label> Nome da empresa: 
+                <label> Empresa  
                   <input
                     type="STRING" 
                     name="nome_empresa"

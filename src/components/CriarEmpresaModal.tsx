@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import Modal from 'react-modal';
-import '../styles/ReactModal.css'; // Importe os estilos
+import '../App.css'; // Importe os estilos
 
 interface CriarEmpresaModalProps {
     isOpen: boolean;
@@ -37,7 +37,7 @@ interface CriarEmpresaModalProps {
         ariaHideApp={false} // Para evitar warning no console
         className="modal-container" // Adicione a classe de estilos
       >
-        <h2 className="modal-header">Criar empresa</h2>                
+        <h2 className="modal-header">CRIAR EMPRESA</h2>                
         <form onSubmit={handleSubmit}>                               
             <label> 
                 Nome da Empresa: 
@@ -49,8 +49,8 @@ interface CriarEmpresaModalProps {
                 /> 
             </label>
             <div className="modal-footer">
-                <button type="submit" className="modal-button" >Cadastrar empresa</button>
-                <button type="button" className="modal-button" onClick={onClose}>Fechar</button>
+                <button type="submit" >Cadastrar empresa</button>
+                <button type="button" onClick={onClose}>Fechar</button>
             </div>
         </form>
       </Modal>

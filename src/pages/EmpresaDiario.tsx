@@ -75,18 +75,18 @@ export function DiarioEmpresa() {
                             <th>Conta Débito</th>
                             <th>Conta Crédito</th>
                             <th>Valor</th>
-                            <th>Usuário</th>                                                       
+                            {/* <th>Usuário</th>                                                        */}
                         </tr>
                     </thead>
                     <tbody>                      
                       {lancamentos.map((lancamento: any) => (
                         <tr key={lancamento.id}>                            
                             <td>{lancamento.data}</td>
-                            <td>{lancamento.descricao}</td>
+                            <td style={{ textAlign: 'left' }}>{lancamento.descricao}</td>
                             <td>{lancamento.contaDebito}</td>
                             <td>{lancamento.contaCredito}</td>
-                            <td>{lancamento.valor}</td>
-                            <td>{lancamento.usuario}</td>                                                       
+                            <td style={{ textAlign: 'right' }}>{lancamento.valor.toFixed(2)}</td>
+                            {/* <td>{lancamento.usuario}</td>                                                        */}
                         </tr>      
                       ))}            
                     </tbody>

@@ -76,22 +76,22 @@ export function LancamentosEmpresa() {
                 <table className="custom-table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Empresa</th>
+                            {/* <th>ID</th> */}
+                            {/* <th>Empresa</th> */}
                             <th>Data</th>
                             <th>Descrição</th>
                             <th>Conta Débito</th>
                             <th>Conta Crédito</th>
                             <th>Valor</th>
-                            <th>Usuário</th>   
+                            {/* <th>Usuário</th>    */}
                             <th>Ações</th>                         
                         </tr>
                     </thead>
                     <tbody>                      
                       {lancamentos.map((lancamento: any) => (
                         <tr key={lancamento.id}>
-                            <td>{lancamento.id}</td>
-                            <td>{lancamento.fk_id_empresa}</td>
+                            {/* <td>{lancamento.id}</td> */}
+                            {/* <td>{lancamento.fk_id_empresa}</td> */}
                             <td>{lancamento.data}</td>
                             <td>{lancamento.descricao}</td>
                             <td>
@@ -102,14 +102,14 @@ export function LancamentosEmpresa() {
                               {/* {lancamento.fk_id_conta_credito} */}
                               {lancamento.contaCredito}
                             </td>
-                            <td>{lancamento.valor}</td>
-                            <td>{lancamento.fk_id_usuario}</td> 
+                            <td style={{ textAlign: 'right' }}>{lancamento.valor.toFixed(2)}</td>
+                            {/* <td>{lancamento.fk_id_usuario}</td>  */}
                             <td>
                               {/* <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}/${userID}`}> */}
                               <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}`}>
                                 <button>Editar</button>
                               </Link>                              
-                              <button onClick={() => confirmDelete(lancamento.id)}>Excluir</button>
+                              <button className="button-deletar" onClick={() => confirmDelete(lancamento.id)}>Excluir</button>
                             </td>                           
                         </tr>      
                       ))}            
@@ -119,7 +119,7 @@ export function LancamentosEmpresa() {
                 
               {/* Modal de confirmação de exclusão */}
               {lancamentoIdToDelete && (
-                <div className="delete-modal">
+                <div className="modal-container">
                   <p>Deseja realmente excluir este lançamento?</p>
                   <button onClick={() => handleDelete(lancamentoIdToDelete)}>Sim</button>
                   <button onClick={cancelDelete}>Não</button>

@@ -42,25 +42,28 @@ export function CadastrarUsuario() {
     <div className="container">
       <h1>Cadastar Usuário</h1>
       <form onSubmit={handleSubmit}>                
-        <label> Nome: <input
+        <label> Nome <input
           type="STRING" 
           name="nome"
+          placeholder='Digite seu nome completo'
           value={formData.nome}
           onChange={handleChange}
           /> 
         </label>
         
-        <label> Email: <input
+        <label> Email <input
           type="STRING" 
           name="email"
+          placeholder='Digite um e-mail válido'
           value={formData.email}
           onChange={handleChange}
           /> 
         </label>
         
-        <label> Senha: <input
+        <label> Senha <input
         type="STRING" 
         name="senha"
+        placeholder='Escolha uma senha'
         value={formData.senha}
         onChange={handleChange}
           /> 

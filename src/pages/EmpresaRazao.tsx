@@ -45,11 +45,11 @@ export function RazaoEmpresa() {
           <div className="container">
             <h1>Livro Razão</h1>
               
-                <label>Intervalo de datas:</label>            
-              <div>
+                <label>Escolha o intervalo de datas</label>            
+              <div className="date-picker-container">
                 <CustomDatePicker selectedDate={startDate} onChangeDate={setStartDate} />
-              </div>
-              <div>
+              {/* </div>
+              <div> */}
                 <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
               </div> 
               <div>                                  
@@ -68,9 +68,9 @@ export function RazaoEmpresa() {
                       {lancamentos.map((lancamento: any) => (
                         <tr key={lancamento.id}>                            
                             <td>{lancamento.data}</td>
-                            <td>{lancamento.descricao}</td>
-                            <td>{lancamento.valorDebitado}</td>
-                            <td>{lancamento.valorCreditado}</td>                            
+                            <td style={{ textAlign: 'left' }}>{lancamento.descricao}</td>
+                            <td style={{ textAlign: 'right' }}>{lancamento.valorDebitado.toFixed(2)}</td>
+                            <td style={{ textAlign: 'right' }}>{lancamento.valorCreditado.toFixed(2)}</td>                            
                         </tr>      
                       ))}            
                     </tbody>

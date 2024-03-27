@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import api from '../service/api';
-import '../styles/ReactModal.css'; // Importe os estilos
+import '../App.css'; // Importe os estilos
 
 interface ListaContasProps {  
   onSelectConta: (id: string, conta: string) => void;  

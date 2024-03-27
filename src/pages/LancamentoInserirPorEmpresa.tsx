@@ -88,10 +88,19 @@ export function InserirLancamentoEmpresa() {
                 /> </label> */}
 
                 <label> Data: 
-                  <input
+                  <input style={{ maxWidth: 300 }}
                     type="DATE" 
                     name="data"
                     value={formData.data}
+                    onChange={handleChange}
+                  /> 
+                </label>
+
+                <label> Valor: 
+                  <input style={{ maxWidth: 300 }}
+                    type="number" 
+                    name="valor"
+                    value={formData.valor}
                     onChange={handleChange}
                   /> 
                 </label>
@@ -100,6 +109,7 @@ export function InserirLancamentoEmpresa() {
                   <input
                     type="STRING" 
                     name="descricao"
+                    placeholder='Ex: Compras de mercadoria a prazo conf. NF 123456.'
                     value={formData.descricao}
                     onChange={handleChange}
                   /> 
@@ -124,16 +134,7 @@ export function InserirLancamentoEmpresa() {
                   /> */}
                     <ListaContas onSelectConta={handleContaCreditadaSelect} /> 
                 </label>
-
-                <label> Valor: 
-                  <input
-                    type="number" 
-                    name="valor"
-                    value={formData.valor}
-                    onChange={handleChange}
-                  /> 
-                </label>
-
+                
                 {/* <label> Usuário: <input
                     type="number" 
                     name="fk_id_usuario"

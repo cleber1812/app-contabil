@@ -130,10 +130,19 @@ export function AtualizarLancamentoEmpresa() {
                 /> </label> */}
 
                 <label> Data: 
-                  <input
+                  <input style={{ maxWidth: 300 }}
                     type="DATE" 
                     name="data"
                     value={formData.data}
+                    onChange={handleChange}
+                  /> 
+                </label>
+
+                <label> Valor: 
+                  <input style={{ maxWidth: 300 }}
+                    type="number" 
+                    name="valor"
+                    value={formData.valor}
                     onChange={handleChange}
                   /> 
                 </label>
@@ -155,8 +164,9 @@ export function AtualizarLancamentoEmpresa() {
                     value={formData.fk_id_conta_debito}
                     onChange={handleChange}
                   />  */}  
-                  <span>Conta Débito Atual: {nomeDaContaDebitoAtual}</span>                
-                  <ListaContasID onSelectConta={handleContaDebitadaSelect} />                      
+                  <span>Conta Débito Atual: </span>                
+                  <span style={{ color: "#19647E" }}>{nomeDaContaDebitoAtual}</span>
+                  <ListaContasID onSelectConta={handleContaDebitadaSelect} />
                 </label>
 
                 <label> 
@@ -167,19 +177,11 @@ export function AtualizarLancamentoEmpresa() {
                     value={formData.fk_id_conta_credito}
                     onChange={handleChange}
                   />  */}     
-                  <span>Conta Crédito Atual: {nomeDaContaCreditoAtual}</span>             
+                  <span>Conta Crédito Atual: </span>             
+                  <span style={{ color: "#19647E" }}>{nomeDaContaCreditoAtual}</span>
                   <ListaContasID onSelectConta={handleContaCreditadaSelect} />                  
                 </label>
-
-                <label> Valor: 
-                  <input
-                    type="number" 
-                    name="valor"
-                    value={formData.valor}
-                    onChange={handleChange}
-                  /> 
-                </label>
-
+               
                 {/* <label> Usuário: <input
                     type="number" 
                     name="fk_id_usuario"

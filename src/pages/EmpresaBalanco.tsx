@@ -175,14 +175,14 @@ export function BalancoEmpresa() {
                                           <td>{lancamento.subgrupo}</td>
                                           <td>{lancamento.elemento}</td>
                                           <td>{lancamento.nome_grupo}</td> */}
-                                          <td>{lancamento.conta}</td>     
-                                          <td>{lancamento.saldoAnterior.toFixed(2)}</td>                       
+                                          <td style={{ textAlign: 'left' }}>{lancamento.conta}</td>     
+                                          <td style={{ textAlign: 'right' }}>{lancamento.saldoAnterior.toFixed(2)}</td>                       
                                           {/* <td>{lancamento.valorD.toFixed(2)}</td>
                                           <td>{lancamento.valorC.toFixed(2)}</td>  */}
                                           {/* <td>{parseFloat(lancamento.valorC).toFixed(2)}</td>*/}
-                                          <td>{lancamento.valor.toFixed(2)}</td>
+                                          <td style={{ textAlign: 'right' }}>{lancamento.valor.toFixed(2)}</td>
                                           {/* <td>{Number(lancamento.valor)}</td> */}
-                                          <td>{lancamento.saldoAtual.toFixed(2)}</td> 
+                                          <td style={{ textAlign: 'right' }}>{lancamento.saldoAtual.toFixed(2)}</td> 
                                       </tr>      
                                     ))}
                                   </React.Fragment>

@@ -1,22 +1,40 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
-  background: #2a2626;
-  color: #e9e1e1;
+  /* background-color: #f0f0f0; */
+  background: #D4DFC7;
+  color:#3A4832;     
+  text-align: center;
 }
 
+.container {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #1F271B;
+  margin: 5px auto;
+}
+
+h2 {
+  padding: 5px;
+}
 /* ESTILIZAÇÃO QUE JÁ VEIO NO PROJETO */
 
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+} */
 
-.logo {
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -50,106 +68,204 @@ body {
 
 .read-the-docs {
   color: #e80505;
-}
+} */
 
-/* Estilização das tabelas */
-
-.custom-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.custom-table th,
-.custom-table td {
-  padding: 12px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-.custom-table th {
-  background-color: #11082e;
-}
-
-.custom-table tbody tr:nth-child(even) {
-  background-color: #444445;
-}
-
-.custom-table tbody tr:hover {
-  background-color: #292453;
-  cursor: pointer;
-}
 
 /* ESTILIZAÇÃO DA PAGINA INSERIR LANCAMENTO */
 
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-h1 {
-  color: #ccc;
-}
-
 form {
-  background-color: #cfcfd4;
+  max-width: 600px;
+  background-color: #EEEEEE;
   padding: 20px;
-  border-radius: 8px;
+  border: 1px solid #1F271B;
+  border-radius: 5px;  
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Adicionando essa linha para centralizar o formulário */
   margin-bottom: 20px;
 }
 
 label {
   display: block;
+  font-weight: bold;
   margin-bottom: 10px;
-  color: #555;
+  color: #3A4832;
 }
 
 input {  
-  width: 100%;
+  width: 95%;
   padding: 8px;
+  margin-left: 15px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #19647E;
+  box-shadow: 0px 0px 3px rgba(0, 123, 255, 0.2);
 }
 
 button {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #19647E;
+  color: #f7fff7;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  /* margin-left: 5px; */
+  margin-inline: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #114455;
+}
+
+.button-deletar {
+  background-color:#F6511D;
+  /* color: #f7fff7;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   margin-left: 5px;
+  transition: background-color 0.3s; */
 }
 
-button:hover {
-  background-color: #0056b3;
+.button-deletar:hover {
+  background-color: #C43408;
 }
+/* ESTILIZAÇÃO DE TABELAS */
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 12px;
+  /* border: 2px solid #e70a0a;  */
+  border-bottom: 1px solid #1F271B;
+  text-align: center;
+}
+
+.custom-table th {
+  background-color: #1F271B;
+  color: #EEEEEE;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color:#EEEEEE;
+}
+
+.custom-table tbody tr:hover {
+  background-color:#96C0B7;
+  /* cursor: pointer; */
+}
+
+/* ESTILIZAÇÃO REACTMODAL INCLUIR EMPRESA */
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #F6511D;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 9999; /* Certifique-se de que o modal está acima de outros elementos */
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  color: #F7FFF7;
+}
+
+.modal-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}  
+
+.modal-content {
+  margin-bottom: 15px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+/* ESTILIZAÇÃO DATEPICKER*/
+
+/* DatePicker {
+  background-color: #19647E;
+  color: #f7fff7;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  margin-left: 5px;
+  margin-inline: 10px;
+  transition: background-color 0.3s;
+} */
 
 .date-picker-container {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  /* align-items: center; */
+  /* background-color:#96C0B7; */
+  padding: 10px ;
+  border-radius: 4px;    
 }
 
-.datapickerwrapper {
-  /* background-color: #0056b3; */
-  /* font-size: 16px; */
-  /* max-width: 300px; */
-  /* padding: 20px ; */
-  /* color: #db1212; */  
-  margin-right: 10px; /* Adicione uma margem à direita para criar um espaço entre os dois DatePickers */
+/* .datapickerwrapper {
+  background-color:#19647E;
+  font-size: 16px;
+  max-width: 300px;
+  padding: 20px ;
+  color:#C43408;  
+  margin-right: 10px;
+} */
 
-}
+/* ESTILIZAÇÃO LISTACONTAS*/
 
 .selectConta {
-  /* background-color: #0056b3; */
+  /* background-color:#19647E; */
   font-size: 16px;
-  max-width: 200px;
+  max-width: 300px;
   padding: 5px ;
-  /* color: #db1212;   */
+  /* color:#C43408;   */
   /* margin-right: 10px;  */
 
 }
+
+/* ESTILO PARA MODAL DE EXCLUSÃO */
+
+/* .delete-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(230, 121, 63);
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 9999; 
+}
+ 
+.delete-modal button {
+  margin-inline: 20px;
+} */
+
+

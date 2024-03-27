@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import api from '../service/api';
 import { Link } from 'react-router-dom'; // Importa o Link do react-router-dom
 import '../App.css';
-import '../styles/modal.css'// Importa os estilos do modal
+// import '../styles/modal.css'// Importa os estilos do modal
 
 async function fetchLancamentos() {
   try {

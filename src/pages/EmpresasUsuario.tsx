@@ -99,9 +99,9 @@ export function EmpresasUsuario() {
       <table className="custom-table">
         <thead>
           <tr>
-            <th>ID</th>
+            {/* <th>ID</th> */}
             <th>Empresa</th>
-            <th>Usuario</th>
+            {/* <th>Usuario</th> */}
             <th>Ações</th>
             <th>Relatórios</th>
           </tr>
@@ -109,15 +109,15 @@ export function EmpresasUsuario() {
         <tbody>
           {empresas.map((empresa: any) => (
             <tr key={empresa.id}>
-              <td>{empresa.id}</td>
+              {/* <td>{empresa.id}</td> */}
               <td>{empresa.nome_empresa}</td>
-              <td>{empresa.fk_id_usuario}</td>
+              {/* <td>{empresa.fk_id_usuario}</td> */}
               <td>
                 {/* <Link to={`/atualizarempresa/${empresa.id}/${userID}`}> */}
                 <Link to={`/atualizarempresa/${empresa.id}/`}>
                 <button>Editar</button>
                 </Link>                              
-                <button onClick={() => confirmDelete(empresa.id)}>Excluir</button>
+                <button className="button-deletar" onClick={() => confirmDelete(empresa.id)}>Excluir</button>
               </td>
               <td>
                 {/* <Link to={`/lancamentosempresa/${empresa.id}/${userID}`}> */}
@@ -150,7 +150,7 @@ export function EmpresasUsuario() {
 
       {/* Modal de confirmação de exclusão */}
       {empresaIdToDelete && (
-                <div className="delete-modal">
+                <div className="modal-container">
                   <p>Deseja realmente excluir esta empresa?</p>
                   <button onClick={() => handleDelete(empresaIdToDelete)}>Sim</button>
                   <button onClick={cancelDelete}>Não</button>
