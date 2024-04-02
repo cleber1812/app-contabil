@@ -4,6 +4,8 @@ import { useQuery } from 'react-query';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../service/api';
 import CriarEmpresaModal from '../components/CriarEmpresaModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
 
 // async function fetchEmpresas(userID: string) {
 async function fetchEmpresas() {
@@ -85,7 +87,7 @@ export function EmpresasUsuario() {
   // Função para logOut
   const logOut = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/');
   };
 
   return (
@@ -95,7 +97,12 @@ export function EmpresasUsuario() {
         {/* <Link to={`/criarempresa/${userID}`}>
           <button>Criar nova empresa</button>
         </Link> */}
-        <button onClick={logOut}>Sair</button>
+        <button onClick={logOut}>Sair
+        <FontAwesomeIcon icon={faPaperPlane}
+            transform="right-5 rotate-15"
+            // aria-label='sair'
+        />
+        </button>
       <table className="custom-table">
         <thead>
           <tr>
