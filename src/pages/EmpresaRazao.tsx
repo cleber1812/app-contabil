@@ -48,8 +48,8 @@ export function RazaoEmpresa() {
                 <label>Escolha o intervalo de datas</label>            
               <div className="date-picker-container">
                 <CustomDatePicker selectedDate={startDate} onChangeDate={setStartDate} />
-              {/* </div>
-              <div> */}
+              </div>
+              <div>
                 <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
               </div> 
               <div>                                  

@@ -140,12 +140,12 @@ export function BalancoEmpresa() {
                             <React.Fragment key={index}>
                               <tr key={`header_${grupoPrincipal}`}>
                                 {/* <td colSpan={1}>{`Grupo Principal: ${grupoPrincipal}`}</td> */}
-                                <td colSpan={1}>{grupoPrincipal}</td>
-                                <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldoAnterior}</td>
+                                <td className="BP-Grupo" colSpan={1}>{grupoPrincipal}</td>
+                                <td className="BP-Grupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldoAnterior}</td>
                                 {/* <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorD}</td>
                                 <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorC}</td> */}
-                                <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldo}</td>
-                                <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldoAtual}</td>
+                                <td className="BP-Grupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldo}</td>
+                                <td className="BP-Grupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldoAtual}</td>
                               </tr>
 
                               {Object.keys(groupBy(lancamentosGrupoPrincipal, 'nome_grupo')).map((nomeGrupo, nomeGrupoIndex) => {
@@ -156,14 +156,14 @@ export function BalancoEmpresa() {
 
                                     <tr key={`header_${nomeGrupo}`}>
                                       {/* <td colSpan={1}>{nomeGrupo}</td> */}
-                                      <td colSpan={1}>{nomeGrupo.toUpperCase()}</td>
+                                      <td className="BP-subGrupo" colSpan={1}>{nomeGrupo.toUpperCase()}</td>
                                       {/* <td>{calcularSomaSaldoGrupo(lancamentosNomeGrupo, nomeGrupo)}</td>
                                       <td>{calcularSomaSaldoAtualGrupo(lancamentosNomeGrupo, nomeGrupo)}</td> */}
-                                      <td>{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldoAnterior2}</td>
+                                      <td className="BP-subGrupo" >{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldoAnterior2}</td>
                                       {/* <td>{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaValorD2}</td>
                                       <td>{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaValorC2}</td> */}
-                                      <td>{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldo2}</td>
-                                      <td>{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldoAtual2}</td>                            
+                                      <td className="BP-subGrupo" >{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldo2}</td>
+                                      <td className="BP-subGrupo" >{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldoAtual2}</td>                            
                                     </tr>
 
                                     {/* {groupedLancamentosPrincipal[grupoPrincipal].map((lancamento: any) => ( */}

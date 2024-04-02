@@ -171,6 +171,23 @@ button:hover {
   /* cursor: pointer; */
 }
 
+/* ESTILIZAÇÃO BP */
+.BP-Grupo {
+  font-weight: bold;
+  background-color:#4D6043;
+  color: #f7fff7;
+}
+
+.BP-subGrupo {
+  font-weight: bold;
+  background-color:#88A37B;
+  /* align-items: end; */
+  /* justify-content: left; */
+  /* text-align: left; */
+  /* margin-left: 10px; */
+}
+
+
 /* ESTILIZAÇÃO REACTMODAL INCLUIR EMPRESA */
 
 .modal-container {
