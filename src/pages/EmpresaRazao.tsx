@@ -41,6 +41,19 @@ export function RazaoEmpresa() {
     return <p>Ocorreu um erro ao buscar lançamentos.</p>;
   }
 
+  // Calcular o saldo total
+  const saldoTotalDebitado = lancamentos.reduce((total: number, lancamento: any) => total + lancamento.valorDebitado, 0);
+  const saldoTotalCreditado = lancamentos.reduce((total: number, lancamento: any) => total + lancamento.valorCreditado, 0);
+  const saldoFinal = saldoTotalDebitado - saldoTotalCreditado;  
+
+  // Decide onde exibir o saldo final
+  let saldoFinalColumn: number;
+  if (saldoTotalDebitado > saldoTotalCreditado) {
+    saldoFinalColumn = 2; // Se o maior total for em Valor Debitado, o saldo final fica na coluna 3
+  } else {
+    saldoFinalColumn = 3; // Se o maior total for em Valor Creditado, o saldo final fica na coluna 4
+  }
+
         return (
           <div className="container">
             <h1>Livro Razão</h1>
@@ -71,8 +84,20 @@ export function RazaoEmpresa() {
                             <td style={{ textAlign: 'left' }}>{lancamento.descricao}</td>
                             <td style={{ textAlign: 'right' }}>{lancamento.valorDebitado.toFixed(2)}</td>
                             <td style={{ textAlign: 'right' }}>{lancamento.valorCreditado.toFixed(2)}</td>                            
-                        </tr>      
-                      ))}            
+                        </tr>
+                              
+                      ))}
+                      <tr>
+                        <td className="BP-subGrupo" style={{ textAlign: 'right' }} colSpan={2}><strong>Saldo Total:</strong></td>
+                        <td className="BP-subGrupo" style={{ textAlign: 'right' }}><strong>{saldoTotalDebitado.toFixed(2)}</strong></td>
+                        <td className="BP-subGrupo" style={{ textAlign: 'right' }}><strong>{saldoTotalCreditado.toFixed(2)}</strong></td>
+                      </tr>
+                      <tr>
+                        {/* <td style={{ textAlign: 'right' }} colSpan={3}><strong>Saldo Final:</strong></td>
+                        <td style={{ textAlign: 'right' }}><strong>{saldoFinal.toFixed(2)}</strong></td> */}
+                        <td className="BP-Grupo" style={{ textAlign: 'right' }} colSpan={saldoFinalColumn}><strong>Saldo Final:</strong></td>
+                        <td className="BP-Grupo" style={{ textAlign: 'right' }}><strong>{saldoFinal.toFixed(2)}</strong></td>
+                      </tr>                                  
                     </tbody>
                 </table> 
           </div>

@@ -75,12 +75,14 @@ function calcularSomaSaldoGrupoPrincipal(lancamentos: any, grupoPrincipal: any) 
 export function BalancoEmpresa() {  
 
   const { fk_id_empresa } = useParams<{ fk_id_empresa: string }>();
-  const [startDate, setStartDate] = useState<Date>(new Date()); 
+  // const [startDate, setStartDate] = useState<Date>(new Date()); 
   const [endDate, setEndDate] = useState<Date>(new Date());    
  
   const { data: lancamentos, isLoading, isError } = useQuery(
-    ['lancamentos', fk_id_empresa, startDate, endDate], // Adicione startDate e endDate à lista de dependências
-    () => fetchLancamentosEmpresa(fk_id_empresa ?? '2', startDate, endDate)
+    // ['lancamentos', fk_id_empresa, startDate, endDate], // Adicione startDate e endDate à lista de dependências
+    ['lancamentos', fk_id_empresa, endDate], // Adicione startDate e endDate à lista de dependências
+    // () => fetchLancamentosEmpresa(fk_id_empresa ?? '2', startDate, endDate)
+    () => fetchLancamentosEmpresa(fk_id_empresa ?? '2', endDate)
   );    
 
   if (isLoading) {
@@ -102,10 +104,10 @@ export function BalancoEmpresa() {
         return (
           <div className="container">
             <h1>Balanço</h1>
-                <label>Intervalo de datas:</label>            
-              <div>
+                <label>Escolha a data do Balanço Patrimonial</label>            
+              {/* <div>
                 <CustomDatePicker selectedDate={startDate} onChangeDate={setStartDate} />
-              </div>
+              </div> */}
               <div>
                 <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
               </div>
@@ -118,10 +120,10 @@ export function BalancoEmpresa() {
                             <th>Elemento</th>
                             <th>Nome_Grupo</th> */}
                             <th>Conta</th> 
-                            <th>Saldo_Anterior</th>                                                       
+                            {/* <th>Saldo_Anterior</th>                                                        */}
                             {/* <th>ValorD</th>
                             <th>ValorC</th> */}
-                            <th>Saldo</th>
+                            {/* <th>Saldo</th> */}
                             <th>Saldo_Atual</th>
                         </tr>
                     </thead>
@@ -141,10 +143,10 @@ export function BalancoEmpresa() {
                               <tr key={`header_${grupoPrincipal}`}>
                                 {/* <td colSpan={1}>{`Grupo Principal: ${grupoPrincipal}`}</td> */}
                                 <td className="BP-Grupo" colSpan={1}>{grupoPrincipal}</td>
-                                <td className="BP-Grupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldoAnterior}</td>
+                                {/* <td className="BP-Grupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldoAnterior}</td> */}
                                 {/* <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorD}</td>
                                 <td>{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorC}</td> */}
-                                <td className="BP-Grupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldo}</td>
+                                {/* <td className="BP-Grupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldo}</td> */}
                                 <td className="BP-Grupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldoAtual}</td>
                               </tr>
 
@@ -159,10 +161,10 @@ export function BalancoEmpresa() {
                                       <td className="BP-subGrupo" colSpan={1}>{nomeGrupo.toUpperCase()}</td>
                                       {/* <td>{calcularSomaSaldoGrupo(lancamentosNomeGrupo, nomeGrupo)}</td>
                                       <td>{calcularSomaSaldoAtualGrupo(lancamentosNomeGrupo, nomeGrupo)}</td> */}
-                                      <td className="BP-subGrupo" >{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldoAnterior2}</td>
+                                      {/* <td className="BP-subGrupo" >{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldoAnterior2}</td> */}
                                       {/* <td>{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaValorD2}</td>
                                       <td>{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaValorC2}</td> */}
-                                      <td className="BP-subGrupo" >{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldo2}</td>
+                                      {/* <td className="BP-subGrupo" >{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldo2}</td> */}
                                       <td className="BP-subGrupo" >{calcularSomaSaldoGrupo2(lancamentosNomeGrupo, nomeGrupo).somaSaldoAtual2}</td>                            
                                     </tr>
 
@@ -176,11 +178,11 @@ export function BalancoEmpresa() {
                                           <td>{lancamento.elemento}</td>
                                           <td>{lancamento.nome_grupo}</td> */}
                                           <td style={{ textAlign: 'left' }}>{lancamento.conta}</td>     
-                                          <td style={{ textAlign: 'right' }}>{lancamento.saldoAnterior.toFixed(2)}</td>                       
+                                          {/* <td style={{ textAlign: 'right' }}>{lancamento.saldoAnterior.toFixed(2)}</td>                        */}
                                           {/* <td>{lancamento.valorD.toFixed(2)}</td>
                                           <td>{lancamento.valorC.toFixed(2)}</td>  */}
                                           {/* <td>{parseFloat(lancamento.valorC).toFixed(2)}</td>*/}
-                                          <td style={{ textAlign: 'right' }}>{lancamento.valor.toFixed(2)}</td>
+                                          {/* <td style={{ textAlign: 'right' }}>{lancamento.valor.toFixed(2)}</td> */}
                                           {/* <td>{Number(lancamento.valor)}</td> */}
                                           <td style={{ textAlign: 'right' }}>{lancamento.saldoAtual.toFixed(2)}</td> 
                                       </tr>      
