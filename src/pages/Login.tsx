@@ -79,7 +79,7 @@ export function Login() {
             </label>
             
             <label> Senha: <input
-            type="STRING" 
+            type="Password" 
             name="senha"
             value={formData.senha}
             onChange={handleChange}

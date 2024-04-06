@@ -61,7 +61,7 @@ export function CadastrarUsuario() {
         </label>
         
         <label> Senha <input
-        type="STRING" 
+        type="Password"
         name="senha"
         placeholder='Escolha uma senha'
         value={formData.senha}
