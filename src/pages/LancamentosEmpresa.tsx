@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilSquare, faTrash } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
 import api from '../service/api';
 import '../App.css';
 
@@ -106,10 +108,16 @@ export function LancamentosEmpresa() {
                             {/* <td>{lancamento.fk_id_usuario}</td>  */}
                             <td>
                               {/* <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}/${userID}`}> */}
-                              <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}`}>
-                                <button>Editar</button>
+                              <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}`} title="Clique para editar lançamento">
+                                <button>
+                                  <FontAwesomeIcon icon={faPencilSquare} />
+                                  {/* Editar */}
+                                </button>
                               </Link>                              
-                              <button className="button-deletar" onClick={() => confirmDelete(lancamento.id)}>Excluir</button>
+                              <button className="button-deletar" onClick={() => confirmDelete(lancamento.id)} title="Clique para excluir lançamento">
+                                <FontAwesomeIcon icon={faTrash} />
+                                {/* Excluir */}
+                              </button>
                             </td>                           
                         </tr>      
                       ))}            

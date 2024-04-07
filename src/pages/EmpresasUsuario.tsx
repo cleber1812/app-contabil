@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import api from '../service/api';
 import CriarEmpresaModal from '../components/CriarEmpresaModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
+import { faSignOut, faPencilSquare, faTrash, faListAlt, faBook, faCalendar, faBalanceScale, faLineChart } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
 
 // async function fetchEmpresas(userID: string) {
 async function fetchEmpresas() {
@@ -98,10 +98,7 @@ export function EmpresasUsuario() {
           <button>Criar nova empresa</button>
         </Link> */}
         <button onClick={logOut}>Sair
-        <FontAwesomeIcon icon={faPaperPlane}
-            transform="right-5 rotate-15"
-            // aria-label='sair'
-        />
+        <FontAwesomeIcon icon={faSignOut} transform="right-5" />
         </button>
       <table className="custom-table">
         <thead>
@@ -122,26 +119,47 @@ export function EmpresasUsuario() {
               <td>
                 {/* <Link to={`/atualizarempresa/${empresa.id}/${userID}`}> */}
                 <Link to={`/atualizarempresa/${empresa.id}/`}>
-                <button>Editar</button>
+                <button title="Clique para editar empresa">
+                  <FontAwesomeIcon icon={faPencilSquare} />
+                  {/* Editar*/}
+                </button>
                 </Link>                              
-                <button className="button-deletar" onClick={() => confirmDelete(empresa.id)}>Excluir</button>
+                <button className="button-deletar" onClick={() => confirmDelete(empresa.id)} title="Clique para excluir empresa">
+                  <FontAwesomeIcon icon={faTrash} />
+                  {/* Excluir */}
+                </button>
               </td>
               <td>
                 {/* <Link to={`/lancamentosempresa/${empresa.id}/${userID}`}> */}
                 <Link to={`/lancamentosempresa/${empresa.id}`}>
-                  <button>Lançamentos</button>
+                  <button>
+                    <FontAwesomeIcon icon={faListAlt} transform="left-5" />
+                    Lançamentos
+                  </button>
                 </Link>
                 <Link to={`/diarioempresa/${empresa.id}`}>
-                  <button>Diario</button>
+                  <button>
+                    <FontAwesomeIcon icon={faCalendar} transform="left-5" />
+                    Diario
+                  </button>
                 </Link>
                 <Link to={`/razaoempresa/${empresa.id}`}>
-                  <button>Razão</button>
+                  <button>
+                    <FontAwesomeIcon icon={faBook} transform="left-5" />
+                    Razão
+                  </button>
                 </Link>
                 <Link to={`/balancoempresa/${empresa.id}`}>
-                  <button>Balanço</button>
+                  <button>
+                    <FontAwesomeIcon icon={faBalanceScale} transform="left-5" />
+                    Balanço
+                  </button>
                 </Link>
                 <Link to={`/dreempresa/${empresa.id}`}>
-                  <button>DRE</button>
+                  <button>
+                    <FontAwesomeIcon icon={faLineChart} transform="left-5" />
+                    DRE
+                  </button>
                 </Link>
               </td>
             </tr>
