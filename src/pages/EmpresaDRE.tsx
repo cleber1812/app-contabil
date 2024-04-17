@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -19,6 +20,23 @@ async function fetchLancamentosEmpresa(
   }
 }
 
+function groupBy(array: any[], key: string) {
+  return array.reduce((result, item) => {
+    (result[item[key]] = result[item[key]] || []).push(item);
+    return result;
+  }, {});
+}
+
+function calcularSomaSaldoGrupoPrincipal(lancamentos: any, grupoPrincipal: any) {  
+  const lancamentosGrupoPrincipal = lancamentos.filter((lancamento: any) => lancamento.nome_grupo === grupoPrincipal);
+  const somaValorD = lancamentosGrupoPrincipal.reduce((soma: any, lancamento: any) => soma + lancamento.valorD, 0);
+  const somaValorC = lancamentosGrupoPrincipal.reduce((soma: any, lancamento: any) => soma + lancamento.valorC, 0);
+  const somaSaldo = lancamentosGrupoPrincipal.reduce((soma: any, lancamento: any) => soma + lancamento.valor, 0);  
+
+  return { somaValorD: somaValorD.toFixed(2), somaValorC: somaValorC.toFixed(2),
+    somaSaldo: somaSaldo.toFixed(2)};
+}
+
 export function DreEmpresa() {  
 
   const { fk_id_empresa } = useParams<{ fk_id_empresa: string }>();
@@ -38,6 +56,23 @@ export function DreEmpresa() {
   }
 
   if (lancamentos) {
+
+    const groupedLancamentosPrincipal = groupBy(lancamentos, 'nome_grupo'); // Agrupa por Grupo_Principal
+    const gruposPrincipal = Object.keys(groupedLancamentosPrincipal);       
+    
+    // Calcular o saldo total de receitas e despesas
+    const saldoReceitasD = calcularSomaSaldoGrupoPrincipal(lancamentos, 'Receita').somaValorD;
+    const saldoDespesasD = calcularSomaSaldoGrupoPrincipal(lancamentos, 'Despesa').somaValorD;
+    const saldoReceitasC = calcularSomaSaldoGrupoPrincipal(lancamentos, 'Receita').somaValorC;
+    const saldoDespesasC = calcularSomaSaldoGrupoPrincipal(lancamentos, 'Despesa').somaValorC;
+    const saldoReceitas = calcularSomaSaldoGrupoPrincipal(lancamentos, 'Receita').somaSaldo;    
+    const saldoDespesas = calcularSomaSaldoGrupoPrincipal(lancamentos, 'Despesa').somaSaldo;
+
+    // Calcular o lucro líquido
+    const lucroLiquidoD = (parseFloat(saldoDespesasD) - parseFloat(saldoReceitasD)).toFixed(2);
+    const lucroLiquidoC = (parseFloat(saldoReceitasC) - parseFloat(saldoDespesasC)).toFixed(2);
+    const lucroLiquido = (parseFloat(saldoReceitas) + parseFloat(saldoDespesas)).toFixed(2);
+
         return (
           <div className="container">
             <h1>DRE</h1>
@@ -50,34 +85,47 @@ export function DreEmpresa() {
               </div>
                 <table className="custom-table">
                     <thead>
-                        <tr>
-                            <th>Grupo_Principal</th>
-                            <th>Grupo</th>
-                            <th>SubGrupo</th>
-                            <th>Elemento</th>
-                            <th>Nome_Grupo</th>
+                        <tr>                            
                             <th>Conta</th>                                                                                   
                             <th>ValorD</th>
                             <th>ValorC</th>
                             <th>Saldo</th>                            
                         </tr>
                     </thead>
-                    <tbody> 
-                      {lancamentos?.map((lancamento: any) => (                      
-                        <tr key={lancamento.id}>                                              
-                            <td>{lancamento.grupo_principal}</td>
-                            <td>{lancamento.grupo}</td>
-                            <td>{lancamento.subgrupo}</td>
-                            <td>{lancamento.elemento}</td>
-                            <td>{lancamento.nome_grupo}</td>
-                            <td>{lancamento.conta}</td>                                 
-                            <td>{lancamento.valorD.toFixed(2)}</td>
-                            <td>{lancamento.valorC.toFixed(2)}</td> 
-                            {/* <td>{parseFloat(lancamento.valorC).toFixed(2)}</td>*/}
-                            <td>{lancamento.valor.toFixed(2)}</td>
-                            {/* <td>{Number(lancamento.valor)}</td> */}                            
-                        </tr>      
-                      ))}            
+                    <tbody>                       
+                      {gruposPrincipal.map((grupoPrincipal, index) => {
+
+                        const lancamentosGrupoPrincipal = groupedLancamentosPrincipal[grupoPrincipal];
+                        const isResultado = grupoPrincipal === 'Resultado';
+
+                        return (
+                          <React.Fragment key={index}>
+
+                            <tr key={`header_${grupoPrincipal}`} className={isResultado ? 'resultado-row' : ''}>                            
+                              <td className="BP-subGrupo" colSpan={1}>{grupoPrincipal.toUpperCase()}</td>                         
+                              <td className="BP-subGrupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorD}</td>
+                              <td className="BP-subGrupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorC}</td>
+                              <td className="BP-subGrupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldo}</td>                              
+                            </tr>
+
+                            {lancamentosGrupoPrincipal.map((lancamento: any) => (
+                        
+                              <tr key={lancamento.id} className={isResultado ? 'resultado-row' : ''}>                               
+                                  <td>{lancamento.conta}</td>                                 
+                                  <td>{lancamento.valorD.toFixed(2)}</td>
+                                  <td>{lancamento.valorC.toFixed(2)}</td>                                   
+                                  <td>{lancamento.valor.toFixed(2)}</td>                                  
+                              </tr> 
+                             ))}
+                          </React.Fragment>
+                        );     
+                      })}                      
+                      <tr>
+                        <td className="BP-subGrupo" colSpan={1}><strong>LUCRO LÍQUIDO</strong></td>
+                        <td className="BP-subGrupo"><strong>{lucroLiquidoD}</strong></td>
+                        <td className="BP-subGrupo"><strong>{lucroLiquidoC}</strong></td>
+                        <td className="BP-subGrupo"><strong>{lucroLiquido}</strong></td>
+                      </tr>                
                     </tbody>
                 </table> 
           </div>

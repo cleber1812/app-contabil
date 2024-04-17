@@ -2,7 +2,7 @@ body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
-  /* background-color: #f0f0f0; */
+  /* background-color: #F0F0F0; */
   background: #D4DFC7;
   color:#3A4832;     
   text-align: center;
@@ -41,10 +41,10 @@ h2 {
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 1em #e70c0caa);
+  filter: drop-shadow(0 0 1em #F6511D);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 1em #f80202aa);
+  filter: drop-shadow(0 0 1em #C43408);
 }
 
 @keyframes logo-spin {
@@ -67,7 +67,7 @@ h2 {
 }
 
 .read-the-docs {
-  color: #e80505;
+  color: #F6511D;
 } */
 
 
@@ -109,7 +109,7 @@ input:focus {
 
 button {
   background-color: #19647E;
-  color: #f7fff7;
+  color: #F7FFF7;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -127,7 +127,7 @@ button:hover {
 
 .button-deletar {
   background-color:#F6511D;
-  /* color: #f7fff7;
+  /* color: #F7FFF7;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -152,7 +152,7 @@ button:hover {
 .custom-table th,
 .custom-table td {
   padding: 12px;
-  /* border: 2px solid #e70a0a;  */
+  /* border: 2px solid #F6511D;  */
   border-bottom: 1px solid #1F271B;
   text-align: center;
 }
@@ -175,7 +175,7 @@ button:hover {
 .BP-Grupo {
   font-weight: bold;
   background-color:#4D6043;
-  color: #f7fff7;
+  color: #F7FFF7;
 }
 
 .BP-subGrupo {
@@ -187,6 +187,12 @@ button:hover {
   /* margin-left: 10px; */
 }
 
+/* ESTILIZAÇÃO DRE */
+.resultado-row{
+  font-weight: bold;
+  background-color:#E9A406;
+  color: #F6511D;  
+}
 
 /* ESTILIZAÇÃO REACTMODAL INCLUIR EMPRESA */
 
@@ -225,7 +231,7 @@ button:hover {
 
 /* DatePicker {
   background-color: #19647E;
-  color: #f7fff7;
+  color: #F7FFF7;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
