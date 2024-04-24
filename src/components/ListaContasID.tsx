@@ -20,12 +20,12 @@ function ListaContasID({ onSelectConta}: ListaContasProps) {
   });
 
   const [selectedConta, setSelectedConta] = useState<string>('');
-
+  
   useEffect(() => {    
     if (contas && contas.length > 0) {
-      const selectedContaObject = contas.find((conta: any) => conta.conta === selectedConta);
+      const selectedContaObject = contas.find((conta: any) => conta.conta === selectedConta);      
       if (selectedContaObject) {
-        onSelectConta(selectedContaObject.id, selectedConta);
+        onSelectConta(selectedContaObject.id, selectedConta);        
       }
     }
   }, [selectedConta, onSelectConta, contas]);    
@@ -44,15 +44,23 @@ function ListaContasID({ onSelectConta}: ListaContasProps) {
   return (
     <div>
       {/* <label>Escolha a conta:</label> */}
-      <select className="selectConta" value={selectedConta} onChange={(e) => setSelectedConta(e.target.value)}>
+      <select className="selectConta" value={selectedConta} onChange={(e) => setSelectedConta(e.target.value)}>      
         <option value="">Selecione uma conta</option>
         {/* {contas.map((conta: any) => ( */}
         {contasOrdenadas.map((conta: any) => (
           <option key={conta.id}>          
-            {conta.conta} | {conta.nome_grupo_principal}
+            {conta.conta}
           </option>
         ))}
       </select>
+      {/* Aqui você pode adicionar o elemento div ou span para mostrar informações ao lado do select */}
+      {selectedConta && (
+        <div style={{ color: "#88A37B" }}>
+          <span>Grupo da Conta Selecionada: </span>
+          {/* Aqui você pode exibir as informações relevantes da conta, como o grupo ao qual ela pertence */}
+           {contas.find((conta: any) => conta.conta === selectedConta)?.nome_grupo_principal}
+        </div>
+      )}
     </div>
   );
 }

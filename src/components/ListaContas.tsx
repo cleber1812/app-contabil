@@ -44,7 +44,7 @@ function ListaContas({ onSelectConta }: ListaContasProps) {
         {/* {contas.map((conta: any) => ( */}
         {contasOrdenadas.map((conta: any) => (
           <option key={conta.id}>
-            {conta.conta} | {conta.nome_grupo_principal}
+            {conta.conta}
           </option>
         ))}
       </select>
