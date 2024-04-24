@@ -8,6 +8,11 @@ interface ListaContasProps {
   onSelectConta: (conta: string) => void;
 }
 
+const compararContas = (contaA: string, contaB: string) => {
+  // Utilize a função localeCompare() para comparar as strings com suporte a localização
+  return contaA.localeCompare(contaB, 'pt', { sensitivity: 'base' });
+};
+
 function ListaContas({ onSelectConta }: ListaContasProps) {
   const { data: contas, isLoading, isError } = useQuery('contas', async () => {
     const response = await api.get('/contas');
@@ -28,12 +33,16 @@ function ListaContas({ onSelectConta }: ListaContasProps) {
     return <div>Ocorreu um erro ao buscar contas.</div>;
   }
 
+  // Ordenar as contas usando a função de comparação personalizada
+  const contasOrdenadas = contas.sort((contaA: any, contaB: any) => compararContas(contaA.conta, contaB.conta));
+
   return (
     <div>
       <label>Escolha a conta:</label>
       <select className="selectConta" value={selectedConta} onChange={(e) => setSelectedConta(e.target.value)}>
         <option value="">Selecione uma conta</option>
-        {contas.map((conta: any) => (
+        {/* {contas.map((conta: any) => ( */}
+        {contasOrdenadas.map((conta: any) => (
           <option key={conta.id}>
             {conta.conta} | {conta.nome_grupo_principal}
           </option>
