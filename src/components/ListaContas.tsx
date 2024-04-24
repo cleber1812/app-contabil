@@ -35,7 +35,7 @@ function ListaContas({ onSelectConta }: ListaContasProps) {
         <option value="">Selecione uma conta</option>
         {contas.map((conta: any) => (
           <option key={conta.id}>
-            {conta.conta}            
+            {conta.conta} | {conta.nome_grupo_principal}
           </option>
         ))}
       </select>

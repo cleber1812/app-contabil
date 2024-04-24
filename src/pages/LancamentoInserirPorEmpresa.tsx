@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import api from '../service/api';
 import { useNavigate, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
 import ListaContas from '../components/ListaContasID'; // Certifique-se de fornecer o caminho correto para o componente ListaContas
 import '../App.css';
 
@@ -115,7 +117,12 @@ export function InserirLancamentoEmpresa() {
                   /> 
                 </label>
 
-                <label> Conta debitada: 
+                <label> 
+                  Conta debitada: <FontAwesomeIcon icon={faQuestionCircle} 
+                   className="tooltip" title="DÉBITO
+                   Ativo, Despesas, Retificadoras do Passivo: Aumenta
+                   Passivo, Receita, Retificadoras do Ativo: Diminui" 
+                  />
                     {/* <input
                     type="number" 
                     name="fk_id_conta_debito"
@@ -125,7 +132,12 @@ export function InserirLancamentoEmpresa() {
                     <ListaContas onSelectConta={handleContaDebitadaSelect} />
                 </label>
 
-                <label> Conta creditada: 
+                <label>  
+                  Conta creditada: <FontAwesomeIcon icon={faQuestionCircle} 
+                   className="tooltip" title="CRÉDITO
+                   Ativo, Despesas, Retificadoras do Passivo: Diminui
+                   Passivo, Receita, Retificadoras do Ativo: Aumenta" 
+                  />
                   {/* <input
                     type="number" 
                     name="fk_id_conta_credito"
