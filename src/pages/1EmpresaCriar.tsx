@@ -49,7 +49,7 @@ export function CriarEmpresa() {
         </label>
         <button type="submit">Cadastrar empresa</button>
       </form>
-    </div>
+    </div>    
   )
 
 }

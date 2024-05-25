@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useQuery } from 'react-query';
-// import { useParams, Link } from 'react-router-dom';
-import { Link, useNavigate } from 'react-router-dom';
+// import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import api from '../service/api';
 import CriarEmpresaModal from '../components/CriarEmpresaModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOut, faPencilSquare, faTrash, faListAlt, faBook, faCalendar, faBalanceScale, faLineChart } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
+import { faPencilSquare, faTrash, faListAlt, faBook, faCalendar, faBalanceScale, faLineChart } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
+// import { faSignOut} from '@fortawesome/free-solid-svg-icons';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 // async function fetchEmpresas(userID: string) {
 async function fetchEmpresas() {
@@ -20,7 +23,7 @@ async function fetchEmpresas() {
 }
 
 export function EmpresasUsuario() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -85,21 +88,24 @@ export function EmpresasUsuario() {
   };
 
   // Função para logOut
-  const logOut = () => {
-    localStorage.removeItem('token');
-    navigate('/');
-  };
+  // const logOut = () => {
+  //   localStorage.removeItem('token');
+  //   navigate('/');
+  // };
 
   return (
-    <div className="container">
+    <div id="root">
+    <Header />
+    <main>
+    <div className="container">      
       <h1>Minhas empresas</h1>
         <button onClick={openModal}>Criar nova empresa</button>
         {/* <Link to={`/criarempresa/${userID}`}>
           <button>Criar nova empresa</button>
         </Link> */}
-        <button onClick={logOut}>Sair
+        {/* <button onClick={logOut}>Sair
         <FontAwesomeIcon icon={faSignOut} transform="right-5" />
-        </button>
+        </button> */}
       <table className="custom-table">
         <thead>
           <tr>
@@ -181,6 +187,9 @@ export function EmpresasUsuario() {
                   <button onClick={cancelDelete}>Não</button>
                 </div>
               )} 
+    </div>
+    </main>
+    <Footer />
     </div>
   );
 }

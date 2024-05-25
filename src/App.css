@@ -6,12 +6,25 @@ body {
   background: #D4DFC7;
   color:#3A4832;     
   text-align: center;
+  height: 100%;
+}
+
+/* Container principal que envolve todo o conteúdo */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o container ocupe a altura total da janela */
+}
+
+/* O main flexível que expande para ocupar o espaço disponível */
+main {
+  flex: 1;
 }
 
 .container {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   max-width: 1200px; 
   margin: 0 auto;
   padding: 20px;
@@ -70,6 +83,71 @@ h2 {
   color: #F6511D;
 } */
 
+/* ESTILIZAÇÃO Header e Footer */
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  flex: 1;
+  /* text-align: left; */
+}
+
+.right {
+  flex: 1;    
+  /* text-align: left; */
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  /* align-items: center; */
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  /* position: fixed; */
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* overflow-x: auto; Adiciona barra de rolagem horizontal se o conteúdo exceder a largura */
+}
+
+/* Estilo para a seção esquerda */
+.left {
+  flex: 1;
+  text-align: left;
+}
+
+/* Estilo para a seção central */
+.center {
+  flex: 1;
+  text-align: center;
+}
+
+/* Estilo para a seção direita */
+.right {
+  flex: 1;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;  
+  margin-right: 30px;
+}
+
+/* Estilo para os ícones */
+.right div {
+  margin-left: 10px; /* Espaçamento entre os ícones */
+}
 
 /* ESTILIZAÇÃO DA PAGINA INSERIR LANCAMENTO */
 

@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import logomarca2 from '../../src/assets/logomarca2.png'; // Importe sua imagem
+import Footer from '../components/Footer';
+
 
 
 export function Home() {
@@ -10,6 +12,8 @@ export function Home() {
     // };    
 
     return (
+        <div id="root"> 
+        <main>
         <div className="container">
           <img src={logomarca2} alt="Logo da empresa" />
           <h1 style={{ fontSize: 80, color: '#19647E' }}>CONTÁBIL123</h1>
@@ -23,6 +27,9 @@ export function Home() {
             Realizar cadastro
           </button>
         
+        </div>
+        </main>
+        <Footer />
         </div>
     )
 

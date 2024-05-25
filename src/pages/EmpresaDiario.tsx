@@ -6,6 +6,8 @@ import { useQuery } from 'react-query';
 import api from '../service/api';
 import CustomDatePicker from '../components/DatePickerComponent'; // Importe o novo componente
 import '../App.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 
 // async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date) {
@@ -42,6 +44,9 @@ export function DiarioEmpresa() {
   }
 
         return (
+          <div id="root">
+          <Header />
+          <main>
           <div className="container">
             <h1>Livro Diário</h1>
                 <label>Intervalo de datas:</label>            
@@ -91,6 +96,9 @@ export function DiarioEmpresa() {
                       ))}            
                     </tbody>
                 </table> 
+          </div>
+          </main>
+          <Footer />
           </div>
         );
 }

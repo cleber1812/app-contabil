@@ -5,6 +5,8 @@ import api from '../service/api';
 import CustomDatePicker from '../components/DatePickerComponent'; // Importe o novo componente
 import ListaContas from '../components/ListaContas';
 import '../App.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 // async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date, contaConsultada?: string) {
 async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate: Date = new Date(), endDate: Date = new Date(), contaConsultada?: string) {
@@ -55,6 +57,9 @@ export function RazaoEmpresa() {
   }
 
         return (
+          <div id="root">
+          <Header />
+          <main>
           <div className="container">
             <h1>Livro Razão</h1>
               
@@ -100,6 +105,9 @@ export function RazaoEmpresa() {
                       </tr>                                  
                     </tbody>
                 </table> 
+          </div>
+          </main>
+          <Footer />
           </div>
         );
 }

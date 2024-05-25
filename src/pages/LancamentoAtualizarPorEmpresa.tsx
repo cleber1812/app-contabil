@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import api from '../service/api';
 import ListaContasID from '../components/ListaContasID'; // Certifique-se de fornecer o caminho correto para o componente ListaContas
 import '../App.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 // //Posso tirar essa interface lá do useState<FormData> que funciona também
 // interface FormData {
@@ -118,7 +120,10 @@ export function AtualizarLancamentoEmpresa() {
         }
     };
 
-    return (        
+    return (
+      <div id="root">
+      <Header />
+      <main>        
        <div className="container">
             <h1>Atualizar Lançamento</h1>
             <form onSubmit={handleSubmit}>                
@@ -191,6 +196,9 @@ export function AtualizarLancamentoEmpresa() {
                 
                 <button type="submit">Atualizar</button>
             </form>
+       </div>
+       </main>
+       <Footer />
        </div>
     ) 
 }

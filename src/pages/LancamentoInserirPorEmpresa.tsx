@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
 import ListaContas from '../components/ListaContasID'; // Certifique-se de fornecer o caminho correto para o componente ListaContas
 import '../App.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export function InserirLancamentoEmpresa() { 
     const navigate = useNavigate();  // Obtenha o objeto de navegação
@@ -78,6 +80,9 @@ export function InserirLancamentoEmpresa() {
     };
   
     return (
+        <div id="root">
+        <Header />
+        <main>
         <div className="container">
             <h1>Inserir Lançamento por Empresa</h1>
             <form onSubmit={handleSubmit}>
@@ -156,6 +161,9 @@ export function InserirLancamentoEmpresa() {
                 
                 <button type="submit">Enviar</button>
             </form>
+          </div>
+          </main>
+          <Footer />
           </div>
         );
 }

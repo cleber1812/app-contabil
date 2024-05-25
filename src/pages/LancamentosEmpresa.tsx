@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilSquare, faTrash } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
 import api from '../service/api';
 import '../App.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 
 async function fetchLancamentosEmpresa(fk_id_empresa: string) {
@@ -65,6 +67,9 @@ export function LancamentosEmpresa() {
   };
 
         return (
+          <div id="root">
+          <Header />
+          <main>
           <div>
             <h1>Lançamentos</h1>                
                 {/* <Link to={`/inserirlancamentoempresa/${fk_id_empresa}/${userID}`}> */}
@@ -133,6 +138,9 @@ export function LancamentosEmpresa() {
                   <button onClick={cancelDelete}>Não</button>
                 </div>
               )}             
+          </div>
+          </main>
+          <Footer />
           </div>
         );
 }

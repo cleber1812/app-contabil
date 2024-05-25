@@ -1,22 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import ProtectedRoute from './components/ProtectedRoute';  // Use {} para importar se ProtectedRoute for exportado diretamente
 
-import { HellowWorld } from "./pages/HellowWorld";
-import { Usuarios } from "./pages/Usuarios";
-import { Empresas } from "./pages/Empresas";
-import { Lancamentos } from "./pages/Lancamentos";
-// import { InserirLancamento } from "./pages/LancamentoInserir";
-// import { DeletarLancamento } from "./pages/LacamentoDeletar";
-// import { AtualizarLancamento } from "./pages/LancamentoAtualizar";
+import { HellowWorld } from "./pages/0HellowWorld";
+import { Usuarios } from "./pages/0Usuarios";
+import { Empresas } from "./pages/0Empresas";
+import { Lancamentos } from "./pages/0Lancamentos";
+// import { InserirLancamento } from "./pages/1LancamentoInserir";
+// import { DeletarLancamento } from "./pages/1LacamentoDeletar";
+// import { AtualizarLancamento } from "./pages/1LancamentoAtualizar";
+// import { CriarEmpresa } from "./pages/1EmpresaCriar";
+import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { CadastrarUsuario } from "./pages/UsuarioCadastro";
 import { EmpresasUsuario } from "./pages/EmpresasUsuario";
-import { Home } from "./pages/Home";
+import { AtualizarEmpresa } from "./pages/EmpresaAtualizarPorUsuario";
 import { LancamentosEmpresa } from "./pages/LancamentosEmpresa";
 import { InserirLancamentoEmpresa } from "./pages/LancamentoInserirPorEmpresa";
 import { AtualizarLancamentoEmpresa } from "./pages/LancamentoAtualizarPorEmpresa";
-// import { CriarEmpresa } from "./pages/EmpresaCriar";
-import { AtualizarEmpresa } from "./pages/EmpresaAtualizarPorUsuario";
 import { DiarioEmpresa } from "./pages/EmpresaDiario";
 import { RazaoEmpresa } from "./pages/EmpresaRazao";
 import { BalancoEmpresa } from "./pages/EmpresaBalanco";

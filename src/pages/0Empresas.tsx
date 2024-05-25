@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import api from '../service/api';
-import '../App.css'
+import '../App.css';
 
 async function fetchEmpresas() {
   try {

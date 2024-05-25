@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import api from '../service/api';
 import CustomDatePicker from '../components/DatePickerComponent'; // Importe o novo componente
-
 import '../App.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 // async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date) {
 async function fetchLancamentosEmpresa(
@@ -74,6 +75,9 @@ export function DreEmpresa() {
     const lucroLiquido = (parseFloat(saldoReceitas) + parseFloat(saldoDespesas)).toFixed(2);
 
         return (
+          <div id="root">
+          <Header />
+          <main>
           <div className="container">
             <h1>DRE</h1>
                 <label>Intervalo de datas:</label>            
@@ -128,6 +132,9 @@ export function DreEmpresa() {
                       </tr>                
                     </tbody>
                 </table> 
+          </div>
+          </main>
+          <Footer />
           </div>
         );
   }else {

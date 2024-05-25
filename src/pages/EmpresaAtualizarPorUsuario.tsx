@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../service/api';
 import '../App.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export function AtualizarEmpresa() { 
     const navigate = useNavigate();
@@ -49,7 +51,10 @@ export function AtualizarEmpresa() {
         }
     };
 
-    return (        
+    return (
+      <div id="root">
+      <Header />
+      <main>        
        <div className="container">
             <h1>Atualizar empresa</h1>
             <form onSubmit={handleSubmit}>                               
@@ -66,5 +71,8 @@ export function AtualizarEmpresa() {
                 <button type="submit">Atualizar</button>
             </form>
        </div>
+       </main>
+       <Footer />
+      </div>
     ) 
 }

@@ -4,17 +4,20 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import api from '../service/api';
 import CustomDatePicker from '../components/DatePickerComponent'; // Importe o novo componente
-
 import '../App.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 // async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date) {
 async function fetchLancamentosEmpresa(
-    fk_id_empresa: string, startDate: Date = new Date(), endDate: Date = new Date()
+    // fk_id_empresa: string, startDate: Date = new Date(), endDate: Date = new Date()
+    fk_id_empresa: string, endDate: Date = new Date()
   ) {
   try {
     // const url = `/balanco/${fk_id_empresa}?startDate=${startDate}&endDate=${endDate}`;
-    const url = `/balanco/${fk_id_empresa}?startDate=${startDate.toISOString().split('T')[0]}&endDate=${endDate.toISOString().split('T')[0]}`;
-    const response = await api.get(url); 
+    // const url = `/balanco/${fk_id_empresa}?startDate=${startDate.toISOString().split('T')[0]}&endDate=${endDate.toISOString().split('T')[0]}`;
+    const url = `/balanco/${fk_id_empresa}?endDate=${endDate.toISOString().split('T')[0]}`;
+    const response = await api.get(url);    
     return response.data;    
   } catch (error) {
     throw new Error('Erro ao buscar lançamentos');
@@ -102,6 +105,9 @@ export function BalancoEmpresa() {
     // const grupos = Object.keys(groupedLancamentos);
 
         return (
+          <div id="root">
+          <Header />
+          <main>
           <div className="container">
             <h1>Balanço</h1>
                 <label>Escolha a data do Balanço Patrimonial</label>            
@@ -195,6 +201,9 @@ export function BalancoEmpresa() {
                       })}            
                     </tbody>
                 </table> 
+          </div>
+          </main>
+          <Footer />
           </div>
         );
   }else {

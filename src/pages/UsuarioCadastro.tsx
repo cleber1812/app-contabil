@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../service/api';
 import '../App.css';
+import Footer from '../components/Footer';
 
 export function CadastrarUsuario() {
   const navigate = useNavigate();  // Obtenha o objeto de navegação
@@ -39,6 +40,8 @@ export function CadastrarUsuario() {
   };
 
   return (
+    <div id="root"> 
+    <main>
     <div className="container">
       <h1>Cadastar Usuário</h1>
       <form onSubmit={handleSubmit}>                
@@ -71,6 +74,9 @@ export function CadastrarUsuario() {
         
         <button type="submit">Cadastrar usuário</button>
       </form>
+    </div>
+    </main>
+    <Footer />
     </div>
   )
 
