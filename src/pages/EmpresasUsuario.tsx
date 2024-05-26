@@ -9,6 +9,7 @@ import { faPencilSquare, faTrash, faListAlt, faBook, faCalendar, faBalanceScale,
 // import { faSignOut} from '@fortawesome/free-solid-svg-icons';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
 
 // async function fetchEmpresas(userID: string) {
 async function fetchEmpresas() {
@@ -40,7 +41,12 @@ export function EmpresasUsuario() {
   const [empresaIdToDelete, setEmpresaIdToDelete] = useState<number | null>(null);
 
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return (
+      <div className="loader-container">
+        <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
+        <p>Carregando...</p>
+      </div>
+    );
   }
 
   if (isError) {

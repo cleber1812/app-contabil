@@ -7,6 +7,7 @@ import ListaContas from '../components/ListaContas';
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
 
 // async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date, contaConsultada?: string) {
 async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate: Date = new Date(), endDate: Date = new Date(), contaConsultada?: string) {
@@ -36,8 +37,13 @@ export function RazaoEmpresa() {
     () => fetchLancamentosEmpresa(fk_id_empresa ?? '2', startDate, endDate, contaConsultada)
   );
 
-  if (isLoading) {
-    return <div>Carregando...</div>;
+  if (isLoading) {    
+    return (
+      <div className="loader-container">
+        <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
+        <p>Carregando...</p>
+      </div>
+    );
   }  
   if (isError) {
     return <p>Ocorreu um erro ao buscar lançamentos.</p>;

@@ -7,7 +7,7 @@ import api from '../service/api';
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
+import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
 
 async function fetchLancamentosEmpresa(fk_id_empresa: string) {
   try {
@@ -37,7 +37,12 @@ export function LancamentosEmpresa() {
   const [lancamentoIdToDelete, setLancamentoIdToDelete] = useState<number | null>(null);
 
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return (
+      <div className="loader-container">
+        <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
+        <p>Carregando...</p>
+      </div>
+    );
   }  
   if (isError) {
     return <p>Ocorreu um erro ao buscar lançamentos.</p>;
@@ -70,7 +75,7 @@ export function LancamentosEmpresa() {
           <div id="root">
           <Header />
           <main>
-          <div>
+          <div className="container">
             <h1>Lançamentos</h1>                
                 {/* <Link to={`/inserirlancamentoempresa/${fk_id_empresa}/${userID}`}> */}
                 <Link to={`/inserirlancamentoempresa/${fk_id_empresa}`}>

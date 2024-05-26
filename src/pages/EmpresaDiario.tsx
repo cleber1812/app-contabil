@@ -8,6 +8,7 @@ import CustomDatePicker from '../components/DatePickerComponent'; // Importe o n
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
 
 
 // async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date) {
@@ -36,8 +37,13 @@ export function DiarioEmpresa() {
     () => fetchLancamentosEmpresa(fk_id_empresa ?? '2', startDate, endDate)
   );
 
-  if (isLoading) {
-    return <div>Carregando...</div>;
+  if (isLoading) {    
+    return (
+      <div className="loader-container">
+        <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
+        <p>Carregando...</p>
+      </div>
+    );
   }  
   if (isError) {
     return <p>Ocorreu um erro ao buscar lançamentos.</p>;

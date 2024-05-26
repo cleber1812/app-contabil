@@ -3,9 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import api from '../service/api';
 import '../App.css';
 import Footer from '../components/Footer';
+import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
+import Modal from '../components/ErrorModalCriarUsuario'
 
 export function CadastrarUsuario() {
   const navigate = useNavigate();  // Obtenha o objeto de navegação
+
+  // Estado para controlar a abertura/fechamento do modal de erro
+  const [errorModalOpen, setErrorModalOpen] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false); // Estado para controlar o carregamento
   
   const [formData, setFormData] = useState({
     nome: '',
@@ -20,6 +27,7 @@ export function CadastrarUsuario() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true); // Inicia o carregamento
     try {      
       await api.post('/usuario', formData);
 
@@ -36,7 +44,10 @@ export function CadastrarUsuario() {
     } catch (error) {
         console.error('Erro ao cadastrar usuário:', error);
         // Adicionar lógica de tratamento de erro, se necessário
-      }
+        setErrorModalOpen(true);
+    } finally {
+      setIsLoading(false); // Termina o carregamento
+    }
   };
 
   return (
@@ -44,6 +55,12 @@ export function CadastrarUsuario() {
     <main>
     <div className="container">
       <h1>Cadastar Usuário</h1>
+          {isLoading ? (
+            <div className="loader-container">
+              <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
+              <p>Carregando...</p>
+            </div>
+          ) : (
       <form onSubmit={handleSubmit}>                
         <label> Nome <input
           type="STRING" 
@@ -74,6 +91,10 @@ export function CadastrarUsuario() {
         
         <button type="submit">Cadastrar usuário</button>
       </form>
+      )}
+
+      <Modal isOpen={errorModalOpen} onClose={() => setErrorModalOpen(false)} />
+    
     </div>
     </main>
     <Footer />

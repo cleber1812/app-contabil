@@ -5,6 +5,7 @@ import Modal from '../components/ErrorModal'
 import Footer from '../components/Footer';
 import api from '../service/api';
 import '../App.css';
+import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
 
 export function Login() {
     const navigate = useNavigate();
@@ -12,6 +13,8 @@ export function Login() {
 
     // Estado para controlar a abertura/fechamento do modal de erro
     const [errorModalOpen, setErrorModalOpen] = useState(false);
+    
+    const [isLoading, setIsLoading] = useState(false); // Estado para controlar o carregamento
 
     const [formData, setFormData] = useState({      
       email: '',
@@ -25,6 +28,7 @@ export function Login() {
 
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
+      setIsLoading(true); // Inicia o carregamento
       try {      
         const response = await api.post('/login', formData);
 
@@ -64,7 +68,9 @@ export function Login() {
           console.error('Erro ao fazer login:', error);
           // Abrir o modal de erro
           setErrorModalOpen(true);
-        }
+      } finally {
+        setIsLoading(false); // Termina o carregamento
+      }
     };
 
     return (
@@ -72,7 +78,13 @@ export function Login() {
         <main>
         <div className="container">
           <h1>Login</h1>
-          <form onSubmit={handleSubmit}>
+          {isLoading ? (
+            <div className="loader-container">
+              <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
+              <p>Carregando...</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit}>
             <label> Email: <input
               type="STRING" 
               name="email"
@@ -91,6 +103,7 @@ export function Login() {
         
             <button type="submit">Fazer login</button>
           </form>
+          )}
 
           <button type="button" onClick={() => navigate('/cadastrarusuario')}>
             Realizar cadastro

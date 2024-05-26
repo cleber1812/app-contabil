@@ -1,4 +1,12 @@
-body {
+/* Reset básico para garantir o preenchimento correto da página */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo para o body e html para garantir que ocupem toda a altura */
+html, body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -122,21 +130,23 @@ footer {
   /* overflow-x: auto; Adiciona barra de rolagem horizontal se o conteúdo exceder a largura */
 }
 
-/* Estilo para a seção esquerda */
-.left {
+/* Estilo para as seções dentro do footer */
+.left, .center, .right {
   flex: 1;
+}
+
+/* Estilo para a seção esquerda */
+.left {  
   text-align: left;
 }
 
 /* Estilo para a seção central */
-.center {
-  flex: 1;
+.center {  
   text-align: center;
 }
 
 /* Estilo para a seção direita */
-.right {
-  flex: 1;
+.right {  
   text-align: right;
   display: flex;
   justify-content: flex-end;
@@ -372,4 +382,13 @@ button:hover {
   margin-inline: 20px;
 } */
 
+/* ESTILO PARA LOADER */
 
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Altura total da viewport */
+  color: #19647E;
+}
