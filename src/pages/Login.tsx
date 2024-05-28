@@ -54,6 +54,7 @@ export function Login() {
           // Armazena o token no localStorage
           localStorage.setItem('token', response.data.token);
           // console.log(response.data.token);
+          localStorage.setItem('nome', response.data.nome); // Armazenar o nome do usuário
   
           // Navega para a página desejada após o login (use o useHistory para isso)
           // history.push(`/minhasempresas/${response.data.id}`);
