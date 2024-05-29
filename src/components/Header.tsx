@@ -22,6 +22,10 @@ const Header: React.FC = () => {
     navigate('/');
   };
 
+  const voltar = () => {    
+    navigate(-1);
+  };
+
   return (
     <header>
       <div className="left">
@@ -29,9 +33,10 @@ const Header: React.FC = () => {
       </div>      
       <div className="right"> 
         {nomeUsuario && <p>Bem-vindo, {nomeUsuario}</p>}       
+        <button onClick={voltar}>Voltar</button>
         <button onClick={logOut}>Sair
         <FontAwesomeIcon icon={faSignOut} transform="right-5" />
-        </button>
+        </button>        
       </div>
     </header>
   );
