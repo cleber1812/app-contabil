@@ -4,9 +4,11 @@ import api from '../service/api';
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
 
 export function AtualizarEmpresa() { 
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false); // Estado para controlar o carregamento
     
     const { id, userID } = useParams<{
         id: string;        
@@ -40,6 +42,7 @@ export function AtualizarEmpresa() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsLoading(true); // Inicia o carregamento
         try {
           await api.put(`/empresa/${id}`, formData);
     
@@ -48,6 +51,10 @@ export function AtualizarEmpresa() {
           navigate(-1);
         } catch (error) {
           console.error('Erro ao enviar atualização da empresa:', error);
+          navigate('/');
+          return null; // Retorna null para parar a renderização
+        } finally {
+          setIsLoading(false); // Termina o carregamento
         }
     };
 
@@ -55,8 +62,14 @@ export function AtualizarEmpresa() {
       <div id="root">
       <Header />
       <main>        
-       <div className="container">
-            <h1>Atualizar empresa</h1>
+        <div className="container">
+          <h1>Atualizar empresa</h1>
+            {isLoading ? (
+              <div className="loader-container">
+                <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
+                <p>Carregando...</p>
+              </div>
+            ) : (
             <form onSubmit={handleSubmit}>                               
 
                 <label> Empresa  
@@ -70,9 +83,10 @@ export function AtualizarEmpresa() {
                 
                 <button type="submit">Atualizar</button>
             </form>
-       </div>
-       </main>
-       <Footer />
+            )}
+        </div>
+      </main>
+      <Footer />
       </div>
     ) 
 }

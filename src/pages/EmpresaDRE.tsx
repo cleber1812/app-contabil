@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import api from '../service/api';
 import CustomDatePicker from '../components/DatePickerComponent'; // Importe o novo componente
@@ -40,7 +40,7 @@ function calcularSomaSaldoGrupoPrincipal(lancamentos: any, grupoPrincipal: any) 
 }
 
 export function DreEmpresa() {  
-
+  const navigate = useNavigate();
   const { fk_id_empresa } = useParams<{ fk_id_empresa: string }>();
   const [startDate, setStartDate] = useState<Date>(new Date()); 
   const [endDate, setEndDate] = useState<Date>(new Date());    
@@ -59,7 +59,9 @@ export function DreEmpresa() {
     );
   }  
   if (isError) {
-    return <p>Ocorreu um erro ao buscar lançamentos.</p>;
+    // return <p>Ocorreu um erro ao buscar lançamentos.</p>;        
+    navigate('/');
+    return null; // Retorna null para parar a renderização
   }
 
   if (lancamentos) {

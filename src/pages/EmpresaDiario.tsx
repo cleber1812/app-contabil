@@ -1,7 +1,7 @@
 import { useState } from 'react';
 // import DatePicker from 'react-datepicker';
 // import 'react-datepicker/dist/react-datepicker.css';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import api from '../service/api';
 import CustomDatePicker from '../components/DatePickerComponent'; // Importe o novo componente
@@ -24,7 +24,7 @@ async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate: Date = 
 }
 
 export function DiarioEmpresa() {  
-  
+  const navigate = useNavigate();
   const { fk_id_empresa } = useParams<{ fk_id_empresa: string }>();
   const [startDate, setStartDate] = useState<Date>(new Date());
   // const [startDate, setStartDate] = useState<Date>(new Date('2023-01-01'));  
@@ -46,7 +46,9 @@ export function DiarioEmpresa() {
     );
   }  
   if (isError) {
-    return <p>Ocorreu um erro ao buscar lançamentos.</p>;
+    // return <p>Ocorreu um erro ao buscar lançamentos.</p>;        
+    navigate('/');
+    return null; // Retorna null para parar a renderização
   }
 
         return (

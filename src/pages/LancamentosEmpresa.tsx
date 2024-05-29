@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilSquare, faTrash } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
@@ -19,7 +19,7 @@ async function fetchLancamentosEmpresa(fk_id_empresa: string) {
 }
 
 export function LancamentosEmpresa() { 
-    
+  const navigate = useNavigate();
 // const { fk_id_empresa } = useParams<{ fk_id_empresa: string }>();
 // const { data: lancamentos, isLoading, isError } = useQuery('lancamentos', fetchLancamentos);  
   // const { fk_id_empresa, userID } = useParams<{
@@ -45,7 +45,9 @@ export function LancamentosEmpresa() {
     );
   }  
   if (isError) {
-    return <p>Ocorreu um erro ao buscar lançamentos.</p>;
+    // return <p>Ocorreu um erro ao buscar lançamentos.</p>;
+    navigate('/');
+    return null; // Retorna null para parar a renderização
   }
   
   // Função para configurar o ID do lançamento a ser excluído

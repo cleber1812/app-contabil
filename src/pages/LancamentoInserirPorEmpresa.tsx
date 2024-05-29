@@ -7,9 +7,11 @@ import ListaContas from '../components/ListaContasID'; // Certifique-se de forne
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
 
 export function InserirLancamentoEmpresa() { 
     const navigate = useNavigate();  // Obtenha o objeto de navegação
+    const [isLoading, setIsLoading] = useState(false); // Estado para controlar o carregamento
 
     // const { fk_id_empresa, userID } = useParams<{
     const { fk_id_empresa } = useParams<{
@@ -53,6 +55,7 @@ export function InserirLancamentoEmpresa() {
     
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsLoading(true); // Inicia o carregamento
         try {
           // Fazer a requisição POST para a API        
           // await api.post('/lancamento/:id', formData);
@@ -76,7 +79,11 @@ export function InserirLancamentoEmpresa() {
         } catch (error) {
             console.error('Erro ao enviar lançamento:', error);
             // Adicionar lógica de tratamento de erro, se necessário
-          }
+            navigate('/');
+            return null; // Retorna null para parar a renderização
+        } finally {
+          setIsLoading(false); // Termina o carregamento
+        }
     };
   
     return (
@@ -84,7 +91,13 @@ export function InserirLancamentoEmpresa() {
         <Header />
         <main>
         <div className="container">
-            <h1>Inserir Lançamento por Empresa</h1>
+          <h1>Inserir Lançamento por Empresa</h1>
+          {isLoading ? (
+            <div className="loader-container">
+              <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
+              <p>Carregando...</p>
+            </div>
+          ) : (            
             <form onSubmit={handleSubmit}>
                 
                 {/* <label> Empresa: <input
@@ -161,6 +174,7 @@ export function InserirLancamentoEmpresa() {
                 
                 <button type="submit">Enviar</button>
             </form>
+          )}
           </div>
           </main>
           <Footer />

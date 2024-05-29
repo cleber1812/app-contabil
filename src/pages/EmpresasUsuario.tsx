@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from 'react-query';
 // import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import api from '../service/api';
 import CriarEmpresaModal from '../components/CriarEmpresaModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,7 +24,7 @@ async function fetchEmpresas() {
 }
 
 export function EmpresasUsuario() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -34,12 +34,12 @@ export function EmpresasUsuario() {
   // const { data: empresas, isLoading, isError } = useQuery('empresas', () => fetchEmpresas(userID ?? '2'));
   // const { data: empresas, isLoading, isError, refetch } = useQuery('empresas', () => fetchEmpresas(userID ?? '2'), {
   const { data: empresas, isLoading, isError, refetch } = useQuery('empresas', () => fetchEmpresas(), {  
-      refetchOnWindowFocus: true,
+      refetchOnWindowFocus: true,      
   });
 
   // Adiciona estado para armazenar o ID do lançamento a ser excluído
   const [empresaIdToDelete, setEmpresaIdToDelete] = useState<number | null>(null);
-
+  
   if (isLoading) {
     return (
       <div className="loader-container">
@@ -50,7 +50,9 @@ export function EmpresasUsuario() {
   }
 
   if (isError) {
-    return <p>Ocorreu um erro ao buscar empresas.</p>;
+    // return <p>Ocorreu um erro ao buscar empresas.</p>;    
+    navigate('/');
+    return null; // Retorna null para parar a renderização
   }
 
   //Função para criar uma empresa direto na página de listagem de empresas através do modal

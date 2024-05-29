@@ -5,6 +5,7 @@ import ListaContasID from '../components/ListaContasID'; // Certifique-se de for
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
 
 // //Posso tirar essa interface lá do useState<FormData> que funciona também
 // interface FormData {
@@ -19,6 +20,7 @@ import Footer from '../components/Footer';
   
 export function AtualizarLancamentoEmpresa() { 
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false); // Estado para controlar o carregamento
     
     // const { id, fk_id_empresa, userID } = useParams<{
     const { id, fk_id_empresa } = useParams<{
@@ -61,7 +63,9 @@ export function AtualizarLancamentoEmpresa() {
         return response.data.conta; // Substitua "nomeDaConta" pelo nome real do campo na sua resposta da API
       } catch (error) {
         console.error('Erro ao obter nome da conta:', error);
-        return '';
+        // return '';
+        navigate('/');
+        return null; // Retorna null para parar a renderização
       }
     };
        
@@ -82,6 +86,8 @@ export function AtualizarLancamentoEmpresa() {
             
           } catch (error) {
             console.error('Erro ao carregar lançamento:', error);
+            navigate('/');
+            return null; // Retorna null para parar a renderização
           }
         };
         carregarLancamento();
@@ -109,6 +115,7 @@ export function AtualizarLancamentoEmpresa() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsLoading(true); // Inicia o carregamento
         try {
           await api.put(`/lancamento/${id}`, formData);
     
@@ -117,6 +124,10 @@ export function AtualizarLancamentoEmpresa() {
           navigate(-1);
         } catch (error) {
           console.error('Erro ao enviar atualização de lançamento:', error);
+          navigate('/');
+          return null; // Retorna null para parar a renderização
+        } finally {
+          setIsLoading(false); // Termina o carregamento
         }
     };
 
@@ -125,7 +136,13 @@ export function AtualizarLancamentoEmpresa() {
       <Header />
       <main>        
        <div className="container">
-            <h1>Atualizar Lançamento</h1>
+          <h1>Atualizar Lançamento</h1>
+            {isLoading ? (
+              <div className="loader-container">
+                <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
+                <p>Carregando...</p>
+              </div>
+            ) : (
             <form onSubmit={handleSubmit}>                
                 {/* <label> Empresa: <input
                     type="number" 
@@ -196,6 +213,7 @@ export function AtualizarLancamentoEmpresa() {
                 
                 <button type="submit">Atualizar</button>
             </form>
+            )}
        </div>
        </main>
        <Footer />
