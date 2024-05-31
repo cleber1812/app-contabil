@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 import api from '../service/api';
-import ListaContasID from '../components/ListaContasID'; // Certifique-se de fornecer o caminho correto para o componente ListaContas
+import { useNavigate, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
+import ListaContas from '../components/ListaContasID'; // Certifique-se de fornecer o caminho correto para o componente ListaContas
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -41,16 +43,51 @@ export function AtualizarLancamentoEmpresa() {
     });
 
      //Para ListaContasID
-     const [contaDebConsultada, setContaDebConsultada] = useState('');
-     const [contaCredConsultada, setContaCredConsultada] = useState('');    
+    //  const [contaDebConsultada, setContaDebConsultada] = useState('');
+    //  const [contaCredConsultada, setContaCredConsultada] = useState('');    
+    const [contaDebConsultada, setContaDebConsultada] = useState<{ id: string, conta: string, grupo: string } | null>(null);
+    const [contaCredConsultada, setContaCredConsultada] = useState<{ id: string, conta: string, grupo: string } | null>(null);
+
+    const [debitoMensagem, setDebitoMensagem] = useState<string>('');
+    const [creditoMensagem, setCreditoMensagem] = useState<string>('');
+
+    const validarLancamento = () => {      
+      let debitoMensagem = '';
+      let creditoMensagem = '';
+
+      if (contaDebConsultada && (contaDebConsultada.grupo === 'ATIVO' || contaDebConsultada.grupo === 'DESPESA' || contaDebConsultada.grupo === 'RETIFICADORA DO PASSIVO')) {
+        debitoMensagem = `A conta Debitada (${contaDebConsultada.conta}) é do grupo ${contaDebConsultada.grupo} e aumentará o saldo em R$ ${formData.valor}.\n`;
+      } else if (contaDebConsultada) {
+        debitoMensagem = `A conta Debitada (${contaDebConsultada.conta}) é do grupo ${contaDebConsultada.grupo} e diminuirá o saldo em R$ ${formData.valor}.\n`;
+      }
+  
+      if (contaCredConsultada && (contaCredConsultada.grupo === 'PASSIVO' || contaCredConsultada.grupo === 'RECEITA' || contaCredConsultada.grupo === 'RETIFICADORA DO ATIVO')) {
+        creditoMensagem= `A conta Creditada (${contaCredConsultada.conta}) é do grupo ${contaCredConsultada.grupo} e aumentará o saldo em R$ ${formData.valor}.\n`;
+      } else if (contaCredConsultada) {
+        creditoMensagem= `A conta Creditada (${contaCredConsultada.conta}) é do grupo ${contaCredConsultada.grupo} e diminuirá o saldo em R$ ${formData.valor}.\n`;
+      }
+  
+      setDebitoMensagem(debitoMensagem);
+      setCreditoMensagem(creditoMensagem);
+    };
 
     //Para ListaContasID
-    const handleContaDebitadaSelect = (id: string) => {
-      setContaDebConsultada(id);        
+    // const handleContaDebitadaSelect = (id: string) => {
+    //   setContaDebConsultada(id);        
+    // };
+
+    const handleContaDebitadaSelect = (id: string, conta: string, grupo: string) => {
+      setContaDebConsultada({ id, conta, grupo });      
+      validarLancamento();
     };
-    
-    const handleContaCreditadaSelect = (id: string) => {
-      setContaCredConsultada(id);        
+
+    // const handleContaCreditadaSelect = (id: string) => {
+    //   setContaCredConsultada(id);        
+    // };
+
+    const handleContaCreditadaSelect = (id: string, conta: string, grupo: string) => {
+      setContaCredConsultada({ id, conta, grupo });      
+      validarLancamento();
     };
     
      //Para mostrar a conta antiga no SPAN
@@ -94,19 +131,34 @@ export function AtualizarLancamentoEmpresa() {
     }, [id]);
 
     //Para ListaContasID
-    useEffect(() => {
-      setFormData((prevData) => ({
-        ...prevData,
-        fk_id_conta_debito: String(contaDebConsultada),
-      }));
-    }, [contaDebConsultada]);
+    // useEffect(() => {
+    //   setFormData((prevData) => ({
+    //     ...prevData,
+    //     fk_id_conta_debito: String(contaDebConsultada),
+    //   }));
+    // }, [contaDebConsultada]);
     
+    // useEffect(() => {
+    //   setFormData((prevData) => ({
+    //     ...prevData,
+    //     fk_id_conta_credito: String(contaCredConsultada),
+    //   }));
+    // }, [contaCredConsultada]);
+
     useEffect(() => {
-      setFormData((prevData) => ({
-        ...prevData,
-        fk_id_conta_credito: String(contaCredConsultada),
-      }));
-    }, [contaCredConsultada]);
+      if (contaDebConsultada) {
+        setFormData((prevData) => ({ 
+          ...prevData, 
+          fk_id_conta_debito: contaDebConsultada.id 
+        }));
+      }
+      if (contaCredConsultada) {
+        setFormData((prevData) => ({ 
+          ...prevData, 
+          fk_id_conta_credito: contaCredConsultada.id 
+        }));
+      }
+    }, [contaDebConsultada, contaCredConsultada]);
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -186,10 +238,17 @@ export function AtualizarLancamentoEmpresa() {
                     value={formData.fk_id_conta_debito}
                     onChange={handleChange}
                   />  */}  
-                  <span>Conta Débito Atual: </span>                
-                  <span style={{ color: "#19647E" }}>{nomeDaContaDebitoAtual}</span>
-                  <ListaContasID onSelectConta={handleContaDebitadaSelect} />
+                  <span>Conta Débito Atual: </span>   
+                  <span style={{ color: "#19647E" }}>{nomeDaContaDebitoAtual}</span> 
+                  <span className="tooltip-container">
+                    <FontAwesomeIcon icon={faQuestionCircle} className="tooltip-icon" />
+                    <span className="tooltip-text">
+                      AUMENTA: Ativo, Despesas, Retificadoras do Passivo. <br></br> DIMINUI: Passivo, Receita, Retificadoras do Ativo.                   
+                    </span>
+                  </span>
+                  <ListaContas onSelectConta={handleContaDebitadaSelect} />
                 </label>
+                {debitoMensagem && <div className="mensagem-validacao">{debitoMensagem}</div>}
 
                 <label> 
                   {/* Conta creditada:  */}
@@ -201,8 +260,15 @@ export function AtualizarLancamentoEmpresa() {
                   />  */}     
                   <span>Conta Crédito Atual: </span>             
                   <span style={{ color: "#19647E" }}>{nomeDaContaCreditoAtual}</span>
-                  <ListaContasID onSelectConta={handleContaCreditadaSelect} />                  
+                  <span className="tooltip-container">
+                    <FontAwesomeIcon icon={faQuestionCircle} className="tooltip-icon" />
+                    <span className="tooltip-text">
+                      AUMENTA: Passivo, Receita, Retificadoras do Ativo. <br></br> DIMINUI: Ativo, Despesa, Retificadoras do Passivo.                   
+                  </span>
+                  </span>
+                  <ListaContas onSelectConta={handleContaCreditadaSelect} />                  
                 </label>
+                {creditoMensagem && <div className="mensagem-validacao">{creditoMensagem}</div>}
                
                 {/* <label> Usuário: <input
                     type="number" 

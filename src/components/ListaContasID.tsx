@@ -1,11 +1,12 @@
-// ListaContas.tsx
+// ListaContasID.tsx
 import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import api from '../service/api';
 import '../App.css'; // Importe os estilos
 
 interface ListaContasProps {  
-  onSelectConta: (id: string, conta: string) => void;  
+  // onSelectConta: (id: string, conta: string) => void; 
+  onSelectConta: (id: string, conta: string, grupo: string) => void; 
 }
 
 const compararContas = (contaA: string, contaB: string) => {
@@ -25,7 +26,8 @@ function ListaContasID({ onSelectConta}: ListaContasProps) {
     if (contas && contas.length > 0) {
       const selectedContaObject = contas.find((conta: any) => conta.conta === selectedConta);      
       if (selectedContaObject) {
-        onSelectConta(selectedContaObject.id, selectedConta);        
+        // onSelectConta(selectedContaObject.id, selectedConta);        
+        onSelectConta(selectedContaObject.id, selectedContaObject.conta, selectedContaObject.nome_grupo_principal);
       }
     }
   }, [selectedConta, onSelectConta, contas]);    
@@ -54,13 +56,13 @@ function ListaContasID({ onSelectConta}: ListaContasProps) {
         ))}
       </select>
       {/* Aqui você pode adicionar o elemento div ou span para mostrar informações ao lado do select */}
-      {selectedConta && (
+      {/* {selectedConta && (
         <div style={{ color: "#88A37B" }}>
-          <span>Grupo da Conta Selecionada: </span>
+          <span>Conta "{selectedConta}" é do Grupo </span> */}
           {/* Aqui você pode exibir as informações relevantes da conta, como o grupo ao qual ela pertence */}
-           {contas.find((conta: any) => conta.conta === selectedConta)?.nome_grupo_principal}
+           {/* {contas.find((conta: any) => conta.conta === selectedConta)?.nome_grupo_principal}          
         </div>
-      )}
+      )} */}
     </div>
   );
 }
