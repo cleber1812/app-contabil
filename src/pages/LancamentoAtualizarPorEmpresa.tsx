@@ -160,7 +160,7 @@ export function AtualizarLancamentoEmpresa() {
       }
     }, [contaDebConsultada, contaCredConsultada]);
     
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
@@ -222,11 +222,12 @@ export function AtualizarLancamentoEmpresa() {
                 </label>
 
                 <label> Descrição: 
-                  <input
-                    type="STRING" 
+                  <textarea
+                    // type="STRING" 
                     name="descricao"
                     value={formData.descricao}
                     onChange={handleChange}
+                    maxLength={100}
                   /> 
                 </label>
 

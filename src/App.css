@@ -173,23 +173,27 @@ form {
 }
 
 label {
-  display: block;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
   font-weight: bold;
   margin-bottom: 10px;
   color: #3A4832;
 }
 
-input {  
-  width: 95%;
+input, .selectConta {  
+  width: 100%;
   padding: 8px;
-  margin-left: 15px;
+  /* margin-left: 15px; */
   margin-bottom: 15px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   transition: border-color 0.3s;
 }
 
-input:focus {
+input:focus, .selectConta:focus {
   outline: none;
   border-color: #19647E;
   box-shadow: 0px 0px 3px rgba(0, 123, 255, 0.2);
@@ -223,6 +227,25 @@ button:hover {
   font-size: 16px;
   margin-left: 5px;
   transition: background-color 0.3s; */
+}
+
+textarea {
+  width: 95%;
+  max-width: 410px;  
+  padding: 8px;  
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif';
+  font-size: 16px;
+  resize: none;
+  transition: border-color 0.3s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #19647E;
+  box-shadow: 0px 0px 3px rgba(0, 123, 255, 0.2);
 }
 
 .button-deletar:hover {
@@ -351,18 +374,14 @@ button:hover {
 
 /* ESTILIZAÇÃO LISTACONTAS*/
 
-.selectConta {
+/* .selectConta { */
   /* background-color:#19647E; */
-  font-size: 16px;
+  /* font-size: 16px;
   max-width: 300px;
-  padding: 5px ;
+  padding: 8px ; */
   /* color:#C43408;   */
   /* margin-right: 10px;  */
-
-}
-
-/* ESTILIZAÇÃO LISTACONTAS*/
-
+/* } */
 
 /* ESTILO PARA MODAL DE EXCLUSÃO */
 
@@ -404,8 +423,8 @@ button:hover {
   margin: 15px 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: lighter;
+  font-size: 16px;
   transition: background-color 0.3s, border-color 0.3s;
 }
 

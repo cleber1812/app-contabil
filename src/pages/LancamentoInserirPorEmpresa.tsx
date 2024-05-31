@@ -98,7 +98,7 @@ export function InserirLancamentoEmpresa() {
       }
     }, [contaDebConsultada, contaCredConsultada]);
     
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
@@ -158,7 +158,7 @@ export function InserirLancamentoEmpresa() {
                 /> </label> */}
 
                 <label> Data: 
-                  <input style={{ maxWidth: 300 }}
+                  <input style={{ maxWidth: 150, fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif'}}
                     type="DATE" 
                     name="data"
                     value={formData.data}
@@ -167,7 +167,7 @@ export function InserirLancamentoEmpresa() {
                 </label>
 
                 <label> Valor: 
-                  <input style={{ maxWidth: 300 }}
+                  <input style={{ maxWidth: 150 }}
                     type="number" 
                     name="valor"
                     value={formData.valor}
@@ -176,16 +176,18 @@ export function InserirLancamentoEmpresa() {
                 </label>
 
                 <label> Descrição: 
-                  <input
-                    type="STRING" 
+                  <textarea
+                    // type="STRING" 
                     name="descricao"
                     placeholder='Ex: Compras de mercadoria a prazo conf. NF 123456.'
                     value={formData.descricao}
                     onChange={handleChange}
+                    maxLength={100}
                   /> 
                 </label>
 
                 <label> 
+                  <div style={{ flexDirection: "row"}}>
                   <span>Conta debitada: </span> 
                   <span className="tooltip-container">
                     <FontAwesomeIcon icon={faQuestionCircle} className="tooltip-icon" />
@@ -200,11 +202,13 @@ export function InserirLancamentoEmpresa() {
                     />  */}
                     </span>
                   </span>
+                  </div>
                   <ListaContas onSelectConta={handleContaDebitadaSelect} />
                 </label>
                 {debitoMensagem && <div className="mensagem-validacao">{debitoMensagem}</div>}
 
                 <label>  
+                  <div style={{ flexDirection: "row"}}>
                   <span> Conta creditada: </span>
                   <span className="tooltip-container">
                     <FontAwesomeIcon icon={faQuestionCircle} className="tooltip-icon" />
@@ -218,6 +222,7 @@ export function InserirLancamentoEmpresa() {
                   /> */}
                   </span>
                   </span>
+                  </div>
                     <ListaContas onSelectConta={handleContaCreditadaSelect} /> 
                 </label>                
                 {creditoMensagem && <div className="mensagem-validacao">{creditoMensagem}</div>}

@@ -119,6 +119,7 @@ export function LancamentosEmpresa() {
                             <td style={{ textAlign: 'right' }}>{lancamento.valor.toFixed(2)}</td>
                             {/* <td>{lancamento.fk_id_usuario}</td>  */}
                             <td>
+                              <div style={{ width: 150 }}>
                               {/* <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}/${userID}`}> */}
                               <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}`} title="Clique para editar lançamento">
                                 <button>
@@ -130,6 +131,7 @@ export function LancamentosEmpresa() {
                                 <FontAwesomeIcon icon={faTrash} />
                                 {/* Excluir */}
                               </button>
+                              </div>
                             </td>                           
                         </tr>      
                       ))}            
