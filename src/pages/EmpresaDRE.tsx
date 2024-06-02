@@ -86,31 +86,32 @@ export function DreEmpresa() {
           <div id="root">
           <Header />
           <main>
-          <div className="container">
-            <h1>DRE</h1>
-                <label>Intervalo de datas:</label>            
+            <div className="container">
+              <h1>DRE</h1>
+              <label>Intervalo de datas:</label>            
               <div>
                 <CustomDatePicker selectedDate={startDate} onChangeDate={setStartDate} />
               </div>
               <div>
                 <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
               </div>
+              <div className="table-container">
                 <table className="custom-table">
-                    <thead>
-                        <tr>                            
-                            <th>Conta</th>                                                                                   
-                            <th>ValorD</th>
-                            <th>ValorC</th>
-                            <th>Saldo</th>                            
-                        </tr>
-                    </thead>
-                    <tbody>                       
-                      {gruposPrincipal.map((grupoPrincipal, index) => {
+                  <thead>
+                    <tr>                            
+                      <th>Conta</th>                                                                                   
+                      <th>ValorD</th>
+                      <th>ValorC</th>
+                      <th>Saldo</th>                            
+                    </tr>
+                  </thead>
+                  <tbody>                       
+                    {gruposPrincipal.map((grupoPrincipal, index) => {
 
-                        const lancamentosGrupoPrincipal = groupedLancamentosPrincipal[grupoPrincipal];
-                        const isResultado = grupoPrincipal === 'Resultado';
+                      const lancamentosGrupoPrincipal = groupedLancamentosPrincipal[grupoPrincipal];
+                      const isResultado = grupoPrincipal === 'Resultado';
 
-                        return (
+                      return (
                           <React.Fragment key={index}>
 
                             <tr key={`header_${grupoPrincipal}`} className={isResultado ? 'resultado-row' : ''}>                            
@@ -130,17 +131,18 @@ export function DreEmpresa() {
                               </tr> 
                              ))}
                           </React.Fragment>
-                        );     
-                      })}                      
-                      <tr>
-                        <td className="BP-subGrupo" colSpan={1}><strong>LUCRO LÍQUIDO</strong></td>
-                        <td className="BP-subGrupo"><strong>{lucroLiquidoD}</strong></td>
-                        <td className="BP-subGrupo"><strong>{lucroLiquidoC}</strong></td>
-                        <td className="BP-subGrupo"><strong>{lucroLiquido}</strong></td>
-                      </tr>                
-                    </tbody>
+                      );     
+                    })}                      
+                    <tr>
+                      <td className="BP-subGrupo" colSpan={1}><strong>LUCRO LÍQUIDO</strong></td>
+                      <td className="BP-subGrupo"><strong>{lucroLiquidoD}</strong></td>
+                      <td className="BP-subGrupo"><strong>{lucroLiquidoC}</strong></td>
+                      <td className="BP-subGrupo"><strong>{lucroLiquido}</strong></td>
+                    </tr>                
+                  </tbody>
                 </table> 
-          </div>
+              </div>
+            </div>
           </main>
           <Footer />
           </div>

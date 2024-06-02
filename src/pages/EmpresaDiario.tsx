@@ -79,7 +79,8 @@ export function DiarioEmpresa() {
                 /> */}
                 <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
               </div>
-              {/* <button onClick={() => refetch()}>Atualizar</button> */}            
+              {/* <button onClick={() => refetch()}>Atualizar</button> */}
+              <div className="table-container">
                 <table className="custom-table">
                     <thead>
                         <tr>                           
@@ -103,7 +104,8 @@ export function DiarioEmpresa() {
                         </tr>      
                       ))}            
                     </tbody>
-                </table> 
+                </table>
+              </div> 
           </div>
           </main>
           <Footer />

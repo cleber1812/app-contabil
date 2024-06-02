@@ -27,16 +27,17 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header>
+    <header className="header">
       <div className="left">
         <img src={logomarca3} alt="Contábil 123" />
-      </div>      
-      <div className="right"> 
-        {nomeUsuario && <p>Bem-vindo, {nomeUsuario}</p>}       
+      </div>
+      <div className="right">
+        {nomeUsuario && <p>Bem-vindo, {nomeUsuario}</p>}
         <button onClick={voltar}>Voltar</button>
-        <button onClick={logOut}>Sair
-        <FontAwesomeIcon icon={faSignOut} transform="right-5" />
-        </button>        
+        <button onClick={logOut}>
+          Sair
+          <FontAwesomeIcon icon={faSignOut} transform="right-5" />
+        </button>
       </div>
     </header>
   );

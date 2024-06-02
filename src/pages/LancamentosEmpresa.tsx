@@ -86,8 +86,9 @@ export function LancamentosEmpresa() {
                 {/* <Link to={`/minhasempresas/${userID}`}> */}
                 <Link to={`/minhasempresas`}>
                   <button>Voltar</button>
-                </Link>                
-                <table className="custom-table">
+                </Link>
+                <div className="table-container">
+                  <table className="custom-table">
                     <thead>
                         <tr>
                             {/* <th>ID</th> */}
@@ -136,7 +137,8 @@ export function LancamentosEmpresa() {
                         </tr>      
                       ))}            
                     </tbody>
-                </table> 
+                  </table> 
+                </div>
                                
                 
               {/* Modal de confirmação de exclusão */}

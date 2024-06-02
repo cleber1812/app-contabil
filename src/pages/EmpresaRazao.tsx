@@ -68,8 +68,8 @@ export function RazaoEmpresa() {
           <div id="root">
           <Header />
           <main>
-          <div className="container">
-            <h1>Livro Razão</h1>
+            <div className="container">
+              <h1>Livro Razão</h1>
               
                 <label>Escolha o intervalo de datas</label>            
               <div className="date-picker-container">
@@ -80,7 +80,8 @@ export function RazaoEmpresa() {
               </div> 
               <div style={{ maxWidth: 300}}>
                   <ListaContas onSelectConta={setContaConsultada} />                  
-              </div>            
+              </div>
+              <div className="table-container">
                 <table className="custom-table">
                     <thead>
                         <tr>                           
@@ -112,8 +113,9 @@ export function RazaoEmpresa() {
                         <td className="BP-Grupo" style={{ textAlign: 'right' }}><strong>{saldoFinal.toFixed(2)}</strong></td>
                       </tr>                                  
                     </tbody>
-                </table> 
-          </div>
+                </table>
+              </div> 
+            </div>
           </main>
           <Footer />
           </div>
