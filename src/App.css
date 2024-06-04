@@ -24,6 +24,9 @@ html, body {
   body {
     font-size: 14px;
   }
+  h1.responsive-title {
+    font-size: 30px;
+  }
   .header {
     flex-direction: column;
     align-items: flex-start;
@@ -35,6 +38,9 @@ html, body {
   body {
     font-size: 16px;
   }
+  h1.responsive-title {
+    font-size: 40px;
+  }
   .header {
     flex-direction: column;
     align-items: flex-start;
@@ -44,17 +50,32 @@ html, body {
 /* Estilo para tablets */
 @media (min-width: 571px) and (max-width: 1024px) {
   body {
-    font-size: 20px;
+    font-size: 18px;
+  }
+  h1.responsive-title {
+    font-size: 60px;
   }
 }
 
 /* Estilo para laptops e desktops maiores */
 @media (min-width: 1025px) {
   body {
-    font-size: 24px;
+    font-size: 20px;
+  }  
+  h1.responsive-title {
+    font-size: 80px;
   }
 }
 
+.responsive-logo {
+  width: 50vw;
+  max-width: 300px;
+}
+
+.responsive-logo-header {
+  width: 90vw;
+  max-width: 280px;
+}
 
 /* Container principal que envolve todo o conteúdo */
 #root {
@@ -80,6 +101,12 @@ main {
 h1 {
   color: #1F271B;
   margin: 5px auto;
+}
+
+h1.responsive-title {
+  /* font-size: 80px; */
+  color: #19647E;
+  transition: font-size 0.3s ease;
 }
 
 h2 {
@@ -255,16 +282,15 @@ button:hover {
   background-color: #114455;
 }
 
-.button-deletar {
+button.editar {  
+  padding: 5px 10px;  
+  margin-left: 5px;  
+}
+
+button.deletar {
   background-color:#F6511D;
-  /* color: #F7FFF7;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-left: 5px;
-  transition: background-color 0.3s; */
+  padding: 5px 10px;  
+  margin-left: 2px;  
 }
 
 textarea {
@@ -417,14 +443,14 @@ textarea:focus {
 
 /* ESTILIZAÇÃO LISTACONTAS*/
 
-/* .selectConta { */
+.selectConta { 
   /* background-color:#19647E; */
-  /* font-size: 16px;
+  /* font-size: 16px; */
   max-width: 300px;
-  padding: 8px ; */
+  /* padding: 8px ; */
   /* color:#C43408;   */
   /* margin-right: 10px;  */
-/* } */
+}
 
 /* ESTILO PARA MODAL DE EXCLUSÃO */
 

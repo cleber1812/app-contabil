@@ -121,7 +121,7 @@ export function EmpresasUsuario() {
               {/* <th>ID</th> */}
               <th>Empresa</th>
               {/* <th>Usuario</th> */}
-              <th>Ações</th>
+              {/* <th>Ações</th> */}
               <th>Relatórios</th>
             </tr>
           </thead>
@@ -129,20 +129,23 @@ export function EmpresasUsuario() {
             {empresas.map((empresa: any) => (
               <tr key={empresa.id}>
                 {/* <td>{empresa.id}</td> */}
-                <td>{empresa.nome_empresa}</td>
+                <td>{empresa.nome_empresa}
+                {/* </td> */}
                 {/* <td>{empresa.fk_id_usuario}</td> */}
-                <td>
+                {/* <td> */}
                   {/* <Link to={`/atualizarempresa/${empresa.id}/${userID}`}> */}
+                  <div>
                   <Link to={`/atualizarempresa/${empresa.id}/`}>
-                  <button title="Clique para editar empresa">
+                  <button className="editar" title="Clique para editar empresa">
                     <FontAwesomeIcon icon={faPencilSquare} />
                     {/* Editar*/}
                   </button>
                   </Link>                              
-                  <button className="button-deletar" onClick={() => confirmDelete(empresa.id)} title="Clique para excluir empresa">
+                  <button className="deletar" onClick={() => confirmDelete(empresa.id)} title="Clique para excluir empresa">
                     <FontAwesomeIcon icon={faTrash} />
                     {/* Excluir */}
                   </button>
+                  </div>
                 </td>
                 <td>
                   {/* <Link to={`/lancamentosempresa/${empresa.id}/${userID}`}> */}

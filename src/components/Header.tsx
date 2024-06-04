@@ -29,7 +29,7 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="left">
-        <img src={logomarca3} alt="Contábil 123" />
+        <img src={logomarca3} className="responsive-logo-header" alt="Contábil 123" />
       </div>
       <div className="right">
         {nomeUsuario && <p>Bem-vindo, {nomeUsuario}</p>}

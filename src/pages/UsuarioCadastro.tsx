@@ -54,7 +54,7 @@ export function CadastrarUsuario() {
     <div id="root"> 
     <main>
     <div className="container">
-      <h1>Cadastar Usuário</h1>
+      <h1>Cadastrar Usuário</h1>
           {isLoading ? (
             <div className="loader-container">
               <ClipLoader color={"#19647E"} loading={isLoading} size={150} />

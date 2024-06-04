@@ -81,12 +81,12 @@ export function LancamentosEmpresa() {
             <h1>Lançamentos</h1>                
                 {/* <Link to={`/inserirlancamentoempresa/${fk_id_empresa}/${userID}`}> */}
                 <Link to={`/inserirlancamentoempresa/${fk_id_empresa}`}>
-                  <button>Inserir lançamento na empresa</button>
+                  <button>Novo lançamento</button>
                 </Link>
                 {/* <Link to={`/minhasempresas/${userID}`}> */}
-                <Link to={`/minhasempresas`}>
+                {/* <Link to={`/minhasempresas`}>
                   <button>Voltar</button>
-                </Link>
+                </Link> */}
                 <div className="table-container">
                   <table className="custom-table">
                     <thead>
@@ -123,12 +123,12 @@ export function LancamentosEmpresa() {
                               <div style={{ width: 150 }}>
                               {/* <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}/${userID}`}> */}
                               <Link to={`/atualizarlancamentoempresa/${lancamento.id}/${fk_id_empresa}`} title="Clique para editar lançamento">
-                                <button>
+                                <button className='editar'>
                                   <FontAwesomeIcon icon={faPencilSquare} />
                                   {/* Editar */}
                                 </button>
                               </Link>                              
-                              <button className="button-deletar" onClick={() => confirmDelete(lancamento.id)} title="Clique para excluir lançamento">
+                              <button className="deletar" onClick={() => confirmDelete(lancamento.id)} title="Clique para excluir lançamento">
                                 <FontAwesomeIcon icon={faTrash} />
                                 {/* Excluir */}
                               </button>

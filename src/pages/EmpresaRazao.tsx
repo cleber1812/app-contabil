@@ -78,7 +78,7 @@ export function RazaoEmpresa() {
               <div>
                 <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
               </div> 
-              <div style={{ maxWidth: 300}}>
+              <div>
                   <ListaContas onSelectConta={setContaConsultada} />                  
               </div>
               <div className="table-container">

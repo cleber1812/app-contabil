@@ -15,15 +15,18 @@ export function Home() {
         <div id="root"> 
         <main>
         <div className="container">
-          <img src={logomarca2} alt="Logo da empresa" />
-          <h1 style={{ fontSize: 80, color: '#19647E' }}>CONTÁBIL123</h1>
+          <img src={logomarca2} className="responsive-logo" alt="Logo da empresa" />
+          <h1 className="responsive-title">CONTÁBIL123</h1>
           <h2>Aprenda a realizar lançamentos contábeis</h2>
           <h2>Veja os relatórios em tempo real</h2>
           {/* <button type="button" onClick={handleGoToCadastro}></button> */}
           <button type="button" onClick={() => navigate('/login')}>
             Login
           </button>
-          <button type="button" onClick={() => navigate('/cadastrarusuario')}>
+          <button 
+            type="button" 
+            style={{ backgroundColor: '#96C0B7' }}
+            onClick={() => navigate('/cadastrarusuario')}>
             Realizar cadastro
           </button>
         

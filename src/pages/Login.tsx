@@ -105,8 +105,13 @@ export function Login() {
             <button type="submit">Fazer login</button>
           </form>
           )}
+          
+          <p>Ainda não é cadastrado?</p>
 
-          <button type="button" onClick={() => navigate('/cadastrarusuario')}>
+          <button 
+            type="button" 
+            style={{ backgroundColor: '#96C0B7' }}
+            onClick={() => navigate('/cadastrarusuario')}>
             Realizar cadastro
           </button>  
           
