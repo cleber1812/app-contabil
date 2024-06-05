@@ -295,7 +295,8 @@ button.deletar {
 
 textarea {
   width: 95%;
-  max-width: 410px;  
+  /* max-width: 410px;   */
+  height: 75px;  
   padding: 8px;  
   margin-bottom: 15px;
   border: 1px solid #ccc;

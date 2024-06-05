@@ -35,8 +35,11 @@ function calcularSomaSaldoGrupoPrincipal(lancamentos: any, grupoPrincipal: any) 
   const somaValorC = lancamentosGrupoPrincipal.reduce((soma: any, lancamento: any) => soma + lancamento.valorC, 0);
   const somaSaldo = lancamentosGrupoPrincipal.reduce((soma: any, lancamento: any) => soma + lancamento.valor, 0);  
 
-  return { somaValorD: somaValorD.toFixed(2), somaValorC: somaValorC.toFixed(2),
-    somaSaldo: somaSaldo.toFixed(2)};
+  return { 
+    somaValorD: somaValorD, 
+    somaValorC: somaValorC,
+    somaSaldo: somaSaldo,
+  };
 }
 
 export function DreEmpresa() {  
@@ -78,9 +81,9 @@ export function DreEmpresa() {
     const saldoDespesas = calcularSomaSaldoGrupoPrincipal(lancamentos, 'Despesa').somaSaldo;
 
     // Calcular o lucro líquido
-    const lucroLiquidoD = (parseFloat(saldoDespesasD) - parseFloat(saldoReceitasD)).toFixed(2);
-    const lucroLiquidoC = (parseFloat(saldoReceitasC) - parseFloat(saldoDespesasC)).toFixed(2);
-    const lucroLiquido = (parseFloat(saldoReceitas) + parseFloat(saldoDespesas)).toFixed(2);
+    const lucroLiquidoD = (parseFloat(saldoDespesasD) - parseFloat(saldoReceitasD)).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const lucroLiquidoC = (parseFloat(saldoReceitasC) - parseFloat(saldoDespesasC)).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const lucroLiquido = (parseFloat(saldoReceitas) + parseFloat(saldoDespesas)).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
         return (
           <div id="root">
@@ -116,18 +119,18 @@ export function DreEmpresa() {
 
                             <tr key={`header_${grupoPrincipal}`} className={isResultado ? 'resultado-row' : ''}>                            
                               <td className="BP-subGrupo" colSpan={1}>{grupoPrincipal.toUpperCase()}</td>                         
-                              <td className="BP-subGrupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorD}</td>
-                              <td className="BP-subGrupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorC}</td>
-                              <td className="BP-subGrupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldo}</td>                              
+                              <td className="BP-subGrupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorD.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                              <td className="BP-subGrupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaValorC.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                              <td className="BP-subGrupo" >{calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldo.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>                              
                             </tr>
 
                             {lancamentosGrupoPrincipal.map((lancamento: any) => (
                         
                               <tr key={lancamento.id} className={isResultado ? 'resultado-row' : ''}>                               
                                   <td>{lancamento.conta}</td>                                 
-                                  <td>{lancamento.valorD.toFixed(2)}</td>
-                                  <td>{lancamento.valorC.toFixed(2)}</td>                                   
-                                  <td>{lancamento.valor.toFixed(2)}</td>                                  
+                                  <td>{lancamento.valorD.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                                  <td>{lancamento.valorC.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>                                   
+                                  <td>{lancamento.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>                                  
                               </tr> 
                              ))}
                           </React.Fragment>

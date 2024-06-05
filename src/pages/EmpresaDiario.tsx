@@ -99,8 +99,8 @@ export function DiarioEmpresa() {
                             <td style={{ textAlign: 'left' }}>{lancamento.descricao}</td>
                             <td>{lancamento.contaDebito}</td>
                             <td>{lancamento.contaCredito}</td>
-                            <td style={{ textAlign: 'right' }}>{lancamento.valor.toFixed(2)}</td>
-                            {/* <td>{lancamento.usuario}</td>                                                        */}
+                            <td style={{ textAlign: 'right' }}>{lancamento.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                            {/* <td>{lancamento.usuario}</td>*/}
                         </tr>      
                       ))}            
                     </tbody>

@@ -96,21 +96,21 @@ export function RazaoEmpresa() {
                         <tr key={lancamento.id}>                            
                             <td>{lancamento.data}</td>
                             <td style={{ textAlign: 'left' }}>{lancamento.descricao}</td>
-                            <td style={{ textAlign: 'right' }}>{lancamento.valorDebitado.toFixed(2)}</td>
-                            <td style={{ textAlign: 'right' }}>{lancamento.valorCreditado.toFixed(2)}</td>                            
+                            <td style={{ textAlign: 'right' }}>{lancamento.valorDebitado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                            <td style={{ textAlign: 'right' }}>{lancamento.valorCreditado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>                            
                         </tr>
                               
                       ))}
                       <tr>
                         <td className="BP-subGrupo" style={{ textAlign: 'right' }} colSpan={2}><strong>Saldo Total:</strong></td>
-                        <td className="BP-subGrupo" style={{ textAlign: 'right' }}><strong>{saldoTotalDebitado.toFixed(2)}</strong></td>
-                        <td className="BP-subGrupo" style={{ textAlign: 'right' }}><strong>{saldoTotalCreditado.toFixed(2)}</strong></td>
+                        <td className="BP-subGrupo" style={{ textAlign: 'right' }}><strong>{saldoTotalDebitado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></td>
+                        <td className="BP-subGrupo" style={{ textAlign: 'right' }}><strong>{saldoTotalCreditado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></td>
                       </tr>
                       <tr>
                         {/* <td style={{ textAlign: 'right' }} colSpan={3}><strong>Saldo Final:</strong></td>
                         <td style={{ textAlign: 'right' }}><strong>{saldoFinal.toFixed(2)}</strong></td> */}
                         <td className="BP-Grupo" style={{ textAlign: 'right' }} colSpan={saldoFinalColumn}><strong>Saldo Final:</strong></td>
-                        <td className="BP-Grupo" style={{ textAlign: 'right' }}><strong>{saldoFinal.toFixed(2)}</strong></td>
+                        <td className="BP-Grupo" style={{ textAlign: 'right' }}><strong>{saldoFinal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></td>
                       </tr>                                  
                     </tbody>
                 </table>

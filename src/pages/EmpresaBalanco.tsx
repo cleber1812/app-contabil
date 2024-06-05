@@ -58,8 +58,10 @@ function calcularSomaSaldoGrupo2(lancamentos: any, nomeGrupo: any) {
   const somaSaldoAtual2 = lancamentosGrupo.reduce((soma: any, lancamento: any) => soma + lancamento.saldoAtual, 0);
 
   return { somaSaldoAnterior2: somaSaldoAnterior2.toFixed(2), 
-    somaValorD2: somaValorD2.toFixed(2), somaValorC2: somaValorC2.toFixed(2),
-    somaSaldo2: somaSaldo2.toFixed(2), somaSaldoAtual2: somaSaldoAtual2.toFixed(2) };
+    somaValorD2: somaValorD2.toFixed(2), 
+    somaValorC2: somaValorC2.toFixed(2),
+    somaSaldo2: somaSaldo2.toFixed(2), 
+    somaSaldoAtual2: somaSaldoAtual2.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) };
 }
 
 function calcularSomaSaldoGrupoPrincipal(lancamentos: any, grupoPrincipal: any) {
@@ -72,8 +74,10 @@ function calcularSomaSaldoGrupoPrincipal(lancamentos: any, grupoPrincipal: any) 
   const somaSaldoAtual = lancamentosGrupoPrincipal.reduce((soma: any, lancamento: any) => soma + lancamento.saldoAtual, 0);
 
   return { somaSaldoAnterior: somaSaldoAnterior.toFixed(2), 
-    somaValorD: somaValorD.toFixed(2), somaValorC: somaValorC.toFixed(2),
-    somaSaldo: somaSaldo.toFixed(2), somaSaldoAtual: somaSaldoAtual.toFixed(2) };
+    somaValorD: somaValorD.toFixed(2), 
+    somaValorC: somaValorC.toFixed(2),
+    somaSaldo: somaSaldo.toFixed(2), 
+    somaSaldoAtual: somaSaldoAtual.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) };
 }
 
 export function BalancoEmpresa() {  
@@ -135,7 +139,7 @@ export function BalancoEmpresa() {
                             <th>Elemento</th>
                             <th>Nome_Grupo</th> */}
                             <th>Conta</th> 
-                            {/* <th>Saldo_Anterior</th>                                                        */}
+                            {/* <th>Saldo_Anterior</th>*/}
                             {/* <th>ValorD</th>
                             <th>ValorC</th> */}
                             {/* <th>Saldo</th> */}
@@ -199,7 +203,7 @@ export function BalancoEmpresa() {
                                           {/* <td>{parseFloat(lancamento.valorC).toFixed(2)}</td>*/}
                                           {/* <td style={{ textAlign: 'right' }}>{lancamento.valor.toFixed(2)}</td> */}
                                           {/* <td>{Number(lancamento.valor)}</td> */}
-                                          <td style={{ textAlign: 'right' }}>{lancamento.saldoAtual.toFixed(2)}</td> 
+                                          <td style={{ textAlign: 'right' }}>{lancamento.saldoAtual.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td> 
                                       </tr>      
                                     ))}
                                   </React.Fragment>

@@ -117,7 +117,8 @@ export function LancamentosEmpresa() {
                               {/* {lancamento.fk_id_conta_credito} */}
                               {lancamento.contaCredito}
                             </td>
-                            <td style={{ textAlign: 'right' }}>{lancamento.valor.toFixed(2)}</td>
+                            {/* <td style={{ textAlign: 'right' }}>{lancamento.valor.toFixed(2)}</td> */}
+                            <td style={{ textAlign: 'right' }}>{lancamento.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>                            
                             {/* <td>{lancamento.fk_id_usuario}</td>  */}
                             <td>
                               <div style={{ width: 150 }}>
