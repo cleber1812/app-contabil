@@ -21,6 +21,7 @@ import { DiarioEmpresa } from "./pages/EmpresaDiario";
 import { RazaoEmpresa } from "./pages/EmpresaRazao";
 import { BalancoEmpresa } from "./pages/EmpresaBalanco";
 import { DreEmpresa } from "./pages/EmpresaDRE";
+import { LoaderIo } from "./pages/loaderIO";
 
 export function AppRoutes(){
     return (
@@ -30,6 +31,7 @@ export function AppRoutes(){
                 <Route path="/cadastrarusuario" element={<CadastrarUsuario />} />
                 <Route path="/login" element={<Login />} />
 
+                <Route path="/loaderio-67fc066ebad3c720247b93b31fdb7355" element={<LoaderIo />} />
                 <Route path="/hellow" element={<HellowWorld />} />
                 <Route path="/usuarios" element={<Usuarios />} />
                 <Route path="/empresas" element={<Empresas />} />
