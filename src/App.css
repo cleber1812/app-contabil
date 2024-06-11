@@ -76,6 +76,7 @@ html, body {
 .responsive-logo-header {
   width: 90vw;
   max-width: 280px;
+  max-height: 50px;
 }
 
 /* Container principal que envolve todo o conteúdo */
@@ -89,6 +90,7 @@ html, body {
   --primary-color: #1f271b;
   --secondary-color: #19647e;
   --accent-color: #f6511d;
+  --accent-color-dark: #C43408;
   --background-color: #e6efe9;
   --text-color: #f7fff7;
 }
@@ -97,6 +99,7 @@ html, body {
 /* O main flexível que expande para ocupar o espaço disponível */
 main {
   flex: 1;
+  margin-top: 80px;
 }
 
 .container {
@@ -173,6 +176,9 @@ h2 {
 } */
 
 .header {
+  position: fixed;
+  z-index: 999;
+  width: 100%;  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -181,6 +187,7 @@ h2 {
   /* background-color: #333; */
   background-color: var(--primary-color);
   /* color: #fff; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adicione uma sombra para dar destaque */
 }
 
 .header .left img{
@@ -212,7 +219,7 @@ footer {
   justify-content: space-between;
   align-items: center; 
   /* background-color: #333; */
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   /* color: #fff; */
   color: var(--text-color);  
   /* padding: 20px; */
@@ -591,21 +598,25 @@ textarea:focus {
 /* ESTILIZAÇÃO LANDPAGE */
 
 section {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* align-items: baseline; */
 }
 
-.hero {
-  text-align: center;
+.hero, .features, .benefits, .how-it-works, .testimonials {
   padding: 2rem 1rem;
+  min-height: 100vh; /* Garantir que as sessões ocupem 100% da altura da tela */
+  /* text-align: center; */
+}
+
+.hero {
+  text-align: center;  
   background-color: var(--primary-color);
   color: var(--text-color);
   position: relative;
-  overflow: hidden;
-  min-height: 100vh; /* Garantir que a hero section ocupe 100% da altura da tela */
+  overflow: hidden;  
   align-items: baseline;
 }
 
@@ -649,22 +660,58 @@ section {
   background-color: var(--secondary-color);
 }
 
-.features, .benefits, .how-it-works, .testimonials, .call-to-action {
-  padding: 2rem 1rem;
-  min-height: 100vh; /* Garantir que as sessões ocupem 100% da altura da tela */
-}
-
 .features h2, .benefits h2, .how-it-works h2, .testimonials h2, .call-to-action h2 {
   text-align: center;
   color: var(--secondary-color);
+  margin-bottom: 2rem;
 }
 
 .features .feature-item, .benefits ul, .how-it-works ol, .testimonials .testimonial-item {
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 
 .features {
   background-color: var(--background-color);
+}
+
+.features-container, .testimonials-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.feature-item {
+  /* background-color: var(--secondary-color); */
+  /* color: var(--text-color); */
+  border-radius: 10px;
+  border: 2px solid var(--accent-color); /* Adiciona a borda com cor e espessura */
+  padding: 2rem;
+  width: calc(33.333% - 4rem);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;  
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-item h3 {
+  margin-bottom: 2rem; /* Adiciona uma margem inferior ao <h3> */
+}
+
+.feature-item p {
+  margin-bottom: 3rem;
+}
+
+.feature-icon {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  color: var(--accent-color);
 }
 
 .benefits {
@@ -688,12 +735,56 @@ section {
 .testimonials {
   background-color: var(--text-color);
   color: var(--primary-color);
+
 }
+.testimonials-item {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 10px;  
+  padding: 2rem;
+  width: calc(33.333% - 4rem);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  
+}
+
+.testimonials-item h3 {
+  margin-bottom: 1rem; /* Adiciona uma margem inferior ao <h3> */
+}
+
+.testimonials-item p {
+  margin-bottom: 1rem;
+}
+
+.testimonials-icon {
+  width: 98px;
+  /* height: 98px; */
+  margin-bottom: 1rem;  
+  border-radius: 50%;
+}
+
 
 .call-to-action {
   text-align: center;
+  padding: 3rem 1rem;
   background-color: var(--secondary-color);
   color: var(--text-color);
+  border-top: 3px solid var(--primary-color); /* Adicione uma borda superior */
+  /* height: 50px; Defina a altura conforme necessário */
+  align-items: center;
+}
+
+.call-to-action h2 {
+  margin-bottom: 0.5rem;
+  color: var(--text-color); 
+  
+  
+}
+
+.call-to-action p {
+  margin-bottom: 1rem;
 }
 
 .call-to-action button {
@@ -703,10 +794,13 @@ section {
   background-color: var(--accent-color);
   color: var(--text-color);
   border: none;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+  transition: background-color 0.3s ease;
+  /* width: 300px; Define a largura automática para os botões */
 }
 
 .call-to-action button:hover {
-  background-color: var(--primary-color);
+  background-color: var(--accent-color-dark);
 }
