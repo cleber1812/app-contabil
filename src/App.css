@@ -10,9 +10,10 @@ html, body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
-  /* background-color: #F0F0F0; */
+  background-color: var(--background-color);
   background: #D4DFC7;
-  color:#3A4832;     
+  color: var(--primary-color);
+  /* color:#3A4832;      */  
   text-align: center;
   height: 100%;
 }
@@ -84,6 +85,15 @@ html, body {
   min-height: 100vh; /* Garante que o container ocupe a altura total da janela */
 }
 
+:root {
+  --primary-color: #1f271b;
+  --secondary-color: #19647e;
+  --accent-color: #f6511d;
+  --background-color: #e6efe9;
+  --text-color: #f7fff7;
+}
+
+
 /* O main flexível que expande para ocupar o espaço disponível */
 main {
   flex: 1;
@@ -100,12 +110,12 @@ main {
 
 h1 {
   color: #1F271B;
-  margin: 5px auto;
+  margin: 20px auto;
 }
 
 h1.responsive-title {
   /* font-size: 80px; */
-  color: #19647E;
+  /* color: #19647E; */
   transition: font-size 0.3s ease;
 }
 
@@ -159,59 +169,80 @@ h2 {
 
 /* ESTILIZAÇÃO Header e Footer */
 
-header {
+/* header {
+} */
+
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
+  /* padding: 10px; */
+  padding: 1rem 2rem;
+  /* background-color: #333; */
+  background-color: var(--primary-color);
+  /* color: #fff; */
 }
 
-.left {
-  flex: 1;
+.header .left img{
+  /* flex: 1;   */
   /* text-align: left; */
+  height: 50px;
 }
 
-.right {
+/* .right {
   display: flex;
   flex: 1;
   justify-content: flex-end;
   align-items: center;
-  /* text-align: left; */
+} */
+ 
+.header .right a {
+  color: var(--text-color);
+  margin-left: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header .right a:hover {
+  text-decoration: underline;
 }
 
 footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  /* background-color: #333; */
+  background-color: var(--secondary-color);
+  /* color: #fff; */
+  color: var(--text-color);  
+  /* padding: 20px; */
+  padding: 1rem 2rem;
   /* position: fixed; */
   position: relative;
   bottom: 0px;
   width: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;  
+  text-align: center;   
 }
 
 /* Estilo para as seções dentro do footer */
-.left, .center, .right {
-  flex: 1;
+footer .footer-left, footer .footer-center, footer .footer-right {
+  /* flex: 1; */
+  display: flex;
+  align-items: center;
 }
 
 /* Estilo para a seção esquerda */
-.left {  
+footer .footer-left {  
   text-align: left;
 }
 
 /* Estilo para a seção central */
-.center {  
+footer .footer-center {  
   text-align: center;
 }
 
 /* Estilo para a seção direita */
-.right {  
+footer .footer-right {  
   text-align: right;
   display: flex;
   justify-content: flex-end;
@@ -220,8 +251,14 @@ footer {
 }
 
 /* Estilo para os ícones */
-.right div {
-  margin-left: 10px; /* Espaçamento entre os ícones */
+footer .footer-right div {
+  /* margin-left: 10px;  Espaçamento entre os ícones */
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+footer .footer-right div:hover {
+  color: var(--accent-color);
 }
 
 /* ESTILIZAÇÃO DA PAGINA INSERIR LANCAMENTO */
@@ -549,4 +586,127 @@ textarea:focus {
 .tooltip-container:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
+}
+
+/* ESTILIZAÇÃO LANDPAGE */
+
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: baseline; */
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh; /* Garantir que a hero section ocupe 100% da altura da tela */
+  align-items: baseline;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../src/assets/img-homem-calculando.jpg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.hero * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero .responsive-title {
+  font-size: 2.5rem;
+  margin: 1rem 0;  
+  text-shadow: 0px 0px 3px #ccc;
+}
+
+.hero button {
+  /* width: 300px; Define a largura automática para os botões */
+  height: 3rem;
+  margin: 3rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.hero button:hover {
+  background-color: var(--secondary-color);
+}
+
+.features, .benefits, .how-it-works, .testimonials, .call-to-action {
+  padding: 2rem 1rem;
+  min-height: 100vh; /* Garantir que as sessões ocupem 100% da altura da tela */
+}
+
+.features h2, .benefits h2, .how-it-works h2, .testimonials h2, .call-to-action h2 {
+  text-align: center;
+  color: var(--secondary-color);
+}
+
+.features .feature-item, .benefits ul, .how-it-works ol, .testimonials .testimonial-item {
+  margin: 1rem 0;
+}
+
+.features {
+  background-color: var(--background-color);
+}
+
+.benefits {
+  background-color: var(--text-color);
+  color: var(--primary-color);
+}
+
+.benefits ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.benefits li, .how-it-works li {
+  margin: 0.5rem 0;
+}
+
+.how-it-works {
+  background-color: var(--background-color);
+}
+
+.testimonials {
+  background-color: var(--text-color);
+  color: var(--primary-color);
+}
+
+.call-to-action {
+  text-align: center;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.call-to-action button {
+  width: auto; /* Define a largura automática para os botões */
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.call-to-action button:hover {
+  background-color: var(--primary-color);
 }

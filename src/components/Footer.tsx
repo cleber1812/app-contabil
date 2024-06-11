@@ -14,13 +14,13 @@ const Footer: React.FC = () => {
 
   return (
     <footer>
-      <div className="left">
+      <div className="footer-left">
         <p>Simulação Contábil e Financeira</p>
       </div>
-      <div className="center">
-        <p>copyright 2024</p>
+      <div className="footer-center">
+        <p>&copy; 2024</p>
       </div>
-      <div className="right">        
+      <div className="footer-right">        
         <div onClick={handleInstagramClick}>
             <FontAwesomeIcon icon={faInstagram} />
         </div>
