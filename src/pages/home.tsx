@@ -6,6 +6,11 @@ import { faIndustry, faListOl, faPieChart } from '@fortawesome/free-solid-svg-ic
 import imgMaicon from '../../src/assets/img-maicon.jpg'; // Importe sua imagem
 import imgElizangela from '../../src/assets/img-elizangela.jpg'; // Importe sua imagem
 import imgPedro from '../../src/assets/img-pedro.jpg'; // Importe sua imagem
+import imgPorquinho from '../../src/assets/img-porquinho2.jpg'; // Importe sua imagem
+import imgFacil from '../../src/assets/img-facil2.jpg'; // Importe sua imagem
+import imgEstudantes from '../../src/assets/img-estudantes2.jpg'; // Importe sua imagem
+import imgFeedback from '../../src/assets/img-feedback1.jpg'; // Importe sua imagem
+import imgTelaPC from '../../src/assets/img-telapc2.jpg'; // Importe sua imagem
 
 export function Home() {
   const navigate = useNavigate();
@@ -44,22 +49,67 @@ export function Home() {
 
         <section id="benefits" className="benefits">
           <h2>Por Que Usar Contábil123?</h2>
-          <ul>
-            <li>Gratuito: Sem custos para começar a praticar.</li>
-            <li>Intuitivo: Interface amigável e fácil de usar.</li>
-            <li>Feedback em Tempo Real: Resultados instantâneos dos lançamentos.</li>
-            <li>Prática Profissional: Experiência prática para estudantes e iniciantes.</li>
-          </ul>
+          <div className="benefits-container">
+            <div className="benefits-item">
+              <img src={imgPorquinho} className="benefits-icon" alt="Logo da empresa" />              
+              <h3>Gratuito</h3> 
+              <p>Sem custos para começar a praticar.</p>
+            </div>
+            <div className="benefits-item">
+              <img src={imgFacil} className="benefits-icon" alt="Logo da empresa" />
+              <h3>Intuitivo</h3> 
+              <p>Interface amigável e fácil de usar.</p>
+            </div>
+            <div className="benefits-item">
+              <img src={imgFeedback} className="benefits-icon" alt="Logo da empresa" />
+              <h3>Feedback em Tempo Real</h3> 
+              <p>Resultados instantâneos dos lançamentos.</p>
+            </div>
+            <div className="benefits-item">
+              <img src={imgEstudantes} className="benefits-icon" alt="Logo da empresa" />
+              <h3>Prática Profissional</h3> 
+              <p>Experiência prática para estudantes e iniciantes.</p>
+            </div>
+          </div>
         </section>
 
         <section id="how-it-works" className="how-it-works">
-          <h2>Como Funciona?</h2>
-          <ol>
-            <li>Crie sua conta e faça login.</li>
-            <li>Cadastre suas empresas.</li>
-            <li>Realize lançamentos contábeis.</li>
-            <li>Visualize os relatórios financeiros.</li>
-          </ol>
+          <h2>Como Funciona</h2>
+          <div className="how-it-works-container">
+            <div className="steps">
+              <div className="step">
+                <div className="step-number">1</div>
+                <div className="step-text">
+                  <h3>Faça o Login</h3>
+                  <p>Entre na plataforma com suas credenciais.</p>
+                </div>
+              </div>
+              <div className="step">
+                <div className="step-number">2</div>
+                <div className="step-text">
+                  <h3>Cadastre Empresas</h3>
+                  <p>Adicione as empresas para as quais você deseja fazer lançamentos contábeis.</p>
+                </div>
+              </div>
+              <div className="step">
+                <div className="step-number">3</div>
+                <div className="step-text">
+                  <h3>Faça Lançamentos</h3>
+                  <p>Insira os lançamentos contábeis, como compras, vendas e despesas.</p>
+                </div>
+              </div>
+              <div className="step">
+                <div className="step-number">4</div>
+                <div className="step-text">
+                  <h3>Veja os Relatórios</h3>
+                  <p>Acompanhe os resultados em tempo real nos relatórios contábeis.</p>
+                </div>
+              </div>
+            </div>
+            <div className="how-it-works-image">
+              <img src={imgTelaPC} alt="Demonstração da aplicação" />
+            </div>
+          </div>
         </section>
 
         <section id="testimonials" className="testimonials">

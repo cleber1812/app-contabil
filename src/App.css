@@ -109,6 +109,7 @@ main {
   max-width: 1200px; 
   margin: 0 auto;
   padding: 20px;
+  margin-top: 30px;
 }
 
 h1 {
@@ -196,12 +197,13 @@ h2 {
   height: 50px;
 }
 
-/* .right {
+.right2 {
   display: flex;
   flex: 1;
   justify-content: flex-end;
   align-items: center;
-} */
+  color: var(--text-color);
+}
  
 .header .right a {
   color: var(--text-color);
@@ -607,7 +609,7 @@ section {
 
 .hero, .features, .benefits, .how-it-works, .testimonials {
   padding: 2rem 1rem;
-  min-height: 100vh; /* Garantir que as sessões ocupem 100% da altura da tela */
+  min-height: 90vh; /* Garantir que as sessões ocupem 100% da altura da tela */
   /* text-align: center; */
 }
 
@@ -666,7 +668,7 @@ section {
   margin-bottom: 2rem;
 }
 
-.features .feature-item, .benefits ul, .how-it-works ol, .testimonials .testimonial-item {
+.features .feature-item, .testimonials .testimonial-item {
   margin: 2rem 0;
 }
 
@@ -674,7 +676,7 @@ section {
   background-color: var(--background-color);
 }
 
-.features-container, .testimonials-container {
+.features-container, .benefits-container, .testimonials-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -715,21 +717,110 @@ section {
 }
 
 .benefits {
-  background-color: var(--text-color);
+  background-color: var(--primary-color);
   color: var(--primary-color);
 }
 
-.benefits ul {
-  list-style-type: none;
-  padding: 0;
+.benefits-item {
+  background-color: var(--text-color);
+  /* color: var(--text-color); */
+  border-radius: 10px;
+  /* border: 2px solid var(--accent-color); Adiciona a borda com cor e espessura */
+  /* padding: 2rem; */
+  width: calc(20% - 1rem);  
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  transition: transform 0.3s ease;  
 }
 
-.benefits li, .how-it-works li {
-  margin: 0.5rem 0;
+.benefits-item:hover {
+  transform: translateY(-5px);
+}
+
+.benefits-item h3 {
+  margin-bottom: 1rem; /* Adiciona uma margem inferior ao <h3> */
+  padding: 1rem;
+}
+
+.benefits-item p {
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.benefits-icon {
+  width: 100%;
+  /* max-width: 150px; */
+  height: auto;
+  margin-bottom: 1rem;  
+  border-radius: 5%;
 }
 
 .how-it-works {
+  text-align: center;
   background-color: var(--background-color);
+}
+
+.how-it-works-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.steps {
+  flex: 0 0 60%;
+  padding-right: 5rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.steps .step:nth-of-type(1) .step-number {
+  margin-left: 0;
+}
+
+.steps .step:nth-of-type(2) .step-number {
+  margin-left: 2rem;
+}
+
+.steps .step:nth-of-type(3) .step-number {
+  margin-left: 4rem;
+}
+
+.steps .step:nth-of-type(4) .step-number {
+  margin-left: 6rem;
+}
+
+.step-text {
+  text-align: left;
+}
+
+.how-it-works-image {
+  flex: 0 0 40%;
+}
+
+.how-it-works-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .testimonials {

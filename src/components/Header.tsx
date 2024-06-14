@@ -31,7 +31,7 @@ const Header: React.FC = () => {
       <div className="left">
         <img src={logomarca3} className="responsive-logo-header" alt="Contábil 123" />
       </div>
-      <div className="right">
+      <div className="right2">
         {nomeUsuario && <p>Bem-vindo, {nomeUsuario}</p>}
         <button onClick={voltar}>Voltar</button>
         <button onClick={logOut}>
