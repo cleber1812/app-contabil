@@ -2,8 +2,8 @@
 // import React from 'react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOut } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faSignOut } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
 import logomarca3 from '../../src/assets/logomarca3horizontal.png'; // Importe sua imagem
 
 const Header: React.FC = () => {
@@ -36,7 +36,7 @@ const Header: React.FC = () => {
         <button onClick={voltar}>Voltar</button>
         <button onClick={logOut}>
           Sair
-          <FontAwesomeIcon icon={faSignOut} transform="right-5" />
+          {/* <FontAwesomeIcon icon={faSignOut} transform="right-5" /> */}
         </button>
       </div>
     </header>

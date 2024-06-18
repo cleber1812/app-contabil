@@ -106,7 +106,7 @@ export function EmpresasUsuario() {
     <Header />
     <main>
     <div className="container">      
-      <h1>Minhas empresas</h1>
+      {/* <h1>Minhas empresas</h1> */}
       <button onClick={openModal}>Criar nova empresa</button>
         {/* <Link to={`/criarempresa/${userID}`}>
           <button>Criar nova empresa</button>
