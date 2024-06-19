@@ -73,6 +73,13 @@ export function LancamentosEmpresa() {
     }
   };
 
+  // Função para fechar o modal ao clicar fora dele
+  const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (e.target === e.currentTarget) {
+      cancelDelete();
+    }
+  };
+
         return (
           <div id="root">
           <Header />
@@ -144,10 +151,12 @@ export function LancamentosEmpresa() {
                 
               {/* Modal de confirmação de exclusão */}
               {lancamentoIdToDelete && (
-                <div className="modal-container">
-                  <p>Deseja realmente excluir este lançamento?</p>
-                  <button onClick={() => handleDelete(lancamentoIdToDelete)}>Sim</button>
-                  <button onClick={cancelDelete}>Não</button>
+                <div className="modal-container" onClick={handleOutsideClick}>
+                  <div className="modal-content">
+                    <p>Deseja realmente excluir este lançamento?</p>
+                    <button onClick={() => handleDelete(lancamentoIdToDelete)}>Sim</button>
+                    <button onClick={cancelDelete}>Não</button>
+                  </div>
                 </div>
               )}             
           </div>

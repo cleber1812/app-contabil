@@ -75,7 +75,7 @@ export function EmpresasUsuario() {
       }
   };
 
-  // Função para configurar o ID do lançamento a ser excluído
+  // Função para configurar o ID da empresa a ser excluída
   const confirmDelete = (id: number) => {
     setEmpresaIdToDelete(id);
   };
@@ -85,7 +85,7 @@ export function EmpresasUsuario() {
     setEmpresaIdToDelete(null);
   };
 
-  // Função para excluir o lançamento
+  // Função para excluir a empresa
   const handleDelete = async (empresaId: number) => {
     try {
       await api.delete(`/empresa2/${empresaId}`);
@@ -95,6 +95,13 @@ export function EmpresasUsuario() {
       setEmpresaIdToDelete(null);
     } catch (error) {
       console.error('Erro ao excluir empresa:', error);
+    }
+  };
+
+  // Função para fechar o modal ao clicar fora dele
+  const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (e.target === e.currentTarget) {
+      cancelDelete();
     }
   };
 
@@ -197,10 +204,12 @@ export function EmpresasUsuario() {
 
       {/* Modal de confirmação de exclusão */}
       {empresaIdToDelete && (
-                <div className="modal-container">
-                  <p>Deseja realmente excluir esta empresa?</p>
-                  <button onClick={() => handleDelete(empresaIdToDelete)}>Sim</button>
-                  <button onClick={cancelDelete}>Não</button>
+                <div className="modal-container" onClick={handleOutsideClick}>
+                  <div className="modal-content">
+                    <p>Deseja realmente excluir esta empresa?</p>
+                    <button onClick={() => handleDelete(empresaIdToDelete)}>Sim</button>
+                    <button onClick={cancelDelete}>Não</button>
+                  </div>
                 </div>
               )} 
     </div>
