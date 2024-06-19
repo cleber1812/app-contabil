@@ -77,7 +77,7 @@ export function Login() {
     return (
       <div id="root">         
         <main>
-        <div className="container">
+        <div style={{marginTop:10}} className="container">
           <h1>Login</h1>
           {isLoading ? (
             <div className="loader-container">

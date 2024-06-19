@@ -53,7 +53,7 @@ export function CadastrarUsuario() {
   return (
     <div id="root"> 
     <main>
-    <div className="container">
+    <div style={{marginTop:10}} className="container">
       <h1>Cadastrar Usuário</h1>
           {isLoading ? (
             <div className="loader-container">
