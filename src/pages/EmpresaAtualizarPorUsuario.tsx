@@ -23,6 +23,7 @@ export function AtualizarEmpresa() {
     useEffect(() => {
         // Carregar os dados da empresa a ser atualizada ao carregar a página
         const carregarEmpresa = async () => {
+          setIsLoading(true); // Inicia o carregamento
           try {
             const response = await api.get(`/empresa/${id}`);
             const dadosEmpresa = response.data;
@@ -30,6 +31,8 @@ export function AtualizarEmpresa() {
             
           } catch (error) {
             console.error('Erro ao carregar empresa:', error);
+          } finally {
+            setIsLoading(false); // Termina o carregamento
           }
         };
         carregarEmpresa();
@@ -51,8 +54,12 @@ export function AtualizarEmpresa() {
           navigate(-1);
         } catch (error) {
           console.error('Erro ao enviar atualização da empresa:', error);
-          navigate('/');
-          return null; // Retorna null para parar a renderização
+          // navigate('/');
+          // return null; // Retorna null para parar a renderização
+
+          alert('Erro ao atualizar empresa'); 
+          navigate(0);
+
         } finally {
           setIsLoading(false); // Termina o carregamento
         }

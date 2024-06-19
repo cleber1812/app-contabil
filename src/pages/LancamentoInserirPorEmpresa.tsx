@@ -8,6 +8,7 @@ import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
+import axios from 'axios'
 
 export function InserirLancamentoEmpresa() { 
     const navigate = useNavigate();  // Obtenha o objeto de navegação
@@ -129,8 +130,20 @@ export function InserirLancamentoEmpresa() {
         } catch (error) {
             console.error('Erro ao enviar lançamento:', error);
             // Adicionar lógica de tratamento de erro, se necessário
-            navigate('/');
-            return null; // Retorna null para parar a renderização
+            
+            // navigate('/');
+            // return null; // Retorna null para parar a renderização
+            
+            // Verificar se o error possui uma resposta do servidor
+              if (axios.isAxiosError(error) && error.response) {
+                // Acessar a mensagem de erro detalhada do backend
+                const errorMessage = error.response.data.error || 'Erro desconhecido';
+                alert(`Erro ao enviar lançamento: ${errorMessage}`);
+            } else if (error instanceof Error) {
+              alert(`Erro ao enviar lançamento: ${error.message}`);
+            } else {
+              alert('Erro ao enviar lançamento: Erro desconhecido');
+            }            
         } finally {
           setIsLoading(false); // Termina o carregamento
         }

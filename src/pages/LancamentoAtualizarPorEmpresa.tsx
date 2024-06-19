@@ -8,6 +8,7 @@ import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
+import axios from 'axios'
 
 // //Posso tirar essa interface lá do useState<FormData> que funciona também
 // interface FormData {
@@ -110,6 +111,7 @@ export function AtualizarLancamentoEmpresa() {
     useEffect(() => {
         // Carregar os dados do lançamento a ser atualizado ao carregar a página
         const carregarLancamento = async () => {
+          setIsLoading(true); // Inicia o carregamento
           try {
             const response = await api.get(`/lancamento/${id}`);
             const dadosLancamento = response.data;
@@ -123,8 +125,10 @@ export function AtualizarLancamentoEmpresa() {
             
           } catch (error) {
             console.error('Erro ao carregar lançamento:', error);
-            navigate('/');
+            // navigate('/');
             return null; // Retorna null para parar a renderização
+          } finally {
+            setIsLoading(false); // Termina o carregamento
           }
         };
         carregarLancamento();
@@ -176,8 +180,24 @@ export function AtualizarLancamentoEmpresa() {
           navigate(-1);
         } catch (error) {
           console.error('Erro ao enviar atualização de lançamento:', error);
-          navigate('/');
-          return null; // Retorna null para parar a renderização
+          // navigate('/');
+          // return null; // Retorna null para parar a renderização
+
+          // alert('Erro ao enviar lançamento');
+          // navigate(0);
+
+          // Verificar se o error possui uma resposta do servidor
+          if (axios.isAxiosError(error) && error.response) {
+            // Acessar a mensagem de erro detalhada do backend
+            const errorMessage = error.response.data.error || 'Erro desconhecido';
+            alert(`Erro ao enviar lançamento: ${errorMessage}`);
+          } else if (error instanceof Error) {
+            alert(`Erro ao enviar lançamento: ${error.message}`);
+          } else {
+            alert('Erro ao enviar lançamento: Erro desconhecido');
+          }  
+        navigate(0); 
+
         } finally {
           setIsLoading(false); // Termina o carregamento
         }

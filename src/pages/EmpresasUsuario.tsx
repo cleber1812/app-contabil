@@ -69,6 +69,9 @@ export function EmpresasUsuario() {
     } catch (error) {
         console.error('Erro ao cadastrar empresa:', error);
         // Adicionar lógica de tratamento de erro, se necessário
+
+        alert('Erro ao cadastrar empresa');        
+
       }
   };
 
