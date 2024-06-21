@@ -79,7 +79,7 @@ export function AtualizarLancamentoEmpresa() {
 
     const handleContaDebitadaSelect = (id: string, conta: string, grupo: string) => {
       setContaDebConsultada({ id, conta, grupo });      
-      validarLancamento();
+      // validarLancamento();
     };
 
     // const handleContaCreditadaSelect = (id: string) => {
@@ -88,7 +88,7 @@ export function AtualizarLancamentoEmpresa() {
 
     const handleContaCreditadaSelect = (id: string, conta: string, grupo: string) => {
       setContaCredConsultada({ id, conta, grupo });      
-      validarLancamento();
+      // validarLancamento();
     };
     
      //Para mostrar a conta antiga no SPAN
@@ -161,8 +161,13 @@ export function AtualizarLancamentoEmpresa() {
           ...prevData, 
           fk_id_conta_credito: contaCredConsultada.id 
         }));
-      }
+      } 
+      validarLancamento();
     }, [contaDebConsultada, contaCredConsultada]);
+
+    useEffect(() => {
+      validarLancamento();
+    }, [formData.valor]);
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;

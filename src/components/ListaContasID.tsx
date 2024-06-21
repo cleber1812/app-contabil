@@ -1,5 +1,5 @@
 // ListaContasID.tsx
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import api from '../service/api';
 import '../App.css'; // Importe os estilos
@@ -20,17 +20,25 @@ function ListaContasID({ onSelectConta}: ListaContasProps) {
     return response.data;
   });
 
-  const [selectedConta, setSelectedConta] = useState<string>('');
+  // const [selectedConta, setSelectedConta] = useState<string>('');
   
-  useEffect(() => {    
-    if (contas && contas.length > 0) {
-      const selectedContaObject = contas.find((conta: any) => conta.conta === selectedConta);      
-      if (selectedContaObject) {
-        // onSelectConta(selectedContaObject.id, selectedConta);        
-        onSelectConta(selectedContaObject.id, selectedContaObject.conta, selectedContaObject.nome_grupo_principal);
-      }
+  // useEffect(() => {    
+  //   if (contas && contas.length > 0) {
+  //     const selectedContaObject = contas.find((conta: any) => conta.conta === selectedConta);      
+  //     if (selectedContaObject) {
+  //       // onSelectConta(selectedContaObject.id, selectedConta);        
+  //       onSelectConta(selectedContaObject.id, selectedContaObject.conta, selectedContaObject.nome_grupo_principal);
+  //     }
+  //   }
+  // }, [selectedConta, onSelectConta, contas]); 
+  
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedId = e.target.value;
+    const selectedConta = contas.find((conta: any) => conta.conta === selectedId);
+    if (selectedConta) {
+      onSelectConta(selectedConta.id, selectedConta.conta, selectedConta.nome_grupo_principal);
     }
-  }, [selectedConta, onSelectConta, contas]);    
+  };
 
   if (isLoading) {
     return <div>Carregando contas...</div>;
@@ -46,7 +54,8 @@ function ListaContasID({ onSelectConta}: ListaContasProps) {
   return (
     <div>
       {/* <label>Escolha a conta:</label> */}
-      <select className="selectConta" value={selectedConta} onChange={(e) => setSelectedConta(e.target.value)}>      
+      {/* <select className="selectConta" value={selectedConta} onChange={(e) => setSelectedConta(e.target.value)}>       */}
+      <select className="selectConta" onChange={handleSelectChange}>
         <option value="">Selecione uma conta</option>
         {/* {contas.map((conta: any) => ( */}
         {contasOrdenadas.map((conta: any) => (

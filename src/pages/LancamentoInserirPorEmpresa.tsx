@@ -64,7 +64,7 @@ export function InserirLancamentoEmpresa() {
 
     const handleContaDebitadaSelect = (id: string, conta: string, grupo: string) => {
       setContaDebConsultada({ id, conta, grupo });      
-      validarLancamento();
+      // validarLancamento();
     };
     
     // const handleContaCreditadaSelect = (id: string) => {
@@ -73,7 +73,7 @@ export function InserirLancamentoEmpresa() {
   
     const handleContaCreditadaSelect = (id: string, conta: string, grupo: string) => {
       setContaCredConsultada({ id, conta, grupo });      
-      validarLancamento();
+      // validarLancamento();
     };
     
     // useEffect(() => {
@@ -91,13 +91,22 @@ export function InserirLancamentoEmpresa() {
           fk_id_conta_debito: contaDebConsultada.id 
         }));
       }
+      validarLancamento();
+    }, [contaDebConsultada]);
+    
+    useEffect(() => {
       if (contaCredConsultada) {
         setFormData((prevData) => ({ 
           ...prevData, 
           fk_id_conta_credito: contaCredConsultada.id 
         }));
       }
-    }, [contaDebConsultada, contaCredConsultada]);
+      validarLancamento();
+    }, [contaCredConsultada]);
+
+    useEffect(() => {
+      validarLancamento();
+    }, [formData.valor]);
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;

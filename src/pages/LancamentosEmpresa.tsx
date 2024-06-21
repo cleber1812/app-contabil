@@ -91,9 +91,9 @@ export function LancamentosEmpresa() {
                   <button>Novo lançamento</button>
                 </Link>
                 {/* <Link to={`/minhasempresas/${userID}`}> */}
-                {/* <Link to={`/minhasempresas`}>
-                  <button>Voltar</button>
-                </Link> */}
+                <Link to={`/minhasempresas`}>
+                  <button>Minhas Empresas/Relatórios</button>
+                </Link>
                 <div className="table-container">
                   <table className="custom-table">
                     <thead>
