@@ -28,9 +28,8 @@ export function RazaoEmpresa() {
   const [startDate, setStartDate] = useState<Date>(new Date());
   // const [startDate, setStartDate] = useState<Date>(new Date('2023-01-01'));  
   const [endDate, setEndDate] = useState<Date>(new Date());  
-  const [contaConsultada, setContaConsultada] = useState('Caixa'); 
-  
-  
+  // const [contaConsultada, setContaConsultada] = useState('Caixa'); 
+  const [contaConsultada, setContaConsultada] = useState('');     
 
   const { data: lancamentos, isLoading, isError } = useQuery(
     ['lancamentos', fk_id_empresa, startDate, endDate, contaConsultada], // Adicione startDate e endDate à lista de dependências
@@ -79,7 +78,8 @@ export function RazaoEmpresa() {
                 <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
               </div> 
               <div>
-                  <ListaContas onSelectConta={setContaConsultada} />                  
+                  {/* <ListaContas onSelectConta={setContaConsultada} />  */}
+                  <ListaContas onSelectConta={setContaConsultada} selectedConta={contaConsultada} />                 
               </div>
               <div className="table-container">
                 <table className="custom-table">
