@@ -204,7 +204,7 @@ export function EmpresasUsuario() {
 
       {/* Modal de confirmação de exclusão */}
       {empresaIdToDelete && (
-                <div className="modal-container" onClick={handleOutsideClick}>
+                <div className="modal-container-excluir" onClick={handleOutsideClick}>
                   <div className="modal-content">
                     <p>Deseja realmente excluir esta empresa?</p>
                     <button onClick={() => handleDelete(empresaIdToDelete)}>Sim</button>

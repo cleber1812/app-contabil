@@ -331,23 +331,7 @@ textarea:focus {
 
 /* ESTILIZAÇÃO REACTMODAL INCLUIR EMPRESA */
 
-/* .modal-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--accent-color);
-  padding: 20px;
-  border: 1px solid var(--primary-color);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  z-index: 9999; 
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-  color: var(--text-color);
-} */
-
-.modal-container {
+.modal-container-excluir {
   position: fixed;
   top: 0;
   left: 0;
@@ -357,6 +341,23 @@ textarea:focus {
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.5); /* Fundo escuro para modal */
+}
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: var(--accent-color); */
+  background: rgba(0, 0, 0, 0.5); /* Fundo escuro para modal */
+  padding: 20px;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 9999; 
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  /* color: var(--primary-color); */
 }
 
 .modal-content {

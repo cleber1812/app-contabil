@@ -7,7 +7,7 @@ interface ErrorModalProps {
     onClose: () => void;
   }
 
-  const ErrorModal: React.FC<ErrorModalProps> = ({ isOpen, onClose }) => {
+  const ErrorModalLogin: React.FC<ErrorModalProps> = ({ isOpen, onClose }) => {
     return (
       <Modal
         isOpen={isOpen}
@@ -25,7 +25,7 @@ interface ErrorModalProps {
     );
   };
   
-  export default ErrorModal;
+  export default ErrorModalLogin;
 
 
 

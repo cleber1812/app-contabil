@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
-import Modal from '../components/ErrorModal'
+import Modal from '../components/ErrorModalLogin'
 import Footer from '../components/Footer';
 import api from '../service/api';
 import '../App.css';

@@ -151,7 +151,7 @@ export function LancamentosEmpresa() {
                 
               {/* Modal de confirmação de exclusão */}
               {lancamentoIdToDelete && (
-                <div className="modal-container" onClick={handleOutsideClick}>
+                <div className="modal-container-excluir" onClick={handleOutsideClick}>
                   <div className="modal-content">
                     <p>Deseja realmente excluir este lançamento?</p>
                     <button onClick={() => handleDelete(lancamentoIdToDelete)}>Sim</button>
