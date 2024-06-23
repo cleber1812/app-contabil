@@ -190,10 +190,15 @@ export function InserirLancamentoEmpresa() {
 
                 <label> Valor: 
                   <input style={{ maxWidth: 150 }}
-                    type="number" 
+                    type="number"
                     name="valor"
                     value={formData.valor}
                     onChange={handleChange}
+                    onKeyDown={(e) => {
+                      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                        e.preventDefault();
+                      }
+                    }}
                   /> 
                 </label>
 

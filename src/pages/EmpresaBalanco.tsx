@@ -117,6 +117,10 @@ export function BalancoEmpresa() {
     // const groupedLancamentos = groupBy(lancamentos, 'nome_grupo'); // Agrupa por Nome_Grupo
     // const grupos = Object.keys(groupedLancamentos);
 
+    // Armazenar os valores de somaSaldoAtual de "ATIVO" e "PASSIVO"
+    let somaSaldoAtualAtivo = null;
+    let somaSaldoAtualPassivo = null;
+
         return (
           <div id="root">
           <Header />
@@ -129,7 +133,7 @@ export function BalancoEmpresa() {
               </div> */}
               <div>
                 <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
-              </div>
+              </div>              
                 <table className="custom-table">
                     <thead>
                         <tr>
@@ -155,6 +159,14 @@ export function BalancoEmpresa() {
                         // const nomeGrupo = lancamentos.find((lancamento: any) => lancamento.grupo_principal === grupoPrincipal)?.nome_grupo;
 
                         const lancamentosGrupoPrincipal = groupedLancamentosPrincipal[grupoPrincipal];
+
+                        const somaSaldoAtual = calcularSomaSaldoGrupoPrincipal(lancamentos, grupoPrincipal).somaSaldoAtual;
+
+                                    if (grupoPrincipal === 'ATIVO') {
+                                        somaSaldoAtualAtivo = somaSaldoAtual;
+                                    } else if (grupoPrincipal === 'PASSIVO') {
+                                        somaSaldoAtualPassivo = somaSaldoAtual;
+                                    }
                         
                           return (
 
@@ -214,6 +226,12 @@ export function BalancoEmpresa() {
                       })}            
                     </tbody>
                 </table> 
+                {somaSaldoAtualAtivo && somaSaldoAtualPassivo && somaSaldoAtualAtivo !== somaSaldoAtualPassivo && (
+                  <div className='mensagem-validacao'>
+                    <span> Ativo: {somaSaldoAtualAtivo} // Passivo: {somaSaldoAtualPassivo} <p />
+                    Diferença entre o saldo do Ativo e o Passivo pode significar que o resultado do período ainda não foi encerrado e o lucro/prejuízo do perído ainda não foi transferido para o Balanço Patrimonial. Verifique a DRE.</span>
+                  </div>
+                )}
           </div>
           </main>
           <Footer />

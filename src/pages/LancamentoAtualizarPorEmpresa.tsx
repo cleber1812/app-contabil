@@ -243,6 +243,11 @@ export function AtualizarLancamentoEmpresa() {
                     name="valor"
                     value={formData.valor}
                     onChange={handleChange}
+                    onKeyDown={(e) => {
+                      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                        e.preventDefault();
+                      }
+                    }}
                   /> 
                 </label>
 
