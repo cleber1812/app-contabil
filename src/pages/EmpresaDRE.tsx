@@ -8,6 +8,8 @@ import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'; // Exemplo de ícone
 
 // async function fetchLancamentosEmpresa(fk_id_empresa: string, startDate?: Date, endDate?: Date) {
 async function fetchLancamentosEmpresa(
@@ -105,7 +107,11 @@ export function DreEmpresa() {
                       <th>Conta</th>                                                                                   
                       <th>ValorD</th>
                       <th>ValorC</th>
-                      <th>Saldo</th>                            
+                      <th>Saldo                        
+                          <FontAwesomeIcon icon={faQuestionCircle} 
+                          title="Contas com saldo que ainda não foram encerradas corretamente"
+                          />
+                      </th>
                     </tr>
                   </thead>
                   <tbody>                       
@@ -143,7 +149,16 @@ export function DreEmpresa() {
                       <td className="BP-subGrupo"><strong>{lucroLiquido}</strong></td>
                     </tr>                
                   </tbody>
-                </table> 
+                </table>
+                {saldoReceitasC !== saldoDespesasD && (
+                  <div className='mensagem-validacao'>
+                    <span> Lucro: {saldoReceitasC - saldoDespesasD} <p/>
+                    Procedimentos para encerramento do resultado do período:<p/>
+                    1 Verificar na coluna SALDO quais contas ainda não foram encerradas.<p/>
+                    2 Encerrar as contas de Receitas (debitando) e de Despesas (creditando), passando seus saldos para a conta ARE.<p/>
+                    3 Apuração de resultado da conta ARE, passando seu saldo (creditando/debitando) para a Lucros Acumulados (ou Prejuízos acumulados quando for o caso).</span>
+                  </div> 
+                )}
               </div>
             </div>
           </main>
