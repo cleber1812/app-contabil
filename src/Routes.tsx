@@ -14,7 +14,8 @@ import { Login } from "./pages/Login";
 import { CadastrarUsuario } from "./pages/UsuarioCadastro";
 import { EmpresasUsuario } from "./pages/EmpresasUsuario";
 import { AtualizarEmpresa } from "./pages/EmpresaAtualizarPorUsuario";
-import { LancamentosEmpresa } from "./pages/LancamentosEmpresa";
+// import { LancamentosEmpresa } from "./pages/LancamentosEmpresa";
+import { LancamentosEmpresaPP } from "./pages/LancamentosEmpresaPP";
 import { InserirLancamentoEmpresa } from "./pages/LancamentoInserirPorEmpresa";
 import { AtualizarLancamentoEmpresa } from "./pages/LancamentoAtualizarPorEmpresa";
 import { DiarioEmpresa } from "./pages/EmpresaDiario";
@@ -50,7 +51,8 @@ export function AppRoutes(){
                 {/* <Route path="/atualizarlancamentoempresa/:id/:fk_id_empresa/:userID" element={<AtualizarLancamentoEmpresa />} /> */}
                 <Route path="/atualizarlancamentoempresa/:id/:fk_id_empresa" element={<AtualizarLancamentoEmpresa />} />
                 {/* <Route path="/lancamentosempresa/:fk_id_empresa/:userID" element={<LancamentosEmpresa />} /> */}
-                <Route path="/lancamentosempresa/:fk_id_empresa" element={<LancamentosEmpresa />} />
+                {/* <Route path="/lancamentosempresa/:fk_id_empresa" element={<LancamentosEmpresa />} /> */}
+                <Route path="/lancamentosempresa/:fk_id_empresa" element={<LancamentosEmpresaPP />} />
                 <Route path="/diarioempresa/:fk_id_empresa" element={<DiarioEmpresa />} />
                 <Route path="/razaoempresa/:fk_id_empresa" element={<RazaoEmpresa />} />
                 <Route path="/balancoempresa/:fk_id_empresa" element={<BalancoEmpresa />} />

@@ -525,6 +525,42 @@ textarea:focus {
   opacity: 1;
 }
 
+/* ESTILIZAÇÃO PAGINAÇÃO */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  background-color: #19647E; /* Cor de fundo dos botões */
+  color: white; /* Cor do texto dos botões */
+  border: none; /* Remover borda padrão */
+  padding: 10px 20px; /* Espaçamento interno */
+  margin: 0 5px; /* Espaçamento entre os botões */
+  border-radius: 5px; /* Cantos arredondados */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+  transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+}
+
+.pagination button:hover {
+  background-color: #145A6F; /* Cor de fundo ao passar o mouse */
+}
+
+.pagination button:disabled {
+  background-color: #ccc; /* Cor de fundo para botões desabilitados */
+  cursor: not-allowed; /* Cursor de não permitido ao passar o mouse */
+}
+
+.pagination span {
+  margin: 0 10px; /* Espaçamento horizontal */
+  font-size: 16px; /* Tamanho da fonte */
+  color: #333; /* Cor do texto */
+}
+
+
 /* ESTILIZAÇÃO LANDPAGE */
 
 section {
