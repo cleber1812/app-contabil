@@ -82,6 +82,18 @@ h2 {
   padding: 5px;
 }
 
+/* ESTILIZAÇÃO Link */
+
+.custom-link {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.custom-link:hover {
+  color: var(--secondary-color);
+  text-decoration: underline; /* Opcional: Adiciona sublinhado no hover */
+}
+
 /* ESTILIZAÇÃO Header e Footer */
 
 /* header {

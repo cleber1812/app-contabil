@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import api from '../service/api';
 import '../App.css';
 import Footer from '../components/Footer';
@@ -92,6 +92,8 @@ export function CadastrarUsuario() {
         <button type="submit">Cadastrar usuário</button>
       </form>
       )}
+
+      <p>Já tem uma conta? <Link to="/login" className="custom-link"><strong>Entre</strong></Link></p>
 
       <Modal isOpen={errorModalOpen} onClose={() => setErrorModalOpen(false)} />
     

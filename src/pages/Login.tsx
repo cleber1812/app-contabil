@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
 import Modal from '../components/ErrorModalLogin'
 import Footer from '../components/Footer';
@@ -106,14 +106,14 @@ export function Login() {
           </form>
           )}
           
-          <p>Ainda não é cadastrado?</p>
+          <p>Não tem uma conta? <Link to="/cadastrarusuario" className="custom-link"><strong>Cadastre-se</strong></Link></p>
 
-          <button 
+          {/* <button 
             type="button" 
             style={{ backgroundColor: '#96C0B7' }}
             onClick={() => navigate('/cadastrarusuario')}>
             Realizar cadastro
-          </button>  
+          </button>   */}
           
           <Modal isOpen={errorModalOpen} onClose={() => setErrorModalOpen(false)} />
         </div>

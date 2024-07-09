@@ -84,7 +84,7 @@ export function LancamentosEmpresaPP() {
           <Header />
           <main>
           <div className="container">
-            <h1>Lançamentos (paginação)</h1>                                
+            <h1>Lançamentos</h1>                                
                 <Link to={`/inserirlancamentoempresa/${fk_id_empresa}`}>
                   <button>Novo lançamento</button>
                 </Link>                
