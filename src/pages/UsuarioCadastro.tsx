@@ -83,7 +83,7 @@ export function CadastrarUsuario() {
         <label> Senha <input
         type="Password"
         name="senha"
-        placeholder='Escolha uma senha'
+        placeholder='Escolha uma senha entre 4 e 10 caracteres'
         value={formData.senha}
         onChange={handleChange}
           /> 

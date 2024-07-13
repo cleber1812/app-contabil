@@ -22,6 +22,7 @@ import { DiarioEmpresa } from "./pages/EmpresaDiario";
 import { RazaoEmpresa } from "./pages/EmpresaRazao";
 import { BalancoEmpresa } from "./pages/EmpresaBalanco";
 import { DreEmpresa } from "./pages/EmpresaDRE";
+import { MeusDados } from "./pages/MeusDados";
 
 export function AppRoutes(){
     return (
@@ -41,6 +42,8 @@ export function AppRoutes(){
                 {/* <Route path="/deletarlancamento" element={<DeletarLancamento />} /> */}
                 {/* <Route path="/atualizarlancamento/:id" element={<AtualizarLancamento />} /> */}                
                 {/* <Route path="/criarempresa/:userID" element={<CriarEmpresa />} /> */}
+
+                <Route path="/meusdados" element={<MeusDados />} />
                 
                 {/* <Route path="/atualizarempresa/:id/:userID" element={<AtualizarEmpresa />} /> */}
                 <Route path="/atualizarempresa/:id" element={<AtualizarEmpresa />} />                
