@@ -86,23 +86,27 @@ export function Login() {
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
-            <label> Email: <input
-              type="STRING" 
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
+            <label> Email: 
+              <input
+                type="STRING" 
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
               /> 
             </label>
             
-            <label> Senha: <input
-            type="Password" 
-            name="senha"
-            value={formData.senha}
-            onChange={handleChange}
+            <label> Senha:
+              <input style={{marginBottom: 1 }}
+                type="Password" 
+                name="senha"
+                value={formData.senha}
+                onChange={handleChange}
               /> 
-            </label>
+              <p style={{fontSize: 13 , marginBottom: 15 , alignSelf: 'end' }}>Esqueceu a senha <Link to="/esquecisenha" className="custom-link"><strong>Clique aqui</strong></Link></p>
+            </label>            
         
             <button type="submit">Fazer login</button>
+
           </form>
           )}
           

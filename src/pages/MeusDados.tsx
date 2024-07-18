@@ -119,7 +119,10 @@ export function MeusDados() {
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                 {successMessage && <p className="success-message">{successMessage}</p>}
             
-                <form onSubmit={handleSubmit}>
+                <form 
+                  style={{borderColor: '#ddf1f8', backgroundColor: '#d4dfc7' }}
+                  onSubmit={handleSubmit}>
+                    
                     <label> Nome  
                     <input
                         type="STRING" 
@@ -144,9 +147,13 @@ export function MeusDados() {
                         {isSubmitting ? 'Atualizando...' : 'Atualizar'}
                     </button>
                 </form>                  
-                <form onSubmit={handleSubmitSenha}>      
-
-                    <label> Senha Atual
+                
+                <form className='form-dados'
+                  onSubmit={handleSubmitSenha}
+                  
+                  // style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems:'center', borderColor: '#ddf1f8', backgroundColor: '#d4dfc7' }}
+                >
+                    <label style={{marginRight: 10 }}> Senha Atual
                     <input
                         type="Password"
                         name="senhaAtual"
@@ -169,8 +176,11 @@ export function MeusDados() {
                     </label>
                     
                     {/* <button type="submit">Alterar senha */}
-                    <button type="submit" disabled={isSubmitting}>
-                        {isSubmitting ? 'Alterando...' : 'Alterar senha'}
+                    <button 
+                      type="submit" disabled={isSubmitting}
+                      style={{padding: 2, height: 30}}
+                    >
+                      {isSubmitting ? 'Alterando...' : 'Alterar senha'}
                     </button>
                 </form>
               </>

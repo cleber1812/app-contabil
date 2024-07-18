@@ -203,6 +203,15 @@ form {
   margin-bottom: 20px;
 }
 
+.form-dados {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:center; 
+  border-color: var(--background-color);
+  background-color: var(--background-color-dark);  
+}
+
 label {
   display: flex;
   /* justify-content: center; */

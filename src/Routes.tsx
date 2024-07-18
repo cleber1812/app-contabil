@@ -23,6 +23,8 @@ import { RazaoEmpresa } from "./pages/EmpresaRazao";
 import { BalancoEmpresa } from "./pages/EmpresaBalanco";
 import { DreEmpresa } from "./pages/EmpresaDRE";
 import { MeusDados } from "./pages/MeusDados";
+import { RedefinirSenha } from "./pages/RedefinirSenha";
+import { EsqueciSenha } from "./pages/EsqueciSenha";
 
 export function AppRoutes(){
     return (
@@ -31,6 +33,8 @@ export function AppRoutes(){
                 <Route path="/" element={<Home />} />                
                 <Route path="/cadastrarusuario" element={<CadastrarUsuario />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/esquecisenha" element={<EsqueciSenha />} />
+                <Route path="/redefinirsenha/:token" element={<RedefinirSenha />} />
                 
                 <Route path="/hellow" element={<HellowWorld />} />
                 <Route path="/usuarios" element={<Usuarios />} />
