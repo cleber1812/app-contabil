@@ -228,8 +228,10 @@ export function BalancoEmpresa() {
                 </table> 
                 {somaSaldoAtualAtivo && somaSaldoAtualPassivo && somaSaldoAtualAtivo !== somaSaldoAtualPassivo && (
                   <div className='mensagem-validacao'>
-                    <span> Ativo: {somaSaldoAtualAtivo} // Passivo: {somaSaldoAtualPassivo} <p />
-                    Diferença entre o saldo do Ativo e o Passivo pode significar que o resultado do período ainda não foi encerrado e o lucro/prejuízo do perído ainda não foi transferido para o Balanço Patrimonial. Verifique a DRE.</span>
+                    <span> 
+                      <strong> Ativo: {somaSaldoAtualAtivo} // Passivo: {somaSaldoAtualPassivo} </strong> <p />
+                      Diferença entre o saldo do Ativo e o Passivo pode significar que o resultado do período ainda não foi encerrado e o lucro/prejuízo do perído ainda não foi transferido para o Balanço Patrimonial. Verifique a DRE.
+                    </span>
                   </div>
                 )}
           </div>

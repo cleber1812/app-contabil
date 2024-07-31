@@ -19,7 +19,7 @@ export function Home() {
     <div id="root"> 
       <HeaderLandpage />
       <main>
-        <section className="hero">
+        <section id="hero" className="hero">
           {/* <img src={logomarca2} className="responsive-logo" alt="Logo da empresa" />           */}
           <h1 className="responsive-title">Pratique Contabilidade de Forma Fácil e Intuitiva</h1>
           <h3>Desenvolva suas habilidades com lançamentos contábeis em tempo real</h3>

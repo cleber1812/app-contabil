@@ -12,7 +12,8 @@ const HeaderLandpage: React.FC = () => {
         <img src={logomarca3} className="responsive-logo-header" alt="Contábil 123" />
       </div>
       <nav className="right">
-        <a onClick={() => navigate('/')}>Home</a>
+        {/* <a onClick={() => navigate('/')}>Home</a> */}
+        <a onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })}>Home</a>
         <a onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}>Funcionalidades</a>
         <a onClick={() => document.getElementById('benefits')?.scrollIntoView({ behavior: 'smooth' })}>Benefícios</a>
         <a onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}>Como Funciona</a>

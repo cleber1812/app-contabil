@@ -37,17 +37,19 @@ html, body {
 }
 
 :root {
-  --primary-color: #1f271b;
-  --primary-color-light: #3A4832;
-  --secondary-color: #19647e;
+  --primary-color: #222222;
+  --primary-color-light: #313337;
+  --secondary-color: #19647E;
   --secondary-color-dark: #114455;
   --secondary-color-medium: #618985;
-  --secondary-color-light: #ddf1f8;
-  --accent-color: #f6511d;
-  --accent-color-dark: #C43408;
-  --background-color: #e6efe9;
-  --background-color-dark: #d4dfc7;
-  --text-color: #f7fff7;
+  --secondary-color-light: #DDF1F8;
+  --tertiary-color: #FE6D1A;
+  --tertiary-color-light: #FEBA57;
+  --accent-color: #E1E3E5;
+  --accent-color-dark: #7E8091;
+  --background-color: #FCFAFC;
+  --background-color-dark: #FFFFFF;
+  --text-color: #FFFFFF;
 }
 
 
@@ -124,7 +126,7 @@ h2 {
   flex: 1;
   justify-content: flex-end;
   align-items: center;
-  color: var(--text-color);
+  color: var(--background-color);
 }
  
 .header .right a {
@@ -138,12 +140,16 @@ h2 {
   text-decoration: underline;
 }
 
+.icon_editar {
+  color: var(--accent-color-dark);
+}
+
 footer {
   display: flex;
   justify-content: space-between;
   align-items: center;   
   background-color: var(--primary-color);  
-  color: var(--text-color);  
+  color: var(--background-color);  
   /* padding: 20px; */
   padding: 1rem 2rem;
   /* position: fixed; */
@@ -212,6 +218,11 @@ form {
   background-color: var(--background-color-dark);  
 }
 
+.form-meusdados {
+  /* border-color: var(--background-color); */
+  background-color: var(--accent-color-dark);
+}
+
 label {
   display: flex;
   /* justify-content: center; */
@@ -263,9 +274,25 @@ button.editar {
 }
 
 button.deletar {
-  background-color:var(--accent-color);
+  background-color:var(--text-color);
   padding: 5px 10px;  
   margin-left: 2px;  
+  color:var(--secondary-color);  
+  border: 1px solid var(--secondary-color);
+}
+
+button.deletar:hover {
+  background-color: var(--tertiary-color-light);
+}
+
+button.excluir {
+  background-color:var(--text-color);  
+  color:var(--secondary-color);  
+  border: 1px solid var(--secondary-color);
+}
+
+button.excluir:hover {
+  background-color: var(--tertiary-color-light);
 }
 
 textarea {
@@ -288,10 +315,6 @@ textarea:focus {
   box-shadow: 0px 0px 3px rgba(0, 123, 255, 0.2);
 }
 
-.button-deletar:hover {
-  background-color: var(--accent-color-dark);
-}
-
 /* ESTILIZAÇÃO DE TABELAS */
 
 .table-container {
@@ -301,9 +324,14 @@ textarea:focus {
 
 .custom-table {
   width: 100%;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
+  border-collapse: separate;
+  border-spacing: 0;
   margin-top: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; /* Adiciona bordas arredondadas na tabela */
+  overflow: hidden; /* Para garantir que as bordas arredondadas funcionem corretamente */
 }
 
 .custom-table th,
@@ -312,11 +340,13 @@ textarea:focus {
   /* border: 2px solid var(--accent-color);  */
   border-bottom: 1px solid var(--primary-color);
   text-align: center;
+  /* border-radius: 8px; Bordas arredondadas nas células */
 }
 
 .custom-table th {
   background-color: var(--primary-color);
   color: var(--background-color);
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .custom-table tbody tr:nth-child(even) {
@@ -346,8 +376,8 @@ textarea:focus {
 
 /* ESTILIZAÇÃO DRE */
 .resultado-row{
-  font-weight: bold;  
-  color: var(--accent-color-dark);  
+  font-weight: bold;
+  color: var(--tertiary-color);  
 }
 
 /* ESTILIZAÇÃO REACTMODAL INCLUIR EMPRESA */
@@ -487,14 +517,14 @@ textarea:focus {
   padding: 10px;
   margin: 15px 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  text-align: left;
   font-weight: lighter;
   font-size: 16px;
   transition: background-color 0.3s, border-color 0.3s;
 }
 
 .mensagem-validacao:hover {
-  background-color: var(--secondary-color-light);
+  background-color: var(--tertiary-color-light);
   border-color: var(--secondary-color-dark);
 }
 
@@ -556,8 +586,8 @@ textarea:focus {
 }
 
 .pagination button {
-  background-color: #19647E; /* Cor de fundo dos botões */
-  color: white; /* Cor do texto dos botões */
+  background-color: var(--secondary-color); /* Cor de fundo dos botões */
+  color: var(--text-color); /* Cor do texto dos botões */
   border: none; /* Remover borda padrão */
   padding: 10px 20px; /* Espaçamento interno */
   margin: 0 5px; /* Espaçamento entre os botões */
@@ -567,18 +597,18 @@ textarea:focus {
 }
 
 .pagination button:hover {
-  background-color: #145A6F; /* Cor de fundo ao passar o mouse */
+  background-color: var(--secondary-color-dark); /* Cor de fundo ao passar o mouse */
 }
 
 .pagination button:disabled {
-  background-color: #ccc; /* Cor de fundo para botões desabilitados */
+  background-color: var(--accent-color-dark); /* Cor de fundo para botões desabilitados */
   cursor: not-allowed; /* Cursor de não permitido ao passar o mouse */
 }
 
 .pagination span {
   margin: 0 10px; /* Espaçamento horizontal */
   font-size: 16px; /* Tamanho da fonte */
-  color: #333; /* Cor do texto */
+  color: var(--primary-color-light); /* Cor do texto */
 }
 
 
@@ -642,7 +672,7 @@ section {
   min-height: 3rem;
   margin: 3rem;
   padding: 0.5rem 1rem;
-  background-color: var(--accent-color);
+  background-color: var(--tertiary-color);
   color: var(--text-color);
   border: none;
   cursor: pointer;
@@ -659,12 +689,16 @@ section {
   margin-bottom: 2rem;
 }
 
+.features h2 {
+  color: var(--secondary-color-light);
+}
+
 /* .features .feature-item {
   margin: 2rem 0;
 } */
 
 .features {
-  background-color: var(--background-color);
+  background-color: var(--primary-color);
 }
 
 .features-container, .benefits-container, .testimonials-container {
@@ -676,7 +710,7 @@ section {
 }
 
 .feature-item {
-  /* background-color: var(--secondary-color); */
+  background-color: var(--tertiary-color);
   /* color: var(--text-color); */
   border-radius: 10px;
   border: 2px solid var(--accent-color); /* Adiciona a borda com cor e espessura */
@@ -700,6 +734,7 @@ section {
 
 .feature-item p {
   margin-bottom: 3rem;
+  color: var(--text-color);
 }
 
 .feature-icon {
@@ -709,8 +744,12 @@ section {
 }
 
 .benefits {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color-light);
   color: var(--primary-color);
+}
+
+.benefits h2 {
+  color: var(--background-color);
 }
 
 .benefits-item {
@@ -752,7 +791,11 @@ section {
 
 .how-it-works {
   text-align: center;
-  background-color: var(--background-color);
+  background-color: var(--tertiary-color);
+}
+
+.how-it-works h2 {  
+  color: var(--primary-color);
 }
 
 .how-it-works-container {
@@ -776,7 +819,7 @@ section {
   width: 50px;
   min-width: 50px;
   height: 50px;
-  background-color: var(--accent-color);
+  background-color: var(--primary-color);
   color: var(--text-color);
   border-radius: 50%;
   display: flex;
@@ -802,7 +845,7 @@ section {
 }
 
 .testimonials {
-  background-color: var(--text-color);
+  background-color: var(--primary-color-light);
   color: var(--primary-color);
 
 }
@@ -834,7 +877,6 @@ section {
   border-radius: 50%;
 }
 
-
 .call-to-action {
   text-align: center;
   padding: 3rem 1rem;
@@ -847,9 +889,7 @@ section {
 
 .call-to-action h2 {
   margin-bottom: 0.5rem;
-  color: var(--text-color); 
-  
-  
+  color: var(--text-color);
 }
 
 .call-to-action p {
@@ -860,7 +900,7 @@ section {
   width: auto; /* Define a largura automática para os botões */
   margin: 1rem 0;
   padding: 0.5rem 1rem;
-  background-color: var(--accent-color);
+  background-color: var(--tertiary-color);
   color: var(--text-color);
   border: none;
   border-radius: 5px;

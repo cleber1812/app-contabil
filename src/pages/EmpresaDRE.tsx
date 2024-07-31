@@ -92,14 +92,14 @@ export function DreEmpresa() {
           <Header />
           <main>
             <div className="container">
-              <h1>DRE</h1>
+              <h1>DRE</h1>              
               <label>Intervalo de datas:</label>            
               <div>
                 <CustomDatePicker selectedDate={startDate} onChangeDate={setStartDate} />
               </div>
               <div>
                 <CustomDatePicker selectedDate={endDate} onChangeDate={setEndDate} />
-              </div>
+              </div>              
               <div className="table-container">
                 <table className="custom-table">
                   <thead>
@@ -152,11 +152,14 @@ export function DreEmpresa() {
                 </table>
                 {saldoReceitasC !== saldoDespesasD && (
                   <div className='mensagem-validacao'>
-                    <span> Lucro: {saldoReceitasC - saldoDespesasD} <p/>
-                    Procedimentos para encerramento do resultado do período:<p/>
-                    1 Verificar na coluna SALDO quais contas ainda não foram encerradas.<p/>
-                    2 Encerrar as contas de Receitas (debitando) e de Despesas (creditando), passando seus saldos para a conta ARE.<p/>
-                    3 Apuração de resultado da conta ARE, passando seu saldo (creditando/debitando) para a Lucros Acumulados (ou Prejuízos acumulados quando for o caso).</span>
+                    <span> 
+                      <strong>Lucro: {saldoReceitasC - saldoDespesasD} </strong> <p/>
+                      Procedimentos para encerramento do resultado do período:<p/>
+                      1 Verificar na coluna SALDO quais contas ainda não foram encerradas.<p/>
+                      2 Encerrar as contas de Receitas (debitando) e de Despesas (creditando), passando seus saldos para a conta ARE.<p/>
+                      3 Apuração de resultado da conta ARE, passando seu saldo (creditando/debitando) para a Lucros Acumulados (ou Prejuízos acumulados quando for o caso).
+                    </span>
+                    
                   </div> 
                 )}
               </div>

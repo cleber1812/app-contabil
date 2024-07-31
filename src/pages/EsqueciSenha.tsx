@@ -32,7 +32,7 @@ export function EsqueciSenha() {
     
       alert('Um link de recuperação de senha foi enviado para seu email');
       // Navegar para a página de login após o sucesso
-      navigate('/login');
+      navigate('/');
 
     } catch (error) {
         console.error('Erro ao solicitar alteração de senha:', error);

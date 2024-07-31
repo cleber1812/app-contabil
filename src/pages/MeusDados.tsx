@@ -120,7 +120,8 @@ export function MeusDados() {
                 {successMessage && <p className="success-message">{successMessage}</p>}
             
                 <form 
-                  style={{borderColor: '#ddf1f8', backgroundColor: '#d4dfc7' }}
+                  // style={{borderColor: '#ddf1f8', backgroundColor: '#d4dfc7' }}
+                  className="form-meusdados"
                   onSubmit={handleSubmit}>
                     
                     <label> Nome  

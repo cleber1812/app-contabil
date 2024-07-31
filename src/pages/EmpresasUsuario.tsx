@@ -208,7 +208,7 @@ export function EmpresasUsuario() {
                   <div className="modal-content">
                     <p>Deseja realmente excluir esta empresa?</p>
                     <button onClick={() => handleDelete(empresaIdToDelete)}>Sim</button>
-                    <button onClick={cancelDelete}>Não</button>
+                    <button className='excluir' onClick={cancelDelete}>Não</button>
                   </div>
                 </div>
               )} 

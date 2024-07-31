@@ -150,7 +150,7 @@ export function LancamentosEmpresaPP() {
                   <div className="modal-content">
                     <p>Deseja realmente excluir este lançamento?</p>
                     <button onClick={() => handleDelete(lancamentoIdToDelete)}>Sim</button>
-                    <button onClick={cancelDelete}>Não</button>
+                    <button className='excluir' onClick={cancelDelete}>Não</button>
                   </div>
                 </div>
               )}             

@@ -29,19 +29,22 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="left">
-        <img src={logomarca3} className="responsive-logo-header" alt="Contábil 123" />
+        <a href="https://contabil123.netlify.app/" target="_blank">
+          <img src={logomarca3} className="responsive-logo-header" alt="Contábil 123" />
+        </a>
       </div>
       <div className="right2">
         {nomeUsuario && <p>Bem-vindo, {nomeUsuario}</p>}
         <div style={{marginLeft: 10, marginRight: 5}}>
         <Link to={`/meusdados`}>
             <FontAwesomeIcon icon={faUserPen}
-            color='#618985'
-        />
+            // color='#618985'
+            className='icon_editar'
+            />
         </Link> 
         </div>
         <button onClick={voltar}>Voltar</button>
-        <button onClick={logOut}>
+        <button className='excluir' onClick={logOut}>
           Sair
           {/* <FontAwesomeIcon icon={faSignOut} transform="right-5" /> */}
         </button>
