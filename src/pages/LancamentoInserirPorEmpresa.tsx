@@ -9,6 +9,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
 import axios from 'axios'
+import PlanoContas from '../components/PlanoContas';
 
 export function InserirLancamentoEmpresa() { 
     const navigate = useNavigate();  // Obtenha o objeto de navegação
@@ -159,18 +160,18 @@ export function InserirLancamentoEmpresa() {
     };
     
     return (
-        <div id="root">
+      <div id="root">
         <Header />
         <main>
-        <div className="container">
-          <h1>Inserir Lançamento por Empresa</h1>
-          {isLoading ? (
-            <div className="loader-container">
-              <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
-              <p>Carregando...</p>
-            </div>
-          ) : (            
-            <form onSubmit={handleSubmit}>
+          <div className="container">
+            <h1>Inserir Lançamento por Empresa</h1>
+            {isLoading ? (
+              <div className="loader-container">
+                <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
+                <p>Carregando...</p>
+              </div>
+            ) : (            
+              <form onSubmit={handleSubmit}>
                 
                 {/* <label> Empresa: <input
                     type="number" 
@@ -263,12 +264,15 @@ export function InserirLancamentoEmpresa() {
 
                 {/* <button type="button" onClick={validarLancamento}>Validar Lançamento</button> */}
                 <button type="submit">Enviar</button>
-            </form>
-          )}
+              </form>
+            )}
+            <div className="pc-container">              
+              <PlanoContas />
+            </div>
           </div>
-          </main>
-          <Footer />
-          </div>
-        );
+        </main>
+        <Footer />
+      </div>
+    );
 }
 

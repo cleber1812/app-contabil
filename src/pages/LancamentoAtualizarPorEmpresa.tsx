@@ -9,6 +9,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
 import axios from 'axios'
+import PlanoContas from '../components/PlanoContas';
 
 // //Posso tirar essa interface lá do useState<FormData> que funciona também
 // interface FormData {
@@ -311,6 +312,9 @@ export function AtualizarLancamentoEmpresa() {
                 <button type="submit">Atualizar</button>
             </form>
             )}
+            <div className="pc-container">              
+              <PlanoContas />
+            </div>
        </div>
        </main>
        <Footer />
