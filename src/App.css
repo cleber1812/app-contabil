@@ -43,7 +43,8 @@ html, body {
   --secondary-color-dark: #114455;
   --secondary-color-medium: #618985;
   --secondary-color-light: #DDF1F8;
-  --tertiary-color: #FE6D1A;
+  --tertiary-color: #19647E;
+  /* --tertiary-color: #FE6D1A; */
   --tertiary-color-light: #FEBA57;
   --accent-color: #E1E3E5;
   --accent-color-dark: #7E8091;
@@ -157,6 +158,8 @@ footer {
   bottom: 0px;
   width: 100%;
   text-align: center;   
+  font-size: smaller;
+  font-weight: lighter;
 }
 
 /* Estilo para as seções dentro do footer */
@@ -716,7 +719,7 @@ section {
   min-height: 3rem;
   margin: 3rem;
   padding: 0.5rem 1rem;
-  background-color: var(--tertiary-color);
+  background-color: var(--secondary-color);
   color: var(--text-color);
   border: none;
   cursor: pointer;
@@ -724,7 +727,7 @@ section {
 }
 
 .hero button:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary-color-dark);
 }
 
 .features h2, .benefits h2, .how-it-works h2, .testimonials h2, .call-to-action h2 {
@@ -876,6 +879,11 @@ section {
 
 .step-text {
   text-align: left;
+  color: var(--primary-color);
+}
+
+.step-text p {  
+  color: var(--background-color);
 }
 
 .how-it-works-image {
@@ -944,7 +952,7 @@ section {
   width: auto; /* Define a largura automática para os botões */
   margin: 1rem 0;
   padding: 0.5rem 1rem;
-  background-color: var(--tertiary-color);
+  background-color: var(--primary-color);
   color: var(--text-color);
   border: none;
   border-radius: 5px;

@@ -5,7 +5,7 @@ import { faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'; // 
 
 const Footer: React.FC = () => {
     const handleInstagramClick = () => {
-        window.open('https://www.instagram.com/cleber1812roberto', '_blank');
+        window.open('https://www.instagram.com/recontabis', '_blank');
       };
     
       const handleYoutubeClick = () => {
@@ -17,10 +17,19 @@ const Footer: React.FC = () => {
       <div className="footer-left">
         <p>Simulação Contábil e Financeira</p>
       </div>
-      <div className="footer-center">
-        <p>&copy; 2024</p>
+      <div className="footer-center" style={{flexDirection:"column"}}>
+        <p>&copy; Copyright 2024 Recontábis</p> 
+        <p>Todos os direitos reservados.</p>
       </div>
       <div className="footer-right">        
+        <div>
+          <p style={{textAlign:"center"}}>Contato</p>
+          <p>
+            <a href='mailto:simulacontabil@gmail.com' style={{ color: 'inherit', textDecoration: 'none' }}>
+            simulacontabil@gmail.com
+            </a>
+          </p>
+        </div>
         <div onClick={handleInstagramClick}>
             <FontAwesomeIcon icon={faInstagram} />
         </div>

@@ -48,7 +48,7 @@ export function Home() {
         </section>
 
         <section id="benefits" className="benefits">
-          <h2>Por Que Usar Contábil123?</h2>
+          <h2>Por Que Usar Recontábis?</h2>
           <div className="benefits-container">
             <div className="benefits-item">
               <img src={imgPorquinho} className="benefits-icon" alt="Logo da empresa" />              
@@ -117,7 +117,7 @@ export function Home() {
           <div className="testimonials-container">
             <div className="testimonials-item">
               <img src={imgMaicon} className="testimonials-icon" alt="Logo da empresa" />
-              <p>"Contábil123 facilitou meu aprendizado de contabilidade!"</p>
+              <p>"Recontábis facilitou meu aprendizado de contabilidade!"</p>
               <p>Maicon</p>
             </div>
             <div className="testimonials-item">
