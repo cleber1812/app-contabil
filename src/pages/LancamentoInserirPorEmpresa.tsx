@@ -164,7 +164,7 @@ export function InserirLancamentoEmpresa() {
         <Header />
         <main>
           <div className="container">
-            <h1>Inserir Lançamento por Empresa</h1>
+            <h1>Novo Lançamento</h1>
             {isLoading ? (
               <div className="loader-container">
                 <ClipLoader color={"#19647E"} loading={isLoading} size={150} />
@@ -263,7 +263,7 @@ export function InserirLancamentoEmpresa() {
                 /> </label> */}
 
                 {/* <button type="button" onClick={validarLancamento}>Validar Lançamento</button> */}
-                <button type="submit">Enviar</button>
+                <button type="submit">Salvar</button>
               </form>
             )}
             <div className="pc-container">              

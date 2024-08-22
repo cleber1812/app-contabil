@@ -399,6 +399,8 @@ textarea:focus {
   overflow-x: auto; 
   /* text-align: center; */
   /* width: 100%; */
+  /* margin-left: -20px; */
+  padding-left: 40px;
 }
 
 .pc-toggle {

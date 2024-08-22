@@ -150,6 +150,8 @@ export function DreEmpresa() {
                     </tr>                
                   </tbody>
                 </table>
+              </div>
+              <div>
                 {saldoReceitasC !== saldoDespesasD && (
                   <div className='mensagem-validacao'>
                     <span> 
