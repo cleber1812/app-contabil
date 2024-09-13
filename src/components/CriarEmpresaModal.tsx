@@ -45,6 +45,7 @@ interface CriarEmpresaModalProps {
                     type="STRING" 
                     name="nome_empresa"
                     value={formData.nome_empresa}
+                    placeholder='nome com o mínimo de 4 caracteres'
                     onChange={handleChange}
                 /> 
             </label>
