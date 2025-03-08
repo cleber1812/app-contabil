@@ -25,6 +25,9 @@ import { DreEmpresa } from "./pages/EmpresaDRE";
 import { MeusDados } from "./pages/MeusDados";
 import { RedefinirSenha } from "./pages/RedefinirSenha";
 import { EsqueciSenha } from "./pages/EsqueciSenha";
+import { PlanoDeContas } from "./pages/0ContasPlano";
+import { InserirConta } from "./pages/0ContasInserir";
+import { AtualizarConta } from "./pages/0ContasAtualizar";
 
 export function AppRoutes(){
     return (
@@ -41,6 +44,10 @@ export function AppRoutes(){
                 <Route path="/empresas" element={<Empresas />} />
                 {/* <ProtectedRoute path="/lancamentos" element={<Lancamentos />} /> */}
                 <Route path="/lancamentos" element={<Lancamentos />} />
+
+                <Route path="/planodecontas" element={<PlanoDeContas />} />
+                <Route path="/inserirconta" element={<InserirConta />} />
+                <Route path="/atualizarconta/:id" element={<AtualizarConta />} />
                 
                 {/* <Route path="/inserirlancamento" element={<InserirLancamento />} /> */}
                 {/* <Route path="/deletarlancamento" element={<DeletarLancamento />} /> */}
