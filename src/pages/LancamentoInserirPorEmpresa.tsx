@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import ClipLoader from "react-spinners/ClipLoader"; // Importe o ClipLoader
 import axios from 'axios'
 import PlanoContas from '../components/PlanoContas';
+import { NumericFormat } from 'react-number-format';
 
 export function InserirLancamentoEmpresa() { 
     const navigate = useNavigate();  // Obtenha o objeto de navegação
@@ -113,6 +114,15 @@ export function InserirLancamentoEmpresa() {
         const { name, value } = e.target;
         setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
+
+    // Função específica para lidar com a mudança de valor formatado
+    const handleValorChange = (values: any) => {
+        // Atualiza o valor no formData usando o valor numérico (sem formatação)
+        setFormData((prevData) => ({ 
+          ...prevData, 
+          valor: values.value // value contém o valor numérico sem formatação
+        }));
+    };
     
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -189,7 +199,7 @@ export function InserirLancamentoEmpresa() {
                   /> 
                 </label>
 
-                <label> Valor: 
+                {/* <label> Valor: 
                   <input style={{ maxWidth: 150 }}
                     type="number"
                     name="valor"
@@ -201,6 +211,21 @@ export function InserirLancamentoEmpresa() {
                       }
                     }}
                   /> 
+                </label> */}
+
+                <label> Valor: 
+                  <NumericFormat
+                    style={{ maxWidth: 150 }}
+                    thousandSeparator="."
+                    decimalSeparator=","
+                    prefix="R$ "
+                    decimalScale={2}
+                    fixedDecimalScale
+                    allowNegative={false}
+                    placeholder="R$ 0,00"
+                    onValueChange={handleValorChange}
+                    value={formData.valor}
+                  />
                 </label>
 
                 <label> Descrição: 
