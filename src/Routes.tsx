@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import ProtectedRoute from './components/ProtectedRoute';  // Use {} para importar se ProtectedRoute for exportado diretamente
+import ProtectedRoute from './components/ProtectedRoute';  // Use {} para importar se ProtectedRoute for exportado diretamente
 
 import { HellowWorld } from "./pages/0HellowWorld";
 import { Usuarios } from "./pages/0Usuarios";
 import { Empresas } from "./pages/0Empresas";
-import { Lancamentos } from "./pages/0Lancamentos";
+// import { Lancamentos } from "./pages/0Lancamentos";
 // import { InserirLancamento } from "./pages/1LancamentoInserir";
 // import { DeletarLancamento } from "./pages/1LacamentoDeletar";
 // import { AtualizarLancamento } from "./pages/1LancamentoAtualizar";
@@ -42,8 +42,7 @@ export function AppRoutes(){
                 <Route path="/hellow" element={<HellowWorld />} />
                 <Route path="/usuarios" element={<Usuarios />} />
                 <Route path="/empresas" element={<Empresas />} />
-                {/* <ProtectedRoute path="/lancamentos" element={<Lancamentos />} /> */}
-                <Route path="/lancamentos" element={<Lancamentos />} />
+                {/* <Route path="/lancamentos" element={<Lancamentos />} /> */}
 
                 <Route path="/planodecontas" element={<PlanoDeContas />} />
                 <Route path="/inserirconta" element={<InserirConta />} />
@@ -54,23 +53,64 @@ export function AppRoutes(){
                 {/* <Route path="/atualizarlancamento/:id" element={<AtualizarLancamento />} /> */}                
                 {/* <Route path="/criarempresa/:userID" element={<CriarEmpresa />} /> */}
 
-                <Route path="/meusdados" element={<MeusDados />} />
+                <Route path="/meusdados" element={
+                    <ProtectedRoute>
+                        <MeusDados />
+                    </ProtectedRoute>
+                } />
                 
                 {/* <Route path="/atualizarempresa/:id/:userID" element={<AtualizarEmpresa />} /> */}
-                <Route path="/atualizarempresa/:id" element={<AtualizarEmpresa />} />                
+                <Route path="/atualizarempresa/:id" element={
+                    <ProtectedRoute>
+                        <AtualizarEmpresa />
+                    </ProtectedRoute>
+                } />                
                 {/* <Route path="/minhasempresas/:userID" element={<EmpresasUsuario />} /> */}
-                <Route path="/minhasempresas/" element={<EmpresasUsuario />} />
+                {/* <Route path="/minhasempresas/" element={<EmpresasUsuario />} /> */}
+                <Route path="/minhasempresas/" element={
+                    <ProtectedRoute>
+                        <EmpresasUsuario />
+                    </ProtectedRoute>
+                } />
                 {/* <Route path="/inserirlancamentoempresa/:fk_id_empresa/:userID" element={<InserirLancamentoEmpresa />} /> */}                
-                <Route path="/inserirlancamentoempresa/:fk_id_empresa" element={<InserirLancamentoEmpresa />} />                
+                <Route path="/inserirlancamentoempresa/:fk_id_empresa" element={
+                    <ProtectedRoute>
+                        <InserirLancamentoEmpresa />
+                    </ProtectedRoute>
+                } />                
                 {/* <Route path="/atualizarlancamentoempresa/:id/:fk_id_empresa/:userID" element={<AtualizarLancamentoEmpresa />} /> */}
-                <Route path="/atualizarlancamentoempresa/:id/:fk_id_empresa" element={<AtualizarLancamentoEmpresa />} />
+                <Route path="/atualizarlancamentoempresa/:id/:fk_id_empresa" element={
+                    <ProtectedRoute>
+                        <AtualizarLancamentoEmpresa />
+                    </ProtectedRoute>
+                } />
                 {/* <Route path="/lancamentosempresa/:fk_id_empresa/:userID" element={<LancamentosEmpresa />} /> */}
                 {/* <Route path="/lancamentosempresa/:fk_id_empresa" element={<LancamentosEmpresa />} /> */}
-                <Route path="/lancamentosempresa/:fk_id_empresa" element={<LancamentosEmpresaPP />} />
-                <Route path="/diarioempresa/:fk_id_empresa" element={<DiarioEmpresa />} />
-                <Route path="/razaoempresa/:fk_id_empresa" element={<RazaoEmpresa />} />
-                <Route path="/balancoempresa/:fk_id_empresa" element={<BalancoEmpresa />} />
-                <Route path="/dreempresa/:fk_id_empresa" element={<DreEmpresa />} />
+                <Route path="/lancamentosempresa/:fk_id_empresa" element={
+                    <ProtectedRoute>
+                        <LancamentosEmpresaPP />
+                    </ProtectedRoute>
+                } />
+                <Route path="/diarioempresa/:fk_id_empresa" element={
+                    <ProtectedRoute>
+                        <DiarioEmpresa />
+                    </ProtectedRoute>
+                } />
+                <Route path="/razaoempresa/:fk_id_empresa" element={
+                    <ProtectedRoute>
+                        <RazaoEmpresa />
+                    </ProtectedRoute>
+                } />
+                <Route path="/balancoempresa/:fk_id_empresa" element={
+                    <ProtectedRoute>
+                        <BalancoEmpresa />
+                    </ProtectedRoute>
+                } />
+                <Route path="/dreempresa/:fk_id_empresa" element={
+                    <ProtectedRoute>
+                        <DreEmpresa />
+                    </ProtectedRoute>
+                } />
                 
                 
                 
